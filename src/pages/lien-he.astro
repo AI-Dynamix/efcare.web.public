@@ -1,0 +1,146 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import EfcareFooter from '~/components/efcare/EfcareFooter.astro';
+import KiteBackground from '~/components/efcare/KiteBackground.astro';
+
+const metadata = {
+  title: 'Liên hệ EFCARE — Hỗ trợ & Tư vấn sức khỏe',
+  description: 'Liên hệ EFCARE qua hotline 0815 515 456, email hello@efcare.vn hoặc gửi tin nhắn trực tiếp. Đội ngũ tư vấn luôn sẵn sàng hỗ trợ 8:00-20:00 hàng ngày.',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <header id="header" style="position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(10,48,76,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,169,98,0.15);">
+      <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;height:64px;">
+        <a href="/" style="text-decoration:none;">
+          <span style="font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:900;color:#C4A962;letter-spacing:-0.02em;">EFCARE</span>
+        </a>
+        <nav style="display:flex;align-items:center;gap:2rem;">
+          <a href="/" style="color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.9375rem;font-weight:500;">Trang chủ</a>
+          <a href="/cong-nghe" style="color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.9375rem;font-weight:500;">Công nghệ</a>
+          <a href="/bai-viet" style="color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.9375rem;font-weight:500;">Bài viết</a>
+          <a href="/lien-he" style="color:#C4A962;text-decoration:none;font-size:0.9375rem;font-weight:700;">Liên hệ</a>
+          <a href="tel:0815515456" style="background:linear-gradient(135deg,#C4A962 0%,#D8C27A 100%);color:#0A304C;font-weight:700;font-family:'Montserrat',sans-serif;padding:0.5rem 1.25rem;border-radius:50px;text-decoration:none;font-size:0.875rem;">
+            Hotline 0815 515 456
+          </a>
+        </nav>
+      </div>
+    </header>
+  </Fragment>
+
+  <KiteBackground />
+
+  <!-- Hero -->
+  <section style="background:linear-gradient(135deg,#0A304C 0%,#084F8A 100%);padding:8rem 1.5rem 5rem;text-align:center;position:relative;z-index:1;">
+    <span class="section-tag">Liên hệ</span>
+    <h1 style="font-family:'Montserrat',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#ffffff;margin:1rem 0;line-height:1.2;">
+      Chúng tôi luôn<br/><span style="color:#C4A962;">sẵn sàng hỗ trợ</span>
+    </h1>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.125rem;max-width:500px;margin:0 auto;line-height:1.7;">
+      Đội ngũ tư vấn EFCARE phục vụ từ 8:00 đến 20:00 hàng ngày. Liên hệ ngay để được hỗ trợ.
+    </p>
+  </section>
+
+  <!-- Contact Content -->
+  <section style="background:linear-gradient(180deg,#0A304C 0%,#071f33 100%);padding:5rem 1.5rem;position:relative;z-index:1;">
+    <div class="max-container">
+      <!-- Info cards -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem;" class="stagger-cards">
+        <!-- Address -->
+        <div class="glass-card" style="text-align:center;">
+          <div style="width:3rem;height:3rem;background:rgba(196,169,98,0.15);border:2px solid rgba(196,169,98,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+            <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="#C4A962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;color:#C4A962;margin-bottom:0.75rem;">Văn phòng</h4>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;">
+            Tầng 6, số 10, ngõ 45 Trần Thái Thông<br/>
+            Phường Cầu Giấy, Hà Nội
+          </p>
+        </div>
+
+        <!-- Phone -->
+        <div class="glass-card" style="text-align:center;">
+          <div style="width:3rem;height:3rem;background:rgba(196,169,98,0.15);border:2px solid rgba(196,169,98,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+            <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="#C4A962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;color:#C4A962;margin-bottom:0.75rem;">Hotline</h4>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;">
+            <a href="tel:0815515456" style="color:#D8C27A;text-decoration:none;font-weight:700;font-size:1.125rem;">0815 515 456</a><br/>
+            Thứ 2 — Chủ nhật, 8:00 — 20:00
+          </p>
+        </div>
+
+        <!-- Email -->
+        <div class="glass-card" style="text-align:center;">
+          <div style="width:3rem;height:3rem;background:rgba(196,169,98,0.15);border:2px solid rgba(196,169,98,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+            <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="#C4A962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;color:#C4A962;margin-bottom:0.75rem;">Email</h4>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;">
+            <a href="mailto:hello@efcare.vn" style="color:#D8C27A;text-decoration:none;">hello@efcare.vn</a><br/>
+            <a href="mailto:business@efcare.vn" style="color:#D8C27A;text-decoration:none;">business@efcare.vn</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Contact form — full width -->
+      <div class="reveal" style="max-width:700px;margin:0 auto;">
+        <div class="contact-form">
+          <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;color:#ffffff;font-size:1.25rem;margin-bottom:1.5rem;text-align:center;">Gửi tin nhắn cho chúng tôi</h3>
+          <form action="mailto:hello@efcare.vn" method="get">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="full-name">Họ và tên *</label>
+                <input type="text" id="full-name" name="name" class="form-input" placeholder="Nguyễn Văn A" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="0912 345 678" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email *</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="email@example.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">Chủ đề</label>
+              <input type="text" id="subject" name="subject" class="form-input" placeholder="Tư vấn giải pháp EFCARE" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Nội dung *</label>
+              <textarea id="message" name="body" class="form-textarea" placeholder="Hãy cho chúng tôi biết chúng tôi có thể giúp gì cho bạn..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary-ef" style="width:100%;justify-content:center;border:none;cursor:pointer;font-size:1rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Gửi tin nhắn
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <EfcareFooter />
+
+  <Fragment slot="footer">
+    <!-- Handled by EfcareFooter -->
+  </Fragment>
+</Layout>
+
+<script>
+  document.querySelectorAll('.reveal, .stagger-cards').forEach((el) => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    obs.observe(el);
+  });
+</script>

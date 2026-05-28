@@ -1,0 +1,34 @@
+---
+// KiteBackground.astro — 4 animated kite divs with parallax
+---
+
+<div class="kite-bg" aria-hidden="true">
+  <div class="kite kite-1"></div>
+  <div class="kite kite-2"></div>
+  <div class="kite kite-3"></div>
+  <div class="kite kite-4"></div>
+</div>
+
+<script>
+  // Parallax on scroll — move kites slightly based on scroll position
+  (function () {
+    const kites = document.querySelectorAll<HTMLElement>('.kite');
+    let ticking = false;
+
+    function updateKites() {
+      const scrollY = window.scrollY;
+      kites.forEach((kite, i) => {
+        const speed = 0.04 + i * 0.015;
+        kite.style.transform = `translateY(${scrollY * speed}px)`;
+      });
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateKites);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+</script>

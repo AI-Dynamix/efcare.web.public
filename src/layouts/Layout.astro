@@ -1,5 +1,6 @@
 ---
 import '~/assets/styles/tailwind.css';
+import '~/assets/styles/efcare.css';
 
 import { I18N } from 'astrowind:config';
 
@@ -37,6 +38,9 @@ const { language, textDirection } = I18N;
     <Analytics />
 
     <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
