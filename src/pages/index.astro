@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import EfcareHeader from '~/components/efcare/EfcareHeader.astro';
 import KiteBackground from '~/components/efcare/KiteBackground.astro';
 import FloatingSideNav from '~/components/efcare/FloatingSideNav.astro';
 import Hero from '~/components/efcare/Hero.astro';
@@ -21,23 +22,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <Fragment slot="header">
-    <!-- Use EFCARE custom nav — suppress default header/footer -->
-    <header id="header" style="position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(10,48,76,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,169,98,0.15);">
-      <div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;height:64px;">
-        <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
-          <span style="font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:900;color:#C4A962;letter-spacing:-0.02em;">EFCARE</span>
-        </a>
-        <nav style="display:flex;align-items:center;gap:2rem;" class="ef-nav-desktop">
-          <a href="/" style="color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.9375rem;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#C4A962'" onmouseout="this.style.color='rgba(255,255,255,0.85)'">Trang chủ</a>
-          <a href="/cong-nghe" style="color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.9375rem;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#C4A962'" onmouseout="this.style.color='rgba(255,255,255,0.85)'">Công nghệ</a>
-          <a href="/bai-viet" style="color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.9375rem;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#C4A962'" onmouseout="this.style.color='rgba(255,255,255,0.85)'">Bài viết</a>
-          <a href="/lien-he" style="color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.9375rem;font-weight:500;transition:color 0.2s;" onmouseover="this.style.color='#C4A962'" onmouseout="this.style.color='rgba(255,255,255,0.85)'">Liên hệ</a>
-          <a href="tel:0815515456" style="background:linear-gradient(135deg,#C4A962 0%,#D8C27A 100%);color:#0A304C;font-weight:700;font-family:'Montserrat',sans-serif;padding:0.5rem 1.25rem;border-radius:50px;text-decoration:none;font-size:0.875rem;transition:all 0.2s;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-            Hotline 0815 515 456
-          </a>
-        </nav>
-      </div>
-    </header>
+    <EfcareHeader currentPath="/" />
   </Fragment>
 
   <!-- Kite parallax background -->
@@ -69,7 +54,6 @@ const metadata = {
   </Fragment>
 </Layout>
 
-<!-- Schema.org Organization markup -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

@@ -1,67 +1,30 @@
 ---
-// Values.astro — "Năm giá trị cốt lõi" (Ngũ Tâm)
+import { values as valuesData } from '~/data/efcare/values';
+
+interface Props {
+  data?: typeof valuesData;
+}
+
+const { data = valuesData } = Astro.props;
 ---
 
 <section id="values" class="ef-section ef-section-ivory">
   <div class="max-container">
     <div class="section-header reveal">
-      <span class="section-tag">Triết lý</span>
-      <h2 class="section-title">Năm giá trị cốt lõi</h2>
-      <p class="section-subtitle">
-        Ngũ Tâm — Năm giá trị định hướng mọi hành động và quyết định của EFCARE.
-      </p>
+      <span class="section-tag">{data.section.eyebrow}</span>
+      <h2 class="section-title">{data.section.heading}</h2>
+      <p class="section-subtitle">{data.section.intro}</p>
     </div>
 
     <div class="values-grid stagger-cards">
-      <!-- 1. Thiện Tâm -->
-      <div class="value-card" style="background:linear-gradient(135deg,#0A304C 0%,#0d4070 100%);">
-        <div class="value-card-bg-symbol">善</div>
-        <div class="value-card-number">01</div>
-        <div class="value-card-title">Thiện Tâm</div>
-        <div class="value-card-desc">
-          Hành động xuất phát từ lòng thiện lành, luôn đặt lợi ích sức khỏe của người dùng lên trên hết. Mỗi quyết định đều được cân nhắc dưới góc độ nhân đạo.
+      {data.cards.map((card) => (
+        <div class="value-card" style={`background:${card.gradient};`}>
+          <div class="value-card-bg-symbol">{card.symbol}</div>
+          <div class="value-card-number">{card.number}</div>
+          <div class="value-card-title">{card.title}</div>
+          <div class="value-card-desc">{card.body}</div>
         </div>
-      </div>
-
-      <!-- 2. Tử Tế -->
-      <div class="value-card" style="background:linear-gradient(135deg,#084F8A 0%,#0a6ab5 100%);">
-        <div class="value-card-bg-symbol">禮</div>
-        <div class="value-card-number">02</div>
-        <div class="value-card-title">Tử Tế</div>
-        <div class="value-card-desc">
-          Đối xử với mọi người bằng sự tôn trọng và lịch sự. Tử tế không chỉ trong lời nói mà còn trong từng sản phẩm, dịch vụ chúng tôi cung cấp.
-        </div>
-      </div>
-
-      <!-- 3. Tinh Tấn -->
-      <div class="value-card" style="background:linear-gradient(135deg,#1a6b4a 0%,#228a5e 100%);">
-        <div class="value-card-bg-symbol">進</div>
-        <div class="value-card-number">03</div>
-        <div class="value-card-title">Tinh Tấn</div>
-        <div class="value-card-desc">
-          Không ngừng học hỏi, cải tiến và nâng cao chất lượng. Tinh tấn là cam kết liên tục vươn đến tiêu chuẩn xuất sắc trong mọi khía cạnh.
-        </div>
-      </div>
-
-      <!-- 4. Tận Tâm -->
-      <div class="value-card" style="background:linear-gradient(135deg,#7b3f00 0%,#a35200 100%);">
-        <div class="value-card-bg-symbol">誠</div>
-        <div class="value-card-number">04</div>
-        <div class="value-card-title">Tận Tâm</div>
-        <div class="value-card-desc">
-          Dồn hết tâm huyết và trách nhiệm vào công việc. Tận tâm với từng khách hàng, từng đối tác và từng cam kết đã đưa ra.
-        </div>
-      </div>
-
-      <!-- 5. Thành Tựu -->
-      <div class="value-card" style="background:linear-gradient(135deg,#5b2d8e 0%,#7b3db5 100%);">
-        <div class="value-card-bg-symbol">成</div>
-        <div class="value-card-number">05</div>
-        <div class="value-card-title">Thành Tựu</div>
-        <div class="value-card-desc">
-          Hướng đến thành công đích thực — không chỉ là lợi nhuận mà còn là giá trị mang lại cho cộng đồng, xã hội và hệ sinh thái y tế Việt Nam.
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>

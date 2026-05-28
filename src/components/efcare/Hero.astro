@@ -1,34 +1,37 @@
 ---
-// Hero.astro — EFCARE homepage hero section
+import { hero as heroData } from '~/data/efcare/hero';
+
+interface Props {
+  data?: typeof heroData;
+}
+
+const { data = heroData } = Astro.props;
 ---
 
 <section id="hero" class="ef-hero">
   <div class="hero-grid">
     <!-- Left: Content -->
     <div class="hero-content reveal">
-      <div class="hero-eyebrow">Chăm sóc — Kết nối — Lan tỏa</div>
+      <div class="hero-eyebrow">{data.eyebrow}</div>
       <h1 class="hero-h1">
-        Quản lý sức khỏe gia đình<br/>
-        <span class="accent">từ nhà đến bệnh viện</span>
+        {data.heading}<br />
+        <span class="accent">{data.headingAccent}</span>
       </h1>
-      <p class="hero-p">
-        EFCARE là hệ sinh thái chăm sóc sức khỏe gia đình đa thế hệ, kết nối công nghệ, y tế và cộng đồng trong một nền tảng minh bạch, nhân văn và bền vững.
-      </p>
+      <p class="hero-p">{data.description}</p>
 
       <div class="feature-row">
-        <span class="feature-tag">Hub Chăm sóc</span>
-        <span class="feature-tag">App EFCARE</span>
-        <span class="feature-tag">Kinh tế Đầu Bạc</span>
-        <span class="feature-tag">Healthcare ESG</span>
+        {data.features.map((f) => (
+          <span class="feature-tag">{f}</span>
+        ))}
       </div>
 
       <div class="btn-group">
-        <a href="/lien-he" class="btn-primary-ef">
+        <a href={data.ctaPrimary.href} class="btn-primary-ef">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          Đăng ký hội viên ngay
+          {data.ctaPrimary.text}
         </a>
-        <a href="#about" class="btn-outline-ef">
-          Tìm hiểu thêm
+        <a href={data.ctaSecondary.href} class="btn-outline-ef">
+          {data.ctaSecondary.text}
         </a>
       </div>
     </div>
@@ -36,16 +39,16 @@
     <!-- Right: Image -->
     <div class="hero-image-wrapper reveal" style="transition-delay:0.2s">
       <img
-        src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-        alt="Gia đình EFCARE chăm sóc sức khỏe"
+        src={data.image.src}
+        alt={data.image.alt}
         class="hero-img"
         loading="eager"
         width="800"
         height="500"
       />
       <div class="floating-card">
-        <div class="floating-card-tagline">Chăm sóc — Kết nối — Lan tỏa</div>
-        <div class="floating-card-sub">Công ty Cổ phần Tập đoàn Khoa học Sức khỏe</div>
+        <div class="floating-card-label">{data.floatingCard.label}</div>
+        <div class="floating-card-tagline">{data.floatingCard.text}</div>
       </div>
     </div>
   </div>

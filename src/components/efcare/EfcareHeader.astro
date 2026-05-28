@@ -1,0 +1,81 @@
+---
+import { nav } from '~/data/efcare/navigation';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url?.pathname ?? '/' } = Astro.props;
+---
+
+<header id="ef-header">
+  <div class="ef-header-inner">
+    <a href="/" class="ef-logo" aria-label="EFCARE Trang chủ">
+      <span>EFCARE</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="ef-nav-desktop" aria-label="Điều hướng chính">
+      {nav.links.map((link) => (
+        <a
+          href={link.href}
+          class={`ef-nav-link${currentPath === link.href ? ' ef-nav-active' : ''}`}
+        >
+          {link.text}
+        </a>
+      ))}
+      <a href={nav.hotline.href} class="ef-nav-hotline">
+        {nav.hotline.text}
+      </a>
+    </nav>
+
+    <!-- Hamburger button (mobile) -->
+    <button
+      id="ef-burger"
+      class="ef-burger"
+      aria-label="Mở menu"
+      aria-expanded="false"
+      aria-controls="ef-mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav id="ef-mobile-menu" class="ef-mobile-menu" aria-label="Điều hướng di động">
+    {nav.links.map((link) => (
+      <a
+        href={link.href}
+        class={`ef-mobile-link${currentPath === link.href ? ' ef-nav-active' : ''}`}
+      >
+        {link.text}
+      </a>
+    ))}
+    <a href={nav.hotline.href} class="ef-mobile-hotline">
+      {nav.hotline.text}
+    </a>
+  </nav>
+</header>
+
+<script>
+  const burger = document.getElementById('ef-burger');
+  const mobileMenu = document.getElementById('ef-mobile-menu');
+
+  burger?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', String(!!isOpen));
+    burger.setAttribute('aria-label', isOpen ? 'Đóng menu' : 'Mở menu');
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burger?.classList.remove('open');
+      burger?.setAttribute('aria-expanded', 'false');
+      burger?.setAttribute('aria-label', 'Mở menu');
+    });
+  });
+</script>

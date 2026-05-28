@@ -1,91 +1,46 @@
 ---
-// About.astro — "Chúng tôi là ai?" section
+import { about as aboutData } from '~/data/efcare/about';
+
+interface Props {
+  data?: typeof aboutData;
+}
+
+const { data = aboutData } = Astro.props;
 ---
 
 <section id="about" class="ef-section ef-section-ivory">
   <div class="max-container">
     <div class="section-header reveal">
-      <span class="section-tag">Về chúng tôi</span>
-      <h2 class="section-title">Chúng tôi là ai?</h2>
-      <p class="section-subtitle">
-        EFCARE — hệ sinh thái chăm sóc sức khỏe gia đình đa thế hệ, kết nối công nghệ và y tế.
-      </p>
+      <span class="section-tag">{data.section.eyebrow}</span>
+      <h2 class="section-title">{data.section.heading}</h2>
+      <p class="section-subtitle">{data.section.intro}</p>
     </div>
 
     <!-- 2 main content cards -->
     <div class="about-grid stagger-cards">
-      <!-- Card 1: Định danh EFCARE -->
-      <div class="ivory-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      {data.mainCards.map((card) => (
+        <div class="ivory-card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3 class="about-card-title">{card.title}</h3>
+          <p class="about-card-body">{card.body}</p>
         </div>
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:1rem;">Định danh EFCARE</h3>
-        <p style="color:#4a5568;line-height:1.7;margin-bottom:1rem;">
-          <strong style="color:var(--navy);">EFCARE</strong> là viết tắt của <em>Ecosystem for Family Care</em> — Hệ sinh thái Chăm sóc Gia đình. Chúng tôi xây dựng một nền tảng kết nối toàn diện giữa con người, công nghệ và y tế.
-        </p>
-        <p style="color:#4a5568;line-height:1.7;margin-bottom:1rem;">
-          Với triết lý <strong style="color:var(--navy-accent);">"Chăm sóc — Kết nối — Lan tỏa"</strong>, EFCARE hướng đến xây dựng cộng đồng chăm sóc sức khỏe bền vững cho mọi gia đình Việt Nam.
-        </p>
-        <p style="color:#4a5568;line-height:1.7;">
-          Tên thương mại: <strong>Công ty Cổ phần Tập đoàn Khoa học Sức khỏe</strong>
-        </p>
-      </div>
-
-      <!-- Card 2: Vị trí thị trường -->
-      <div class="ivory-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:1rem;">Vị trí thị trường</h3>
-        <p style="color:#4a5568;line-height:1.7;margin-bottom:1rem;">
-          EFCARE định vị mình tại giao điểm của ba xu thế lớn: <strong style="color:var(--navy-accent);">Già hóa dân số</strong>, <strong style="color:var(--navy-accent);">Chuyển đổi số y tế</strong>, và <strong style="color:var(--navy-accent);">Kinh tế sức khỏe bền vững</strong>.
-        </p>
-        <ul class="card-list" style="--gold:var(--gold);">
-          <li style="color:#4a5568;">Thị trường Healthcare Việt Nam: 22+ tỷ USD đến 2030</li>
-          <li style="color:#4a5568;">Silver Economy đang hình thành mạnh mẽ tại Việt Nam</li>
-          <li style="color:#4a5568;">Hơn 100,000 bác sĩ trong mạng lưới đối tác</li>
-          <li style="color:#4a5568;">Phục vụ đa thế hệ từ trẻ em đến người cao tuổi</li>
-        </ul>
-      </div>
+      ))}
     </div>
 
-    <!-- 4 stat cards -->
+    <!-- Stat cards -->
     <div class="about-stats-grid stagger-cards">
-      <!-- Sứ mệnh -->
-      <div class="ivory-card" style="border-left:4px solid var(--gold);">
-        <div class="stat-icon">🎯</div>
-        <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">Sứ mệnh</h4>
-        <p style="color:#4a5568;font-size:0.9375rem;line-height:1.6;">
-          Xây dựng hệ sinh thái chăm sóc sức khỏe gia đình toàn diện, kết hợp công nghệ tiên tiến với lòng nhân văn, mang lại cuộc sống khỏe mạnh và hạnh phúc cho mọi người dân Việt Nam.
-        </p>
-      </div>
-
-      <!-- Tầm nhìn -->
-      <div class="ivory-card" style="border-left:4px solid var(--navy-accent);">
-        <div class="stat-icon">🔭</div>
-        <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">Tầm nhìn</h4>
-        <p style="color:#4a5568;font-size:0.9375rem;line-height:1.6;">
-          Đến 2030, EFCARE trở thành nền tảng chăm sóc sức khỏe gia đình số 1 Đông Nam Á, phục vụ 10 triệu hộ gia đình với dịch vụ y tế đẳng cấp quốc tế.
-        </p>
-      </div>
-
-      <!-- Ngũ Tâm -->
-      <div class="ivory-card" style="border-left:4px solid var(--gold);">
-        <div class="stat-icon">💎</div>
-        <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">Ngũ Tâm</h4>
-        <p style="color:#4a5568;font-size:0.9375rem;line-height:1.6;">
-          Năm giá trị cốt lõi định hướng mọi hành động của EFCARE: <strong>Thiện Tâm</strong>, <strong>Tử Tế</strong>, <strong>Tinh Tấn</strong>, <strong>Tận Tâm</strong>, <strong>Thành Tựu</strong>.
-        </p>
-      </div>
-
-      <!-- Cam kết -->
-      <div class="ivory-card" style="border-left:4px solid var(--navy-accent);">
-        <div class="stat-icon">🤝</div>
-        <h4 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">Cam kết</h4>
-        <p style="color:#4a5568;font-size:0.9375rem;line-height:1.6;">
-          Minh bạch trong từng dịch vụ, bảo mật tuyệt đối dữ liệu sức khỏe, và không ngừng đổi mới để mang lại trải nghiệm chăm sóc sức khỏe tốt nhất.
-        </p>
-      </div>
+      {data.statCards.map((card, i) => (
+        <div class="ivory-card about-stat-card" style={i % 2 === 0 ? 'border-left:4px solid var(--gold);' : 'border-left:4px solid var(--navy-accent);'}>
+          <div class="stat-icon">{i === 0 ? '🎯' : i === 1 ? '🔭' : i === 2 ? '💎' : '🤝'}</div>
+          <h4 class="about-stat-title">{card.title}</h4>
+          <p class="about-stat-body">{card.body}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>

@@ -1,85 +1,39 @@
 ---
-// Technology.astro — "Hạ tầng công nghệ chăm sóc sức khỏe" section
+import { technology as techData } from '~/data/efcare/technology';
+
+interface Props {
+  data?: typeof techData;
+}
+
+const { data = techData } = Astro.props;
+
+const icons: Record<string, string> = {
+  cloud: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+  ai: '<path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>',
+  hub: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>',
+  esg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+};
 ---
 
 <section id="technology" class="ef-section ef-section-dark">
   <div class="max-container">
     <div class="section-header reveal">
-      <span class="section-tag">Công nghệ</span>
-      <h2 class="section-title dark">Hạ tầng công nghệ chăm sóc sức khỏe</h2>
-      <p class="section-subtitle" style="color:rgba(255,255,255,0.7);">
-        Nền tảng kỹ thuật tiên tiến, được xây dựng đặc biệt cho hệ sinh thái y tế Việt Nam.
-      </p>
+      <span class="section-tag">{data.section.eyebrow}</span>
+      <h2 class="section-title dark">{data.section.heading}</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.7);">{data.section.intro}</p>
     </div>
 
     <div class="services-grid-4 stagger-cards">
-      <!-- Healthcare Cloud -->
-      <div class="glass-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      {data.cards.map((card) => (
+        <div class="glass-card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[card.icon] ?? icons.cloud} />
+          </div>
+          <h3 class="tech-card-title">{card.title}</h3>
+          <p class="tech-card-body">{card.body}</p>
+          <a href="/cong-nghe" class="card-link">Tìm hiểu thêm →</a>
         </div>
-        <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--gold);font-size:1.0625rem;margin-bottom:0.75rem;">Healthcare Cloud</h3>
-        <p style="color:rgba(255,255,255,0.75);font-size:0.9375rem;line-height:1.6;">
-          Hạ tầng điện toán đám mây y tế tuân thủ HIPAA, lưu trữ và xử lý dữ liệu sức khỏe an toàn, sẵn sàng 99.9% uptime.
-        </p>
-        <ul class="card-list" style="margin-top:0.875rem;">
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Mã hóa end-to-end</li>
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Backup tự động</li>
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Multi-region resilience</li>
-        </ul>
-        <a href="/cong-nghe" class="card-link">Tìm hiểu thêm →</a>
-      </div>
-
-      <!-- AI Health Engine -->
-      <div class="glass-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
-        </div>
-        <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--gold);font-size:1.0625rem;margin-bottom:0.75rem;">AI Health Engine</h3>
-        <p style="color:rgba(255,255,255,0.75);font-size:0.9375rem;line-height:1.6;">
-          Trí tuệ nhân tạo phân tích dữ liệu sức khỏe, cảnh báo sớm nguy cơ bệnh lý, và cá nhân hóa kế hoạch chăm sóc cho từng thành viên gia đình.
-        </p>
-        <ul class="card-list" style="margin-top:0.875rem;">
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Phát hiện bất thường sức khỏe</li>
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Tư vấn AI 24/7</li>
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Học máy liên tục</li>
-        </ul>
-        <a href="/cong-nghe" class="card-link">Tìm hiểu thêm →</a>
-      </div>
-
-      <!-- Digital Medical Hub -->
-      <div class="glass-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
-        <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--gold);font-size:1.0625rem;margin-bottom:0.75rem;">Digital Medical Hub</h3>
-        <p style="color:rgba(255,255,255,0.75);font-size:0.9375rem;line-height:1.6;">
-          Trung tâm kết nối số giữa bệnh nhân, bác sĩ, bệnh viện và các nhà cung cấp dịch vụ y tế trên một nền tảng duy nhất.
-        </p>
-        <ul class="card-list" style="margin-top:0.875rem;">
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Đặt lịch hẹn trực tuyến</li>
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Hồ sơ bệnh án điện tử</li>
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Kết nối 500+ cơ sở y tế</li>
-        </ul>
-        <a href="/cong-nghe" class="card-link">Tìm hiểu thêm →</a>
-      </div>
-
-      <!-- Healthcare ESG Platform -->
-      <div class="glass-card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 style="font-family:'Montserrat',sans-serif;font-weight:700;color:var(--gold);font-size:1.0625rem;margin-bottom:0.75rem;">Healthcare ESG Platform</h3>
-        <p style="color:rgba(255,255,255,0.75);font-size:0.9375rem;line-height:1.6;">
-          Nền tảng đo lường và báo cáo tác động ESG trong lĩnh vực y tế, giúp doanh nghiệp thực hiện cam kết phát triển bền vững.
-        </p>
-        <ul class="card-list" style="margin-top:0.875rem;">
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Báo cáo ESG tự động</li>
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Chỉ số sức khỏe cộng đồng</li>
-          <li style="color:rgba(255,255,255,0.7);font-size:0.875rem;">Carbon footprint y tế</li>
-        </ul>
-        <a href="/cong-nghe" class="card-link">Tìm hiểu thêm →</a>
-      </div>
+      ))}
     </div>
   </div>
 </section>
