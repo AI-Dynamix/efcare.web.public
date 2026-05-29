@@ -115,7 +115,7 @@
   --ef-ivory: #f8f6f0;
   --ef-white: #ffffff;
   --ef-text: #1f2e3d;
-  --ef-text-muted: #5c6670;
+  --ef-text-muted: #3a4550;
   --ef-border: rgba(196, 169, 98, 0.15);
   --ef-shadow: 0 14px 34px rgba(10, 60, 76, 0.07);
   --ef-shadow-hover: 0 22px 46px rgba(10, 60, 76, 0.12);
@@ -137,7 +137,7 @@
   --ivory-dark: #eeeae0;
   --white: #ffffff;
   --text-light: rgba(255, 255, 255, 0.85);
-  --text-muted-light: rgba(255, 255, 255, 0.6);
+  --text-muted-light: rgba(255, 255, 255, 0.82);
   --shadow-gold: 0 4px 20px rgba(196, 169, 98, 0.25);
   --shadow-silver: 0 4px 20px rgba(176, 190, 200, 0.25);
   --shadow-navy: 0 4px 20px rgba(10, 60, 76, 0.3);
@@ -1046,7 +1046,7 @@ img {
 }
 
 .about-card-body {
-  color: #4a5568;
+  color: #2d3748;
   line-height: 1.7;
 }
 
@@ -1063,7 +1063,7 @@ img {
 }
 
 .about-stat-body {
-  color: #4a5568;
+  color: #2d3748;
   font-size: 0.9375rem;
   line-height: 1.6;
 }
@@ -1099,7 +1099,7 @@ img {
 
 .service-card-body,
 .tech-card-body {
-  color: #4a5568;
+  color: #2d3748;
   font-size: 0.9375rem;
   line-height: 1.6;
   margin-bottom: 0.75rem;
@@ -1223,7 +1223,7 @@ img {
 }
 
 .partner-card-body {
-  color: #4a5568;
+  color: #2d3748;
   font-size: 0.875rem;
   line-height: 1.5;
 }
@@ -1259,7 +1259,7 @@ img {
 }
 
 .contact-info-text {
-  color: #4a5568;
+  color: #2d3748;
   font-size: 0.9rem;
   line-height: 1.6;
 }
