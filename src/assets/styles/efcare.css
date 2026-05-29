@@ -484,19 +484,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .section-tag {
-  display: inline-block;
-  color: var(--navy-accent);
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  padding: 0 0 .45rem;
-  font-size: 0.78rem;
-  font-weight: 800;
-  font-family: 'DIN Pro', sans-serif;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  position: relative;
+  display: none;
 }
 
 .section-tag::after {
