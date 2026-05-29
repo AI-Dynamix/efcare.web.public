@@ -9,22 +9,22 @@ export const technology = {
   },
   cards: [
     {
-      title: 'Healthcare Cloud',
+      title: 'Hồ sơ Ngũ Tâm',
       body: 'Hạ tầng dữ liệu sức khỏe đa tầng cho gia đình và cộng đồng.',
       icon: 'cloud',
     },
     {
-      title: 'AI Health Engine',
+      title: 'Trợ lý AI',
       body: 'AI hỗ trợ quản lý sức khỏe chủ động và cảnh báo sớm.',
       icon: 'ai',
     },
     {
-      title: 'Digital Medical Hub',
+      title: 'Kết nối Bác sĩ',
       body: 'Kết nối bác sĩ, chăm sóc tại nhà và telemedicine.',
       icon: 'hub',
     },
     {
-      title: 'Healthcare ESG Platform',
+      title: 'Nền tảng Sức khỏe Doanh nghiệp',
       body: 'Quản trị sức khỏe doanh nghiệp và cộng đồng bền vững.',
       icon: 'esg',
     },
