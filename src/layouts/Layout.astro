@@ -48,5 +48,15 @@ const { language, textDirection } = I18N;
     <slot />
 
     <BasicScripts />
+    <script>
+      function updateSnapClass() {
+        if (window.location.pathname === '/') {
+          document.documentElement.classList.add('snap-page');
+        } else {
+          document.documentElement.classList.remove('snap-page');
+        }
+      }
+      document.addEventListener('astro:page-load', updateSnapClass);
+    </script>
   </body>
 </html>
