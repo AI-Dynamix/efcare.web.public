@@ -11,43 +11,25 @@
   height: 100%;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.22;
   mix-blend-mode: screen;
 }
 </style>
 
-<script>
-  function loadScript(src) {
-    return new Promise(function(resolve, reject) {
-      if (document.querySelector('script[src="' + src + '"]')) { resolve(); return; }
-      var s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      s.onerror = reject;
-      document.head.appendChild(s);
-    });
-  }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" is:inline></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js" is:inline></script>
 
-  var vantaEffect = null;
-
-  function destroyVanta() {
-    if (vantaEffect) {
-      try { vantaEffect.destroy(); } catch(e) {}
-      vantaEffect = null;
-    }
-  }
-
-  async function initVanta() {
-    destroyVanta();
-    try {
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js');
-      await loadScript('https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js');
-    } catch(e) { return; }
-
+<script is:inline>
+  (function() {
     var el = document.getElementById('vanta-bg');
-    if (!el || !window.VANTA) return;
-
-    vantaEffect = window.VANTA.CLOUDS({
+    if (!el || typeof VANTA === 'undefined') {
+      console.warn('[VantaBackground] VANTA not loaded');
+      return;
+    }
+    if (window._vantaEffect) {
+      try { window._vantaEffect.destroy(); } catch(e) {}
+    }
+    window._vantaEffect = VANTA.CLOUDS({
       el: el,
       mouseControls: false,
       touchControls: false,
@@ -63,9 +45,5 @@
       sunlightColor: 0xffecc0,
       speed: 1.2,
     });
-  }
-
-  document.addEventListener('DOMContentLoaded', function() { initVanta(); });
-  document.addEventListener('astro:page-load', function() { initVanta(); });
-  document.addEventListener('astro:after-swap', function() { destroyVanta(); });
+  })();
 </script>
