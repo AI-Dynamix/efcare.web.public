@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import EfcareHeader from '~/components/efcare/EfcareHeader.astro';
 import EfcareFooter from '~/components/efcare/EfcareFooter.astro';
+import AmbientRibbons from '~/components/efcare/AmbientRibbons.astro';
 import { site } from '~/data/efcare/site';
 
 const metadata = {
@@ -15,215 +16,316 @@ const metadata = {
     <EfcareHeader currentPath="/lien-he" />
   </Fragment>
 
-  <!-- Hero -->
-  <section class="page-hero-section">
-    <span class="section-tag">Liên hệ</span>
-    <h1 class="page-hero-h1">
-      Chúng tôi luôn<br /><span style="color:#C4A962;">sẵn sàng hỗ trợ</span>
-    </h1>
-    <p class="page-hero-sub">Đội ngũ tư vấn EFCARE phục vụ từ 8:00 đến 20:00 hàng ngày. Liên hệ ngay để được hỗ trợ.</p>
-  </section>
+  <section class="lh-section">
+    <AmbientRibbons variant="deep" />
+    <div class="lh-container">
 
-  <!-- Contact Content -->
-  <section class="ef-section ef-contact-section">
-    <div class="max-container">
-      <!-- Info cards -->
-      <div class="contact-info-top stagger-cards">
-        <div class="glass-card" style="text-align:center;">
-          <div class="partner-icon-wrap">
-            <svg
-              width="1.25rem"
-              height="1.25rem"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#C4A962"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"
-              ></circle></svg
-            >
-          </div>
-          <h4 class="contact-info-label">Văn phòng</h4>
-          <p class="contact-info-text">
-            {site.address.street}<br />
-            {site.address.ward}, {site.address.city}
-          </p>
-        </div>
+      <!-- LEFT: heading + info cards -->
+      <div class="lh-left reveal">
+        <p class="lh-eyebrow">Liên hệ</p>
+        <h1 class="lh-heading">
+          Chúng tôi luôn<br/>
+          <span class="lh-heading-accent">sẵn sàng hỗ trợ</span>
+        </h1>
+        <p class="lh-sub">{site.workingHours} — Đội ngũ tư vấn EFCARE luôn sẵn sàng.</p>
 
-        <div class="glass-card" style="text-align:center;">
-          <div class="partner-icon-wrap">
-            <svg
-              width="1.25rem"
-              height="1.25rem"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#C4A962"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
-              ></path></svg
-            >
+        <div class="lh-info-cards stagger-cards">
+          <div class="lh-info-card">
+            <div class="lh-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0A3C4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4 class="lh-info-label">Văn phòng</h4>
+              <p class="lh-info-text">{site.address.street}<br/>{site.address.ward}, {site.address.city}</p>
+            </div>
           </div>
-          <h4 class="contact-info-label">Hotline</h4>
-          <p class="contact-info-text">
-            <a href={site.hotlineTel} class="contact-link-gold" style="font-size:1.125rem;">{site.hotline}</a><br />
-            <span class="contact-info-sub">{site.workingHours}</span>
-          </p>
-        </div>
 
-        <div class="glass-card" style="text-align:center;">
-          <div class="partner-icon-wrap">
-            <svg
-              width="1.25rem"
-              height="1.25rem"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#C4A962"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline
-                points="22,6 12,13 2,6"></polyline></svg
-            >
+          <div class="lh-info-card">
+            <div class="lh-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0A3C4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h4 class="lh-info-label">Hotline</h4>
+              <a href={site.hotlineTel} class="lh-info-link">{site.hotline}</a>
+            </div>
           </div>
-          <h4 class="contact-info-label">Email</h4>
-          <p class="contact-info-text">
-            <a href={`mailto:${site.email}`} class="contact-link-gold">{site.email}</a><br />
-            <a href={`mailto:${site.emailBusiness}`} class="contact-link-gold">{site.emailBusiness}</a>
-          </p>
+
+          <div class="lh-info-card">
+            <div class="lh-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0A3C4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4 class="lh-info-label">Email</h4>
+              <a href={`mailto:${site.email}`} class="lh-info-link">{site.email}</a><br/>
+              <a href={`mailto:${site.emailBusiness}`} class="lh-info-link">{site.emailBusiness}</a>
+            </div>
+          </div>
+
+          <div class="lh-info-card">
+            <div class="lh-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0A3C4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <h4 class="lh-info-label">Giờ làm việc</h4>
+              <p class="lh-info-text">{site.workingHours}</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Contact form — full width -->
-      <div class="reveal contact-form-wrap">
-        <div class="contact-form">
-          <h3 class="contact-form-title" style="text-align:center;">Gửi tin nhắn cho chúng tôi</h3>
-          <form action={`mailto:${site.email}`} method="get">
-            <div class="lien-he-form-grid">
-              <div class="form-group">
-                <label class="form-label" for="full-name">Họ và tên *</label>
-                <input type="text" id="full-name" name="name" class="form-input" placeholder="Nguyễn Văn A" required />
+      <!-- RIGHT: form -->
+      <div class="lh-form-wrap reveal" style="transition-delay:0.1s;">
+        <div class="lh-form-card">
+          <h2 class="lh-form-title">Gửi tin nhắn cho chúng tôi</h2>
+          <form action={`mailto:${site.email}`} method="get" novalidate>
+            <div class="lh-form-row">
+              <div class="lh-form-group">
+                <label class="lh-label" for="lh-phone">Số điện thoại</label>
+                <input type="tel" id="lh-phone" name="phone" class="lh-input" placeholder="0912 345 678" />
               </div>
-              <div class="form-group">
-                <label class="form-label" for="phone">Số điện thoại</label>
-                <input type="tel" id="phone" name="phone" class="form-input" placeholder="0912 345 678" />
+              <div class="lh-form-group">
+                <label class="lh-label" for="lh-email">Email *</label>
+                <input type="email" id="lh-email" name="email" class="lh-input" placeholder="email@example.com" required />
               </div>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="email">Email *</label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="email@example.com" required />
+            <div class="lh-form-group">
+              <label class="lh-label" for="lh-subject">Chủ đề</label>
+              <input type="text" id="lh-subject" name="subject" class="lh-input" placeholder="Tư vấn giải pháp EFCARE" />
             </div>
-            <div class="form-group">
-              <label class="form-label" for="subject">Chủ đề</label>
-              <input type="text" id="subject" name="subject" class="form-input" placeholder="Tư vấn giải pháp EFCARE" />
+            <div class="lh-form-group">
+              <label class="lh-label" for="lh-message">Nội dung *</label>
+              <textarea id="lh-message" name="body" class="lh-textarea" placeholder="Hãy cho chúng tôi biết chúng tôi có thể giúp gì cho bạn..." required></textarea>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="message">Nội dung *</label>
-              <textarea
-                id="message"
-                name="body"
-                class="form-textarea"
-                placeholder="Hãy cho chúng tôi biết chúng tôi có thể giúp gì cho bạn..."
-                required></textarea>
-            </div>
-            <button type="submit" class="btn-primary-ef contact-submit-btn">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg
-              >
+            <button type="submit" class="btn-primary-ef lh-submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               Gửi tin nhắn
             </button>
           </form>
         </div>
       </div>
+
     </div>
   </section>
 
   <EfcareFooter />
-
-  <Fragment slot="footer">
-    <!-- Handled by EfcareFooter -->
-  </Fragment>
+  <Fragment slot="footer" />
 </Layout>
 
 <style>
-  .page-hero-section {
-    background: linear-gradient(135deg, #0a304c 0%, #084f8a 100%);
-    padding: clamp(5rem, 10vw, 8rem) clamp(1rem, 4vw, 2rem) clamp(3rem, 6vw, 5rem);
-    text-align: center;
+  .lh-section {
     position: relative;
+    min-height: 100vh;
+    background: radial-gradient(ellipse 70% 90% at 15% 50%, #084F8A 0%, #0A3C4C 50%, #071828 100%);
+    display: flex;
+    align-items: center;
+    padding: clamp(80px, 10vh, 120px) 0 clamp(48px, 6vh, 72px);
+    overflow: hidden;
     z-index: 1;
   }
 
-  .page-hero-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.75rem, 5vw, 3rem);
+  .lh-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    width: 100%;
+  }
+
+  /* LEFT */
+  .lh-eyebrow {
+    color: #C4A962;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .lh-heading {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
     font-weight: 900;
     color: #ffffff;
-    margin: 1rem 0;
-    line-height: 1.2;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.3);
   }
 
-  .page-hero-sub {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.7;
+  .lh-heading-accent { color: #C4A962; }
+
+  .lh-sub {
+    color: rgba(255,255,255,0.65);
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    line-height: 1.6;
+    margin-bottom: 2rem;
   }
 
-  .contact-info-top {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .contact-form-wrap {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .lien-he-form-grid {
+  .lh-info-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 0.875rem;
   }
 
-  @media (max-width: 600px) {
-    .contact-info-top {
-      grid-template-columns: 1fr;
-    }
+  .lh-info-card {
+    background: radial-gradient(ellipse 80% 55% at 50% 0%, rgba(8,100,200,0.22) 0%, transparent 70%), linear-gradient(160deg, rgba(10,38,72,0.9) 0%, rgba(5,18,38,0.95) 100%);
+    border: 1.5px solid rgba(196,169,98,0.18);
+    border-radius: 14px;
+    padding: 1rem 1.125rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
 
-    .lien-he-form-grid {
-      grid-template-columns: 1fr;
-    }
+  .lh-info-card:hover {
+    border-color: rgba(196,169,98,0.45);
+    transform: translateY(-2px);
+  }
+
+  .lh-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #C4A962;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(196,169,98,0.35);
+  }
+
+  .lh-icon svg { width: 20px; height: 20px; }
+
+  .lh-info-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.25rem;
+  }
+
+  .lh-info-text {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .lh-info-link {
+    font-size: 0.875rem;
+    color: #C4A962;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    display: block;
+  }
+
+  .lh-info-link:hover { color: #F0D060; }
+
+  /* RIGHT: Form */
+  .lh-form-card {
+    background: linear-gradient(145deg, #0B3A5E 0%, #084F8A 35%, #0A3C4C 65%, #071828 100%);
+    border: 1.5px solid rgba(196,169,98,0.28);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.07);
+  }
+
+  .lh-form-title {
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  }
+
+  .lh-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .lh-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .lh-form-group:last-of-type { margin-bottom: 0; }
+
+  .lh-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.68);
+    letter-spacing: 0.04em;
+  }
+
+  .lh-input, .lh-textarea {
+    background: rgba(255,255,255,0.92);
+    border: 1.5px solid rgba(196,169,98,0.3);
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.875rem;
+    color: #0A3C4C;
+    font-family: 'DIN Pro', sans-serif;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+  }
+
+  .lh-input::placeholder, .lh-textarea::placeholder {
+    color: #7a8fa0;
+  }
+
+  .lh-input:focus, .lh-textarea:focus {
+    outline: none;
+    border-color: #C4A962;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(196,169,98,0.18);
+  }
+
+  .lh-textarea {
+    min-height: 110px;
+    resize: none;
+  }
+
+  .lh-submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .lh-container { grid-template-columns: 1fr; }
+    .lh-section { align-items: flex-start; }
+  }
+
+  @media (max-width: 560px) {
+    .lh-info-cards { grid-template-columns: 1fr; }
+    .lh-form-row { grid-template-columns: 1fr; }
   }
 </style>
 
 <script>
-  document.querySelectorAll('.reveal, .stagger-cards').forEach((el) => {
-    const obs = new IntersectionObserver(
-      (entries) => {
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('.reveal, .stagger-cards').forEach((el) => {
+      const obs = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
             obs.unobserve(entry.target);
           }
         });
-      },
-      { threshold: 0.05 }
-    );
-    obs.observe(el);
+      }, { threshold: 0.05 });
+      obs.observe(el);
+    });
   });
 </script>
