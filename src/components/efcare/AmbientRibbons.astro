@@ -28,8 +28,8 @@ const { variant = 'light' } = Astro.props;
   width: min(78vw, 980px);
   height: 170px;
   border-radius: 999px;
-  filter: blur(14px);
-  opacity: .55;
+  filter: blur(6px);
+  opacity: .72;
   transform-origin: center;
   will-change: transform;
   mix-blend-mode: normal;
@@ -49,7 +49,7 @@ const { variant = 'light' } = Astro.props;
   left: -24%;
   background: linear-gradient(90deg, transparent, rgba(52,86,178,.50), rgba(72,108,200,.38), transparent);
   transform: rotate(-13deg);
-  animation: ambientRibbonOne 10s ease-in-out infinite alternate;
+  animation: ambientRibbonOne 5s ease-in-out infinite alternate;
 }
 
 .ribbon-2 {
@@ -58,7 +58,7 @@ const { variant = 'light' } = Astro.props;
   height: 210px;
   background: linear-gradient(90deg, transparent, rgba(42,74,168,.44), rgba(52,86,178,.36), rgba(80,112,210,.30), transparent);
   transform: rotate(16deg);
-  animation: ambientRibbonTwo 12s ease-in-out infinite alternate;
+  animation: ambientRibbonTwo 6s ease-in-out infinite alternate;
 }
 
 .ribbon-3 {
@@ -68,7 +68,7 @@ const { variant = 'light' } = Astro.props;
   height: 150px;
   background: linear-gradient(90deg, transparent, rgba(52,86,178,.32), rgba(72,108,200,.38), transparent);
   transform: rotate(7deg);
-  animation: ambientRibbonThree 11s ease-in-out infinite alternate;
+  animation: ambientRibbonThree 5.5s ease-in-out infinite alternate;
 }
 
 .ef-ambient-ribbons.deep {
