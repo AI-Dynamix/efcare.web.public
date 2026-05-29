@@ -11,35 +11,42 @@
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.55;
 }
 </style>
 
 <script>
-  function loadScript(src: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
-      const s = document.createElement('script');
+  function loadScript(src) {
+    return new Promise(function(resolve, reject) {
+      if (document.querySelector('script[src="' + src + '"]')) { resolve(); return; }
+      var s = document.createElement('script');
       s.src = src;
-      s.onload = () => resolve();
+      s.onload = resolve;
       s.onerror = reject;
       document.head.appendChild(s);
     });
   }
 
-  let vantaEffect: any = null;
+  var vantaEffect = null;
+
+  function destroyVanta() {
+    if (vantaEffect) {
+      try { vantaEffect.destroy(); } catch(e) {}
+      vantaEffect = null;
+    }
+  }
 
   async function initVanta() {
-    if (vantaEffect) { vantaEffect.destroy(); vantaEffect = null; }
+    destroyVanta();
+    try {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js');
+      await loadScript('https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js');
+    } catch(e) { return; }
 
-    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js');
-    await loadScript('https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js');
+    var el = document.getElementById('vanta-bg');
+    if (!el || !window.VANTA) return;
 
-    const el = document.getElementById('vanta-bg');
-    if (!el || !(window as any).VANTA) return;
-
-    vantaEffect = (window as any).VANTA.NET({
-      el,
+    vantaEffect = window.VANTA.NET({
+      el: el,
       mouseControls: true,
       touchControls: false,
       gyroControls: false,
@@ -48,13 +55,15 @@
       scale: 1.0,
       scaleMobile: 0.75,
       color: 0xC4A962,
-      backgroundColor: 0xf0f5fb,
-      points: 9.0,
-      maxDistance: 24.0,
-      spacing: 18.0,
+      backgroundColor: 0xf7f7f3,
+      points: 10.0,
+      maxDistance: 22.0,
+      spacing: 16.0,
       showDots: true,
     });
   }
 
-  document.addEventListener('astro:page-load', () => initVanta().catch(() => {}));
+  document.addEventListener('DOMContentLoaded', function() { initVanta(); });
+  document.addEventListener('astro:page-load', function() { initVanta(); });
+  document.addEventListener('astro:after-swap', function() { destroyVanta(); });
 </script>
