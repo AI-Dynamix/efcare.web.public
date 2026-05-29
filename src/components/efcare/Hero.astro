@@ -222,11 +222,21 @@ const heroImages = [
     opacity: 0;
     border-radius: inherit;
     filter: none;
-    transition: opacity 0.75s ease;
+    transform: scale(1.04);
+    transition:
+      opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 1.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hero-slide-image.active {
     opacity: 1;
+    transform: scale(1);
+    animation: kenBurns 7s ease-in-out forwards;
+  }
+
+  @keyframes kenBurns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.05); }
   }
 
   .hero-image-dots {
@@ -309,6 +319,6 @@ const heroImages = [
 
     setInterval(function () {
       show(current + 1);
-    }, 4200);
+    }, 6500);
   })();
 </script>
