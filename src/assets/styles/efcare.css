@@ -97,13 +97,11 @@ img { max-width: 100%; height: auto; display: block; }
   left: 0;
   right: 0;
   z-index: 900;
-  background: linear-gradient(
-    90deg,
-    #053d6e 0%,
-    #084F8A 22%,
-    #1470b8 50%,
-    #084F8A 78%,
-    #053d6e 100%
+  background: radial-gradient(
+    ellipse 55% 100% at 7% 50%,
+    #1470b8 0%,
+    #084F8A 45%,
+    #032e54 100%
   );
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(196,169,98,0.15);
@@ -1224,13 +1222,11 @@ img { max-width: 100%; height: auto; display: block; }
    =================================================== */
 
 .ef-footer {
-  background: linear-gradient(
-    90deg,
-    #032e54 0%,
-    #053d6e 22%,
-    #084F8A 50%,
-    #053d6e 78%,
-    #032e54 100%
+  background: radial-gradient(
+    ellipse 55% 100% at 7% 50%,
+    #084F8A 0%,
+    #053d6e 45%,
+    #021e3a 100%
   );
   color: var(--text-light);
   padding: 4rem 0 2rem;
