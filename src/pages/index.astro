@@ -93,76 +93,129 @@ const metadata = {
 </script>
 
 <script>
-  // Section reveal on scroll
-  (function () {
-    const revealEls = document.querySelectorAll<HTMLElement>('.reveal');
-    const staggerEls = document.querySelectorAll<HTMLElement>('.stagger-cards');
+  document.addEventListener('DOMContentLoaded', function () {
 
-    const revealObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            revealObs.unobserve(entry.target);
+    var sections   = document.querySelectorAll('section');
+    var sideLinks  = document.querySelectorAll('.side-nav-item');
+    var revealEls  = document.querySelectorAll('.reveal, .section-reveal');
+    var staggerCards = document.querySelectorAll('.stagger-card, .stagger-cards > *');
+    var kites      = document.querySelectorAll('.kite-css');
+    var symbols    = document.querySelectorAll('.ngu-tam-bg');
+
+    /* ===== SECTION REVEAL ===== */
+
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+
+    staggerCards.forEach(function (card, index) {
+      card.style.transitionDelay = (index % 5) * 0.08 + 's';
+      revealObserver.observe(card);
+    });
+
+    /* ===== ACTIVE SECTION → side nav highlight ===== */
+
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+
+          sideLinks.forEach(function (link) {
+            link.classList.remove('active');
+          });
+
+          var id = entry.target.id;
+          var activeLink = document.querySelector('.side-nav-item[href="#' + id + '"], .side-nav-item[data-section="' + id + '"]');
+          if (activeLink) activeLink.classList.add('active');
+
+        } else {
+          entry.target.classList.remove('in-view');
+        }
+      });
+    }, { threshold: 0.45 });
+
+    sections.forEach(function (section) {
+      sectionObserver.observe(section);
+    });
+
+    /* ===== PARALLAX — kites + ngũ tâm symbols ===== */
+
+    var ticking = false;
+
+    function updateParallax() {
+      var scrolled = window.pageYOffset;
+
+      kites.forEach(function (kite, index) {
+        var speed   = 0.12 + (index * 0.03);
+        var offsetY = scrolled * speed;
+        var swayX   = Math.sin(scrolled * 0.001 + index) * 28;
+        var rotate  = Math.sin(scrolled * 0.0007 + index) * 10;
+        var floatY  = Math.cos(scrolled * 0.0009 + index) * 18;
+        kite.style.transform =
+          'translate3d(' + swayX + 'px,' + (-offsetY + floatY) + 'px,0)' +
+          ' rotate(' + rotate + 'deg)';
+      });
+
+      symbols.forEach(function (symbol, index) {
+        var speed   = 0.025 + (index * 0.01);
+        var offsetY = scrolled * speed;
+        var sway    = Math.sin(scrolled * 0.0006 + index) * 12;
+        symbol.style.transform = 'translate3d(' + sway + 'px,' + (-offsetY) + 'px,0)';
+      });
+
+      ticking = false;
+    }
+
+    /* ===== BACK TO TOP ===== */
+
+    var backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          if (backToTop) {
+            if (window.scrollY > 700) {
+              backToTop.classList.add('visible');
+            } else {
+              backToTop.classList.remove('visible');
+            }
           }
+          updateParallax();
         });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-    );
-
-    const staggerObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            staggerObs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    revealEls.forEach((el) => revealObs.observe(el));
-    staggerEls.forEach((el) => staggerObs.observe(el));
-
-    // Section scale effect (mockup: section:not(.in-view) scale(.985))
-    const sectionObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          entry.target.classList.toggle('in-view', entry.isIntersecting);
-        });
-      },
-      { threshold: 0.15 }
-    );
-    document.querySelectorAll<HTMLElement>('.ef-section').forEach((s) => sectionObs.observe(s));
-  })();
-
-  // Back to top button
-  (function () {
-    const btn = document.getElementById('backToTop');
-    if (!btn) return;
-
-    window.addEventListener('scroll', () => {
-      btn.classList.toggle('visible', window.scrollY > 400);
+        ticking = true;
+      }
     }, { passive: true });
 
-    btn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  })();
+    /* ===== SMOOTH SCROLL anchors ===== */
 
-  // Smooth scroll for anchor links
-  (function () {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        const href = (anchor as HTMLAnchorElement).getAttribute('href');
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var href = anchor.getAttribute('href');
         if (!href || href === '#') return;
-        const target = document.querySelector(href);
+        var target = document.querySelector(href);
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
-  })();
+
+    if (backToTop) {
+      backToTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    updateParallax();
+
+  });
 </script>
