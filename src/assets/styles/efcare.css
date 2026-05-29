@@ -21,9 +21,9 @@
 @font-face { font-family: 'DIN Pro'; src: url('/fonts/GMV_DIN_Pro-Black_Italic.ttf') format('truetype'); font-weight: 900; font-style: italic; font-display: swap; }
 
 :root {
-  --ef-navy: #2B3F8E;
-  --ef-navy-deep: #1e2f6e;
-  --ef-navy-accent: #3A52A8;
+  --ef-navy: #1E52A8;
+  --ef-navy-deep: #163d7e;
+  --ef-navy-accent: #2660C0;
   --ef-gold: #C4A962;
   --ef-gold-soft: #D8C27A;
   --ef-ivory: #F8F6F0;
@@ -39,9 +39,9 @@
   --ef-transition: all 0.35s ease;
 
   /* Legacy aliases (keep for backward compatibility) */
-  --navy: #2B3F8E;
-  --navy-dark: #1e2f6e;
-  --navy-accent: #3A52A8;
+  --navy: #1E52A8;
+  --navy-dark: #163d7e;
+  --navy-accent: #2660C0;
   --gold: #C4A962;
   --gold-soft: #D8C27A;
   --gold-light: #e8d89a;
@@ -97,7 +97,7 @@ img { max-width: 100%; height: auto; display: block; }
   left: 0;
   right: 0;
   z-index: 900;
-  background: rgba(43,63,142,0.97);
+  background: rgba(30,82,168,0.97);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(196,169,98,0.15);
 }
