@@ -9,6 +9,26 @@ export interface Props {
 const { posts } = Astro.props;
 ---
 
-<div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
+<div class="ef-blog-grid">
   {posts.map((post) => <Item post={post} />)}
 </div>
+
+<style>
+.ef-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .ef-blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .ef-blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

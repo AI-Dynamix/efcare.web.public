@@ -1,7 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
 import { getPermalink } from '~/utils/permalinks';
-import Button from '~/components/ui/Button.astro';
 
 export interface Props {
   prevUrl?: string;
@@ -10,27 +8,49 @@ export interface Props {
   nextText?: string;
 }
 
-const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } = Astro.props;
+const { prevUrl, nextUrl, prevText = 'Bài mới hơn', nextText = 'Bài cũ hơn' } = Astro.props;
 ---
 
 {
   (prevUrl || nextUrl) && (
-    <div class="container flex">
-      <div class="flex flex-row mx-auto container justify-between">
-        <Button
-          variant="tertiary"
-          class={`md:px-3 px-3 mr-2 ${!prevUrl ? 'invisible' : ''}`}
-          href={getPermalink(prevUrl)}
-        >
-          <Icon name="tabler:chevron-left" class="w-6 h-6" />
-          <p class="ml-2">{prevText}</p>
-        </Button>
-
-        <Button variant="tertiary" class={`md:px-3 px-3 ${!nextUrl ? 'invisible' : ''}`} href={getPermalink(nextUrl)}>
-          <span class="mr-2">{nextText}</span>
-          <Icon name="tabler:chevron-right" class="w-6 h-6" />
-        </Button>
-      </div>
+    <div class="ef-blog-pagination">
+      <a class={!prevUrl ? 'is-hidden' : ''} href={prevUrl ? getPermalink(prevUrl) : '#'}>{prevText}</a>
+      <a class={!nextUrl ? 'is-hidden' : ''} href={nextUrl ? getPermalink(nextUrl) : '#'}>{nextText}</a>
     </div>
   )
 }
+
+<style>
+.ef-blog-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 920px;
+  margin: 2rem auto 0;
+}
+
+.ef-blog-pagination a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: .65rem 1rem;
+  border-radius: 999px;
+  color: #0a304c;
+  background: rgba(255,255,255,.86);
+  border: 1px solid rgba(10,48,76,.12);
+  font-size: .86rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(10,48,76,.06);
+}
+
+.ef-blog-pagination a:hover {
+  border-color: rgba(196,169,98,.45);
+  background: #fff;
+}
+
+.ef-blog-pagination .is-hidden {
+  visibility: hidden;
+}
+</style>

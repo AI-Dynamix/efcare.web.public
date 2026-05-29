@@ -1,244 +1,305 @@
 ---
 import { heroSlides } from '~/data/efcare/hero';
+import AmbientRibbons from '~/components/efcare/AmbientRibbons.astro';
+
+const slide = heroSlides[0];
+const heroImages = [
+  { src: '/images/efcare-hero-1.webp', alt: 'EFCARE đồng hành cùng sức khỏe toàn dân' },
+  { src: '/images/efcare-hero-2.webp', alt: 'EFCARE chăm sóc sức khỏe tại nhà' },
+  { src: '/images/efcare-hero-3.webp', alt: 'EFCARE giải pháp y tế toàn diện' },
+];
 ---
 
 <section id="hero" class="ef-hero">
-  <div class="hero-slider" id="heroSlider">
-
-    {heroSlides.map((slide, i) => (
-      <div class={`hero-slide${i === 0 ? ' active' : ''}`} data-index={i}>
-        <div class="hero-grid">
-
-          <!-- Left: Content -->
-          <div class="hero-content reveal">
-            <div class="hero-eyebrow">{slide.eyebrow}</div>
-            <h1 class="hero-h1">
-              {slide.heading}<br />
-              <span class="accent">{slide.headingAccent}</span>
-            </h1>
-            <p class="hero-p">{slide.description}</p>
-
-            <div class="feature-row">
-              {slide.features.map((f) => (
-                <span class="feature-tag">{f}</span>
-              ))}
-            </div>
-
-            <div class="btn-group">
-              <a href={slide.ctaPrimary.href} class="btn-primary-ef">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                {slide.ctaPrimary.text}
-              </a>
-              <a href={slide.ctaSecondary.href} class="btn-outline-ef">
-                {slide.ctaSecondary.text}
-              </a>
-            </div>
-          </div>
-
-          <!-- Right: Image -->
-          <div class="hero-image-wrapper">
-            <picture>
-              <source srcset={slide.image.src} type="image/webp" />
-              <img
-                src={slide.image.src}
-                alt={slide.image.alt}
-                class="hero-img"
-                loading={i === 0 ? 'eager' : 'lazy'}
-                decoding="async"
-                width={slide.image.width}
-                height={slide.image.height}
-              />
-            </picture>
-          </div>
-
-        </div>
+  <AmbientRibbons />
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-logo-lockup" aria-label="EFCARE">
+        <span class="hero-logo-icon">
+          <img src="/logo-icon.svg" alt="" width="54" height="46" />
+        </span>
+        <img src="/logo-text.svg" alt="EFCARE" class="hero-logo-text" width="178" height="52" />
       </div>
-    ))}
+      <div class="hero-eyebrow">{slide.eyebrow}</div>
+      <h1 class="hero-h1">
+        {slide.heading}<br />
+        <span>{slide.headingAccent}</span>
+      </h1>
+      <p class="hero-p">{slide.description}</p>
 
-    <!-- Dot indicators -->
-    <div class="hero-dots">
-      {heroSlides.map((_, i) => (
-        <button class={`hero-dot${i === 0 ? ' active' : ''}`} data-dot={i} aria-label={`Slide ${i + 1}`}></button>
-      ))}
+      <div class="btn-group">
+        <a href={slide.ctaPrimary.href} class="btn-primary-ef">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          {slide.ctaPrimary.text}
+        </a>
+        <a href={slide.ctaSecondary.href} class="btn-outline-ef">
+          {slide.ctaSecondary.text}
+        </a>
+      </div>
     </div>
 
-    <!-- Prev / Next arrows -->
-    <button class="hero-arrow hero-prev" id="heroPrev" aria-label="Slide trước">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <button class="hero-arrow hero-next" id="heroNext" aria-label="Slide tiếp">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
-
+    <div class="hero-image" id="heroImageSlider" aria-label="Ảnh giới thiệu EFCARE">
+      {heroImages.map((image, index) => (
+        <img
+          class={`hero-slide-image${index === 0 ? ' active' : ''}`}
+          src={image.src}
+          alt={image.alt}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          width="1200"
+          height="960"
+          data-slide={index}
+        />
+      ))}
+      <div class="hero-image-dots" aria-hidden="true">
+        {heroImages.map((_, index) => (
+          <span class={index === 0 ? 'active' : ''} data-dot={index}></span>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
 .ef-hero {
   position: relative;
-  overflow: hidden;
-  background: radial-gradient(circle at top right, rgba(196,169,98,.18), transparent 30%),
-              radial-gradient(circle at bottom left, rgba(196,169,98,.08), transparent 26%),
-              linear-gradient(to bottom, #fdfbf6, #f4ebdb);
-  border-bottom: 1px solid rgba(196,169,98,0.14);
-}
-
-.hero-slider {
-  position: relative;
   min-height: 100vh;
-}
-
-/* Each slide stacked, only .active visible */
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
   display: flex;
   align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, rgba(196,169,98,.18), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(8,79,138,.08), transparent 28%),
+    linear-gradient(180deg, #fdfbf6 0%, #f6efe0 100%);
+  border-bottom: 1px solid rgba(196,169,98,0.14);
+  padding: clamp(92px, 12vh, 138px) clamp(1rem, 4vw, 2rem) clamp(48px, 8vh, 84px);
 }
 
-.hero-slide.active {
-  opacity: 1;
-  pointer-events: auto;
-  position: relative;
-}
-
-/* Reuse existing hero-grid layout from CSS */
 .hero-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 1.02fr);
+  gap: clamp(44px, 6vw, 80px);
   align-items: center;
-  width: min(1280px, calc(100% - 3rem));
+  width: min(1280px, 100%);
   margin: 0 auto;
-  padding: clamp(100px, 12vw, 140px) clamp(1rem, 4vw, 2rem);
 }
 
-.hero-img {
-  width: 100%;
-  height: auto;
-  border-radius: 28px;
-  box-shadow: 0 40px 80px rgba(10,48,76,.18);
-  animation: heroFloat 8s ease-in-out infinite;
+.hero-content {
+  max-width: 700px;
+}
+
+.hero-logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: .85rem;
+  margin-bottom: 1.05rem;
+}
+
+.hero-logo-icon {
+  position: relative;
+  display: inline-flex;
+  width: 54px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-logo-icon::before {
+  content: none;
+}
+
+.hero-logo-icon img,
+.hero-logo-text {
+  position: relative;
+  z-index: 1;
   display: block;
 }
 
-/* Dots */
-.hero-dots {
+.hero-logo-icon img {
+  width: 48px;
+  height: auto;
+  filter: none;
+}
+
+.hero-logo-text {
+  width: min(178px, 42vw);
+  height: auto;
+}
+
+.hero-eyebrow {
+  color: var(--gold, #C4A962);
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .82rem;
+  margin-bottom: 1.05rem;
+}
+
+.hero-h1 {
+  color: var(--navy, #0A304C);
+  font-size: clamp(1.75rem, 2.8vw, 2.55rem);
+  line-height: 1.14;
+  letter-spacing: 0;
+  margin: 0 0 1.25rem;
+}
+
+.hero-h1 span {
+  color: #9a7a2e;
+}
+
+.hero-p {
+  color: #425569;
+  font-size: clamp(.95rem, 1.25vw, 1.08rem);
+  line-height: 1.68;
+  max-width: 660px;
+  margin: 0;
+}
+
+.btn-group {
+  margin-top: 2rem;
+}
+
+.btn-outline-ef {
+  color: var(--navy, #0A304C);
+  background: rgba(255,255,255,.7);
+  border-color: rgba(10,48,76,.22);
+}
+
+.btn-outline-ef:hover {
+  color: var(--navy, #0A304C);
+  background: #fff;
+  border-color: rgba(196,169,98,.65);
+}
+
+.hero-image {
+  position: relative;
+  overflow: visible;
+  border-radius: 16px;
+  box-shadow: none;
+  isolation: isolate;
+  aspect-ratio: 5 / 4;
+  background: transparent;
+  width: 110%;
+  justify-self: end;
+  margin-bottom: 2rem;
+}
+
+.hero-image::before {
+  content: none;
+}
+
+.hero-image::after {
+  content: '';
   position: absolute;
-  bottom: 2rem;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 18px rgba(10,48,76,.08),
+    inset 0 0 34px rgba(255,255,255,.18);
+}
+
+.hero-slide-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 0;
+  opacity: 0;
+  border-radius: inherit;
+  filter: none;
+  transition: opacity .75s ease;
+}
+
+.hero-slide-image.active {
+  opacity: 1;
+}
+
+.hero-image-dots {
+  position: absolute;
   left: 50%;
+  bottom: -1.75rem;
+  z-index: 2;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
-  z-index: 10;
+  gap: .45rem;
 }
 
-.hero-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid rgba(196,169,98,0.5);
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
+.hero-image-dots span {
+  width: .48rem;
+  height: .48rem;
+  border-radius: 999px;
+  background: rgba(10,48,76,.22);
+  transition: width .25s ease, background .25s ease;
 }
 
-.hero-dot.active {
+.hero-image-dots span.active {
+  width: 1.45rem;
   background: var(--gold, #C4A962);
-  border-color: var(--gold, #C4A962);
-  width: 28px;
-  border-radius: 5px;
 }
 
-/* Arrows */
-.hero-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.85);
-  border: 1px solid rgba(196,169,98,0.3);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(10,48,76,0.12);
-}
+@media (max-width: 900px) {
+  .ef-hero {
+    min-height: auto;
+    padding-top: 86px;
+  }
 
-.hero-arrow svg { width: 20px; height: 20px; stroke: var(--navy, #0A304C); }
-.hero-prev { left: 1.5rem; }
-.hero-next { right: 1.5rem; }
-
-.hero-arrow:hover {
-  background: var(--navy, #0A304C);
-  border-color: var(--gold, #C4A962);
-}
-.hero-arrow:hover svg { stroke: var(--gold, #C4A962); }
-
-/* Mobile */
-@media (max-width: 768px) {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  .hero-arrow { display: none; }
-  .hero-dots { bottom: 1rem; }
+
+  .hero-image {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+}
+
+@media (max-width: 560px) {
+  .ef-hero {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-h1 {
+    font-size: clamp(1.48rem, 6.8vw, 1.9rem);
+  }
+
+  .hero-image {
+    border-radius: 14px;
+  }
+
 }
 </style>
 
 <script>
   (function () {
-    var slider   = document.getElementById('heroSlider');
+    var slider = document.getElementById('heroImageSlider');
     if (!slider) return;
 
-    var slides   = slider.querySelectorAll('.hero-slide');
-    var dots     = slider.querySelectorAll('.hero-dot');
-    var prevBtn  = document.getElementById('heroPrev');
-    var nextBtn  = document.getElementById('heroNext');
-    var total    = slides.length;
-    var current  = 0;
-    var timer;
+    var slides = slider.querySelectorAll('.hero-slide-image');
+    var dots = slider.querySelectorAll('.hero-image-dots span');
+    var current = 0;
+    var total = slides.length;
 
-    function goTo(n) {
+    if (total <= 1) return;
+
+    function show(index) {
       slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = (n + total) % total;
+      dots[current] && dots[current].classList.remove('active');
+      current = index % total;
       slides[current].classList.add('active');
-      dots[current].classList.add('active');
+      dots[current] && dots[current].classList.add('active');
     }
 
-    function next() { goTo(current + 1); }
-    function prev() { goTo(current - 1); }
-
-    function startAuto() {
-      clearInterval(timer);
-      timer = setInterval(next, 5500);
-    }
-
-    nextBtn && nextBtn.addEventListener('click', function () { next(); startAuto(); });
-    prevBtn && prevBtn.addEventListener('click', function () { prev(); startAuto(); });
-
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () { goTo(i); startAuto(); });
-    });
-
-    // Touch swipe
-    var startX = 0;
-    slider.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
-    slider.addEventListener('touchend', function (e) {
-      var dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); startAuto(); }
-    }, { passive: true });
-
-    startAuto();
+    setInterval(function () {
+      show(current + 1);
+    }, 4200);
   })();
 </script>

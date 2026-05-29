@@ -17,106 +17,179 @@ export interface Props {
 
 const { post } = Astro.props;
 const image = (await findImage(post.image)) as ImageMetadata | undefined;
-
 const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
 ---
 
-<article
-  class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${image ? 'md:grid-cols-2' : ''}`}
->
+<article class={`ef-blog-card ${image ? 'has-image' : ''}`}>
   {
-    image &&
-      (link ? (
-        <a class="relative block group" href={link ?? 'javascript:void(0)'}>
-          <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
-            {image && (
-              <Image
-                src={image}
-                class="absolute inset-0 object-cover w-full h-full mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-                widths={[400, 900]}
-                width={900}
-                height={506}
-                sizes="(max-width: 900px) 400px, 900px"
-                alt={post.title}
-                format="webp"
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-          </div>
-        </a>
-      ) : (
-        <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
-          {image && (
-            <Image
-              src={image}
-              class="absolute inset-0 object-cover w-full h-full mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-              widths={[400, 900]}
-              width={900}
-              height={506}
-              sizes="(max-width: 900px) 400px, 900px"
-              alt={post.title}
-              format="webp"
-              loading="lazy"
-              decoding="async"
-            />
-          )}
+    image && (
+      <a class="ef-blog-card-media" href={link || '#'} aria-label={post.title}>
+        <div class="ef-blog-card-image">
+          <Image
+            src={image}
+            class="ef-blog-image"
+            widths={[400, 900]}
+            width={900}
+            height={506}
+            sizes="(max-width: 900px) 400px, 900px"
+            alt={post.title}
+            format="webp"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
-      ))
+      </a>
+    )
   }
-  <div class="mt-2">
+
+  <div class="ef-blog-card-body">
     <header>
-      <div class="mb-1">
-        <span class="text-sm">
-          <Icon name="tabler:clock" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
-          <time datetime={String(post.publishDate)} class="inline-block">{getFormattedDate(post.publishDate)}</time>
-          {
-            post.author && (
-              <>
-                {' '}
-                · <Icon name="tabler:user" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
-                <span>{post.author.replaceAll('-', ' ')}</span>
-              </>
-            )
-          }
-          {
-            post.category && (
-              <>
-                {' '}
-                ·{' '}
-                <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
-                  {post.category.title}
-                </a>
-              </>
-            )
-          }
+      <div class="ef-blog-meta">
+        <span>
+          <Icon name="tabler:clock" class="ef-blog-meta-icon" />
+          <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
+          {post.author && (
+            <>
+              <span class="ef-blog-dot">/</span>
+              <Icon name="tabler:user" class="ef-blog-meta-icon" />
+              <span>{post.author.replaceAll('-', ' ')}</span>
+            </>
+          )}
+          {post.category && (
+            <>
+              <span class="ef-blog-dot">/</span>
+              <a href={getPermalink(post.category.slug, 'category')}>{post.category.title}</a>
+            </>
+          )}
         </span>
       </div>
-      <h2 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300">
-        {
-          link ? (
-            <a
-              class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200"
-              href={link}
-            >
-              {post.title}
-            </a>
-          ) : (
-            post.title
-          )
-        }
+      <h2>
+        {link ? <a href={link}>{post.title}</a> : post.title}
       </h2>
     </header>
 
-    {post.excerpt && <p class="flex-grow text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>}
-    {
-      post.tags && Array.isArray(post.tags) ? (
-        <footer class="mt-5">
-          <PostTags tags={post.tags} />
-        </footer>
-      ) : (
-        <Fragment />
-      )
-    }
+    {post.excerpt && <p class="ef-blog-excerpt">{post.excerpt}</p>}
+
+    {post.tags && Array.isArray(post.tags) && (
+      <footer class="ef-blog-card-footer">
+        <PostTags tags={post.tags} />
+      </footer>
+    )}
   </div>
 </article>
+
+<style>
+.ef-blog-card {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+  border-radius: 18px;
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(10,48,76,.08);
+  box-shadow: 0 16px 38px rgba(10,48,76,.07);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.ef-blog-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(196,169,98,.35);
+  box-shadow: 0 22px 52px rgba(10,48,76,.11);
+}
+
+.ef-blog-card.has-image {
+  grid-template-columns: minmax(240px, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+}
+
+.ef-blog-card-media {
+  display: block;
+  min-width: 0;
+}
+
+.ef-blog-card-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(10,48,76,.06), rgba(196,169,98,.1));
+}
+
+:global(.ef-blog-image) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.ef-blog-card:hover :global(.ef-blog-image) {
+  transform: scale(1.025);
+}
+
+.ef-blog-card-body {
+  min-width: 0;
+}
+
+.ef-blog-meta {
+  color: #667789;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: .55rem;
+}
+
+.ef-blog-meta span {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .32rem;
+}
+
+:global(.ef-blog-meta-icon) {
+  width: .92rem;
+  height: .92rem;
+  color: #c4a962;
+}
+
+.ef-blog-dot {
+  color: rgba(10,48,76,.28);
+}
+
+.ef-blog-meta a {
+  color: #0a304c;
+  text-decoration: none;
+}
+
+h2 {
+  margin: 0;
+  color: #0a304c;
+  font-size: clamp(1.02rem, 2vw, 1.42rem);
+  line-height: 1.24;
+  font-weight: 900;
+}
+
+h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h2 a:hover {
+  color: #9a7a2e;
+}
+
+.ef-blog-excerpt {
+  margin: .75rem 0 0;
+  color: #425569;
+  font-size: .93rem;
+  line-height: 1.68;
+}
+
+.ef-blog-card-footer {
+  margin-top: 1rem;
+}
+
+@media (max-width: 760px) {
+  .ef-blog-card.has-image {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

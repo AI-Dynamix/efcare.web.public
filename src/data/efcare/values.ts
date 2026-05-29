@@ -14,7 +14,7 @@ export const values = {
       icon: 'tree',
       symbol: '善',
       number: '01',
-      gradient: 'linear-gradient(135deg,#0A304C 0%,#0d4070 100%)',
+      gradient: 'linear-gradient(145deg,#ffffff 0%,#edf7f1 100%)',
     },
     {
       title: 'Tử Tế',
@@ -23,7 +23,7 @@ export const values = {
       icon: 'check',
       symbol: '禮',
       number: '02',
-      gradient: 'linear-gradient(135deg,#084F8A 0%,#0a6ab5 100%)',
+      gradient: 'linear-gradient(145deg,#ffffff 0%,#eef5fb 100%)',
     },
     {
       title: 'Tinh Tấn',
@@ -32,7 +32,7 @@ export const values = {
       icon: 'lightning',
       symbol: '進',
       number: '03',
-      gradient: 'linear-gradient(135deg,#1a6b4a 0%,#228a5e 100%)',
+      gradient: 'linear-gradient(145deg,#ffffff 0%,#f8f0d8 100%)',
     },
     {
       title: 'Tận Tâm',
@@ -41,7 +41,7 @@ export const values = {
       icon: 'heart',
       symbol: '誠',
       number: '04',
-      gradient: 'linear-gradient(135deg,#7b3f00 0%,#a35200 100%)',
+      gradient: 'linear-gradient(145deg,#ffffff 0%,#f7eee8 100%)',
     },
     {
       title: 'Thành Tựu',
@@ -50,7 +50,7 @@ export const values = {
       icon: 'trophy',
       symbol: '成',
       number: '05',
-      gradient: 'linear-gradient(135deg,#5b2d8e 0%,#7b3db5 100%)',
+      gradient: 'linear-gradient(145deg,#ffffff 0%,#eef0f3 100%)',
     },
   ],
 };

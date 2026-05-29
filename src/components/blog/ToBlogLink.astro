@@ -1,20 +1,37 @@
 ---
-import { Icon } from 'astro-icon/components';
 import { getBlogPermalink } from '~/utils/permalinks';
-import { I18N } from 'astrowind:config';
-import Button from '~/components/ui/Button.astro';
-
-const { textDirection } = I18N;
 ---
 
-<div class="mx-auto px-6 sm:px-6 max-w-3xl pt-8 md:pt-4 pb-12 md:pb-20">
-  <Button variant="tertiary" class="px-3 md:px-3" href={getBlogPermalink()}>
-    {
-      textDirection === 'rtl' ? (
-        <Icon name="tabler:chevron-right" class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" />
-      ) : (
-        <Icon name="tabler:chevron-left" class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" />
-      )
-    } Back to Blog
-  </Button>
+<div class="ef-back-blog">
+  <a href={getBlogPermalink()}>Quay lại bài viết</a>
 </div>
+
+<style>
+.ef-back-blog {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+.ef-back-blog a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: .58rem .95rem;
+  border-radius: 999px;
+  color: #0a304c;
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(10,48,76,.12);
+  font-size: .84rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(10,48,76,.06);
+}
+
+.ef-back-blog a::before {
+  content: '<';
+  margin-right: .45rem;
+  color: #c4a962;
+  font-weight: 900;
+}
+</style>

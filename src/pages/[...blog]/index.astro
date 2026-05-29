@@ -4,6 +4,8 @@ import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 import merge from 'lodash.merge';
 import type { ImageMetadata } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
+import EfcareHeader from '~/components/efcare/EfcareHeader.astro';
+import EfcareFooter from '~/components/efcare/EfcareFooter.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
@@ -46,9 +48,19 @@ const metadata = merge(
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="announcement" />
+
+  <Fragment slot="header">
+    <EfcareHeader currentPath="/bai-viet" />
+  </Fragment>
+
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content && <post.Content />}
   </SinglePost>
   <ToBlogLink />
   <RelatedPosts post={post} />
+
+  <Fragment slot="footer">
+    <EfcareFooter />
+  </Fragment>
 </Layout>

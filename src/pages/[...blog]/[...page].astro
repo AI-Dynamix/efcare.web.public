@@ -2,6 +2,9 @@
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 
 import Layout from '~/layouts/PageLayout.astro';
+import EfcareHeader from '~/components/efcare/EfcareHeader.astro';
+import EfcareFooter from '~/components/efcare/EfcareFooter.astro';
+import AmbientRibbons from '~/components/efcare/AmbientRibbons.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
@@ -37,7 +40,15 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+  <Fragment slot="announcement" />
+
+  <Fragment slot="header">
+    <EfcareHeader currentPath="/bai-viet" />
+  </Fragment>
+
+  <section class="ef-blog-index">
+    <AmbientRibbons />
+    <div class="ef-blog-index-inner">
     <Headline
       subtitle="Tin tức, nghiên cứu và kiến thức y tế từ đội ngũ chuyên gia EFCARE — AI Healthcare, Silver Economy, Longevity Care và các xu hướng sức khỏe mới nhất."
     >
@@ -49,5 +60,25 @@ const metadata = {
       <PostTags tags={allCategories} class="mb-2" title="Search by Categories:" isCategory />
       <PostTags tags={allTags}  title="Search by Tags:" />
     -->
+    </div>
   </section>
+
+  <Fragment slot="footer">
+    <EfcareFooter />
+  </Fragment>
 </Layout>
+
+<style>
+.ef-blog-index {
+  position: relative;
+  overflow: hidden;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(96px, 12vw, 132px) 1rem clamp(3rem, 7vw, 5rem);
+}
+
+.ef-blog-index-inner {
+  position: relative;
+  z-index: 1;
+}
+</style>

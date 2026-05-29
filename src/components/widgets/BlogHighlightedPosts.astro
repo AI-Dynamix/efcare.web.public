@@ -5,7 +5,6 @@ import Grid from '~/components/blog/Grid.astro';
 
 import { getBlogPermalink } from '~/utils/permalinks';
 import { findPostsByIds } from '~/utils/blog';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Widget } from '~/types';
 
 export interface Props extends Widget {
@@ -18,15 +17,11 @@ export interface Props extends Widget {
 
 const {
   title = await Astro.slots.render('title'),
-  linkText = 'View all posts',
+  linkText = 'Xem tất cả bài viết',
   linkUrl = getBlogPermalink(),
   information = await Astro.slots.render('information'),
   postIds = [],
-
   id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
 } = Astro.props;
 
 const posts = APP_BLOG.isEnabled ? await findPostsByIds(postIds) : [];
@@ -34,31 +29,70 @@ const posts = APP_BLOG.isEnabled ? await findPostsByIds(postIds) : [];
 
 {
   APP_BLOG.isEnabled ? (
-    <WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container as string} bg={bg}>
-      <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
-        {title && (
-          <div class="md:max-w-sm">
-            <h2
-              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
-              set:html={title}
-            />
-            {APP_BLOG.list.isEnabled && linkText && linkUrl && (
-              <a
-                class="text-muted dark:text-slate-400 hover:text-primary transition ease-in duration-200 block mb-6 lg:mb-0"
-                href={linkUrl}
-              >
-                {linkText} »
-              </a>
-            )}
+    <section id={id} class="ef-related-section">
+      <div class="ef-related-inner">
+        <header class="ef-related-header">
+          <div>
+            {title && <h2 set:html={title} />}
+            {APP_BLOG.list.isEnabled && linkText && linkUrl && <a href={linkUrl}>{linkText}</a>}
           </div>
-        )}
+          {information && <p set:html={information} />}
+        </header>
 
-        {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
+        <Grid posts={posts} />
       </div>
-
-      <Grid posts={posts} />
-    </WidgetWrapper>
+    </section>
   ) : (
     <Fragment />
   )
 }
+
+<style>
+.ef-related-section {
+  padding: clamp(2.75rem, 7vw, 4.75rem) 1rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7f2 100%);
+}
+
+.ef-related-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.ef-related-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 1.4rem;
+}
+
+h2 {
+  margin: 0 0 .45rem;
+  color: #0a304c;
+  font-size: clamp(1.18rem, 2.2vw, 1.7rem);
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+a {
+  color: #9a7a2e;
+  font-size: .86rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+p {
+  max-width: 420px;
+  margin: 0;
+  color: #425569;
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  .ef-related-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
