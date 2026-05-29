@@ -56,7 +56,7 @@ const icons: Record<string, string> = {
 
 <style>
   .tech-section {
-    background: linear-gradient(135deg, #0B3A5E 0%, #0A3C4C 50%, #084F8A 100%);
+    background: radial-gradient(ellipse 70% 90% at 50% 0%, #084F8A 0%, #0A3C4C 50%, #071828 100%);
     border: none;
   }
 
@@ -71,58 +71,74 @@ const icons: Record<string, string> = {
   }
 
   .tech-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(196,169,98,0.2);
+    background: linear-gradient(160deg, rgba(8,30,58,0.85) 0%, rgba(5,18,38,0.92) 100%);
+    border: 1.5px solid rgba(196,169,98,0.18);
     border-radius: 16px;
     padding: 1.75rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    opacity: 0;
+    transform: translateY(24px);
+    animation: techCardIn 0.55s cubic-bezier(0.4,0,0.2,1) forwards;
+  }
+
+  .tech-card:nth-child(1) { animation-delay: 0.05s; }
+  .tech-card:nth-child(2) { animation-delay: 0.15s; }
+  .tech-card:nth-child(3) { animation-delay: 0.25s; }
+  .tech-card:nth-child(4) { animation-delay: 0.35s; }
+
+  @keyframes techCardIn {
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .tech-card:hover {
-    background: rgba(255,255,255,0.10);
-    border-color: rgba(196,169,98,0.45);
-    transform: translateY(-4px);
+    background: linear-gradient(160deg, rgba(8,50,100,0.9) 0%, rgba(8,30,58,0.95) 100%);
+    border-color: rgba(228,196,100,0.55);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 24px rgba(196,169,98,0.12);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   }
 
-  /* Icon — centered, blockchain-style hexagon */
+  /* Icon — blockchain-style */
   .tech-icon-wrap {
     margin-bottom: 1.25rem;
   }
 
   .tech-icon-hex {
-    width: 64px;
-    height: 64px;
+    width: 68px;
+    height: 68px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(196,169,98,0.25), rgba(196,169,98,0.08));
-    border: 1.5px solid rgba(196,169,98,0.5);
+    background: linear-gradient(135deg, rgba(228,196,100,0.18), rgba(196,169,98,0.06));
+    border: 2px solid #D4A820;
     border-radius: 14px;
     position: relative;
-    box-shadow: 0 0 20px rgba(196,169,98,0.15), inset 0 0 12px rgba(255,255,255,0.04);
+    box-shadow: 0 0 16px rgba(212,168,32,0.30), 0 0 40px rgba(212,168,32,0.10), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 
   .tech-icon-hex::before {
     content: '';
     position: absolute;
-    inset: -1px;
-    border-radius: 15px;
-    background: linear-gradient(135deg, rgba(196,169,98,0.4), transparent 60%);
-    z-index: 0;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    border-radius: 14px 14px 0 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), transparent);
     pointer-events: none;
   }
 
   .tech-icon-hex svg {
-    width: 28px;
-    height: 28px;
-    stroke: #C4A962;
+    width: 30px;
+    height: 30px;
+    stroke: #E8C840;
+    stroke-width: 1.8;
     position: relative;
     z-index: 1;
+    filter: drop-shadow(0 0 6px rgba(232,200,64,0.5));
   }
 
   /* Content — grows to fill space */
