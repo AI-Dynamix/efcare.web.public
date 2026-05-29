@@ -6,141 +6,81 @@ interface Props {
 const { variant = 'light' } = Astro.props;
 ---
 
-<div class={`ef-ambient-ribbons ${variant}`} aria-hidden="true">
-  <span class="ribbon ribbon-1"></span>
-  <span class="ribbon ribbon-2"></span>
-  <span class="ribbon ribbon-3"></span>
+<div class={`ef-ambient-logos ${variant}`} aria-hidden="true">
+  <img src="/logo-icon.svg" class="ambient-logo logo-1" alt="" />
+  <img src="/logo-icon.svg" class="ambient-logo logo-2" alt="" />
+  <img src="/logo-icon.svg" class="ambient-logo logo-3" alt="" />
 </div>
 
 <style>
-  .ef-ambient-ribbons {
+  .ef-ambient-logos {
     position: absolute;
     inset: 0;
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
-    opacity: 0.9;
     contain: paint;
   }
 
-  .ribbon {
+  .ambient-logo {
     position: absolute;
-    width: min(78vw, 980px);
-    height: 170px;
-    border-radius: 999px;
-    filter: blur(6px);
-    opacity: 0.72;
-    transform-origin: center;
+    opacity: 0.07;
+    filter: brightness(10) saturate(0);
     will-change: transform;
-    mix-blend-mode: normal;
+    user-select: none;
   }
 
-  .ribbon::after {
-    content: '';
-    position: absolute;
-    inset: 36% 8%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.46), transparent);
-    opacity: 0.35;
+  .logo-1 {
+    width: clamp(260px, 28vw, 420px);
+    top: -8%;
+    left: -6%;
+    animation: logoDrift1 14s ease-in-out infinite alternate;
   }
 
-  .ribbon-1 {
-    top: 8%;
-    left: -24%;
-    background: linear-gradient(90deg, transparent, rgba(52, 86, 178, 0.5), rgba(72, 108, 200, 0.38), transparent);
-    transform: rotate(-13deg);
-    animation: ambientRibbonOne 5s ease-in-out infinite alternate;
+  .logo-2 {
+    width: clamp(180px, 20vw, 300px);
+    bottom: -10%;
+    right: -4%;
+    opacity: 0.05;
+    animation: logoDrift2 18s ease-in-out infinite alternate;
   }
 
-  .ribbon-2 {
-    right: -30%;
-    top: 39%;
-    height: 210px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(42, 74, 168, 0.44),
-      rgba(52, 86, 178, 0.36),
-      rgba(80, 112, 210, 0.3),
-      transparent
-    );
-    transform: rotate(16deg);
-    animation: ambientRibbonTwo 6s ease-in-out infinite alternate;
+  .logo-3 {
+    width: clamp(120px, 14vw, 200px);
+    top: 38%;
+    right: 28%;
+    opacity: 0.04;
+    animation: logoDrift3 12s ease-in-out infinite alternate;
   }
 
-  .ribbon-3 {
-    left: 4%;
-    bottom: -4%;
-    width: min(74vw, 900px);
-    height: 150px;
-    background: linear-gradient(90deg, transparent, rgba(52, 86, 178, 0.32), rgba(72, 108, 200, 0.38), transparent);
-    transform: rotate(7deg);
-    animation: ambientRibbonThree 5.5s ease-in-out infinite alternate;
+  /* deep variant — used on dark sections */
+  .ef-ambient-logos.deep .ambient-logo {
+    filter: brightness(10) saturate(0);
+    opacity: 0.06;
   }
 
-  .ef-ambient-ribbons.deep {
-    opacity: 0.62;
+  @keyframes logoDrift1 {
+    from { transform: translate3d(0, 0, 0) rotate(-8deg) scale(1); }
+    to   { transform: translate3d(4%, 3%, 0) rotate(-2deg) scale(1.06); }
   }
 
-  .ef-ambient-ribbons.deep .ribbon {
-    mix-blend-mode: screen;
-    opacity: 0.24;
+  @keyframes logoDrift2 {
+    from { transform: translate3d(0, 0, 0) rotate(10deg) scale(1); }
+    to   { transform: translate3d(-3%, -4%, 0) rotate(4deg) scale(1.08); }
   }
 
-  .ef-ambient-ribbons.deep .ribbon-1 {
-    background: linear-gradient(90deg, transparent, rgba(216, 194, 122, 0.26), rgba(255, 255, 255, 0.18), transparent);
-  }
-
-  .ef-ambient-ribbons.deep .ribbon-2 {
-    background: linear-gradient(90deg, transparent, rgba(8, 79, 138, 0.42), rgba(216, 194, 122, 0.22), transparent);
-  }
-
-  .ef-ambient-ribbons.deep .ribbon-3 {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), rgba(196, 169, 98, 0.24), transparent);
-  }
-
-  @keyframes ambientRibbonOne {
-    from {
-      transform: translate3d(-5%, -12px, 0) rotate(-13deg) scale(1);
-    }
-    to {
-      transform: translate3d(20%, 36px, 0) rotate(-6deg) scale(1.08);
-    }
-  }
-
-  @keyframes ambientRibbonTwo {
-    from {
-      transform: translate3d(8%, -18px, 0) rotate(17deg) scale(0.98);
-    }
-    to {
-      transform: translate3d(-22%, 28px, 0) rotate(9deg) scale(1.08);
-    }
-  }
-
-  @keyframes ambientRibbonThree {
-    from {
-      transform: translate3d(-10%, 8px, 0) rotate(7deg) scale(1);
-    }
-    to {
-      transform: translate3d(18%, -34px, 0) rotate(12deg) scale(1.06);
-    }
+  @keyframes logoDrift3 {
+    from { transform: translate3d(0, 0, 0) rotate(3deg) scale(1); }
+    to   { transform: translate3d(-5%, 6%, 0) rotate(-4deg) scale(1.05); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ribbon {
-      animation: none;
-    }
+    .ambient-logo { animation: none; }
   }
 
   @media (max-width: 640px) {
-    .ef-ambient-ribbons {
-      opacity: 0.7;
-    }
-
-    .ribbon {
-      width: 120vw;
-      height: 110px;
-      filter: blur(22px);
-    }
+    .logo-1 { width: 200px; }
+    .logo-2 { width: 140px; }
+    .logo-3 { display: none; }
   }
 </style>
