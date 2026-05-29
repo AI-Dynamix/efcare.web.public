@@ -24,16 +24,28 @@ const icons: Record<string, string> = {
     </div>
 
     <div class="services-grid-4 stagger-cards">
-      {data.cards.map((card) => (
-        <div class="glass-card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[card.icon] ?? icons.cloud} />
+      {
+        data.cards.map((card) => (
+          <div class="glass-card">
+            <div class="card-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                set:html={icons[card.icon] ?? icons.cloud}
+              />
+            </div>
+            <h3 class="tech-card-title">{card.title}</h3>
+            <p class="tech-card-body">{card.body}</p>
+            <a href="/cong-nghe" class="card-link">
+              Tìm hiểu thêm →
+            </a>
           </div>
-          <h3 class="tech-card-title">{card.title}</h3>
-          <p class="tech-card-body">{card.body}</p>
-          <a href="/cong-nghe" class="card-link">Tìm hiểu thêm →</a>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

@@ -4,7 +4,8 @@ export const technology = {
   section: {
     eyebrow: 'EFCARE Technology',
     heading: 'Hạ tầng công nghệ chăm sóc sức khỏe',
-    intro: 'EFCARE xây dựng nền tảng công nghệ healthcare ecosystem kết nối hồ sơ sức khỏe, AI, thiết bị y tế và chăm sóc cộng đồng.',
+    intro:
+      'EFCARE xây dựng nền tảng công nghệ healthcare ecosystem kết nối hồ sơ sức khỏe, AI, thiết bị y tế và chăm sóc cộng đồng.',
   },
   cards: [
     {

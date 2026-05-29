@@ -17,14 +17,16 @@ const { data = valuesData } = Astro.props;
     </div>
 
     <div class="values-grid stagger-cards">
-      {data.cards.map((card) => (
-        <div class="value-card" style={`background:${card.gradient};`}>
-          <div class="value-card-bg-symbol">{card.symbol}</div>
-          <div class="value-card-number">{card.number}</div>
-          <div class="value-card-title">{card.title}</div>
-          <div class="value-card-desc">{card.body}</div>
-        </div>
-      ))}
+      {
+        data.cards.map((card) => (
+          <div class="value-card" style={`background:${card.gradient};`}>
+            <div class="value-card-bg-symbol">{card.symbol}</div>
+            <div class="value-card-number">{card.number}</div>
+            <div class="value-card-title">{card.title}</div>
+            <div class="value-card-desc">{card.body}</div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>

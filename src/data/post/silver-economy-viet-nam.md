@@ -25,11 +25,13 @@ Tại Việt Nam, thị trường này ước tính sẽ đạt **50 tỷ USD v�
 Để hiểu cơ hội, cần hiểu đối tượng phục vụ. Người cao tuổi Việt Nam có những đặc điểm riêng biệt so với các nước phát triển:
 
 ### Sức khỏe và bệnh tật
+
 - **Bệnh mãn tính cao**: Khoảng 70% người trên 60 tuổi tại Việt Nam mắc ít nhất một bệnh mãn tính (cao huyết áp, đái tháo đường, bệnh tim mạch, ung thư)
 - **Đa bệnh**: 30% mắc từ 3 bệnh trở lên, đòi hỏi phối hợp đa chuyên khoa
 - **Thiếu phục hồi chức năng**: Hầu hết cơ sở y tế tập trung điều trị cấp tính, ít đầu tư cho phục hồi chức năng và chăm sóc dài hạn
 
 ### Hành vi và kỳ vọng
+
 - **Ưu tiên sống cùng gia đình**: Khác với người cao tuổi phương Tây, người Việt thường muốn ở cùng con cháu hơn là viện dưỡng lão
 - **Tin vào y học cổ truyền**: Nhiều người cao tuổi kết hợp y học hiện đại với đông y, thảo dược
 - **Hạn chế về công nghệ số**: Rào cản sử dụng điện thoại thông minh và ứng dụng y tế vẫn còn cao
@@ -38,12 +40,12 @@ Tại Việt Nam, thị trường này ước tính sẽ đạt **50 tỷ USD v�
 
 Hiện tại, nguồn cung dịch vụ chăm sóc người cao tuổi tại Việt Nam còn rất hạn chế:
 
-| Dịch vụ | Nhu cầu | Nguồn cung hiện tại | Thiếu hụt |
-|---------|---------|---------------------|-----------|
-| Giường dưỡng lão | 300,000 | 30,000 | 90% |
-| Điều dưỡng tại nhà | 2,000,000 người cần | 50,000 điều dưỡng | 97.5% |
-| Phục hồi chức năng | 1,500,000 | 200 trung tâm | Rất lớn |
-| Chăm sóc bệnh mãn tính | 12,000,000 | Hệ thống rời rạc | Rất lớn |
+| Dịch vụ                | Nhu cầu             | Nguồn cung hiện tại | Thiếu hụt |
+| ---------------------- | ------------------- | ------------------- | --------- |
+| Giường dưỡng lão       | 300,000             | 30,000              | 90%       |
+| Điều dưỡng tại nhà     | 2,000,000 người cần | 50,000 điều dưỡng   | 97.5%     |
+| Phục hồi chức năng     | 1,500,000           | 200 trung tâm       | Rất lớn   |
+| Chăm sóc bệnh mãn tính | 12,000,000          | Hệ thống rời rạc    | Rất lớn   |
 
 Số liệu từ Bộ Y tế và Tổng cục Thống kê 2024.
 
@@ -82,16 +84,19 @@ AgeTech là một phân ngành mới đang bùng nổ, bao gồm:
 EFCARE nhận ra rằng người cao tuổi không phải là "gánh nặng" — họ là một thị trường tiêu dùng, một nguồn kinh nghiệm quý giá và là trung tâm của văn hóa gia đình Việt. Chương trình **Kinh tế Đầu Bạc** của EFCARE được thiết kế với ba trụ cột:
 
 **Trụ cột 1: Chăm sóc sức khỏe toàn diện**
+
 - Quản lý bệnh mãn tính bằng công nghệ AI
 - Dịch vụ điều dưỡng tại nhà chuyên nghiệp
 - Chương trình Longevity Care cá nhân hóa
 
 **Trụ cột 2: Kết nối cộng đồng**
+
 - Mạng lưới câu lạc bộ sức khỏe người cao tuổi
 - Hoạt động xã hội và tinh thần
 - Kết nối gia đình đa thế hệ qua công nghệ
 
 **Trụ cột 3: Hỗ trợ người chăm sóc**
+
 - Đào tạo kỹ năng chăm sóc người thân cho gia đình
 - Hỗ trợ tâm lý cho người chăm sóc
 - Công cụ lập kế hoạch chăm sóc dài hạn
@@ -114,4 +119,4 @@ EFCARE sẵn sàng đồng hành cùng bạn trong hành trình này — với c
 
 ---
 
-*Để tìm hiểu thêm về chương trình Kinh tế Đầu Bạc của EFCARE, hãy liên hệ qua hotline 0815 515 456 hoặc truy cập efcare.vn.*
+_Để tìm hiểu thêm về chương trình Kinh tế Đầu Bạc của EFCARE, hãy liên hệ qua hotline 0815 515 456 hoặc truy cập efcare.vn._

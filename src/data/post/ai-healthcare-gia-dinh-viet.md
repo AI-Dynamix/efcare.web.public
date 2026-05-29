@@ -68,12 +68,14 @@ AI Health Engine của EFCARE bao gồm:
 Dù tiềm năng rất lớn, việc ứng dụng AI Healthcare tại Việt Nam vẫn còn nhiều thách thức cần vượt qua:
 
 **Thách thức:**
+
 - Thiếu dữ liệu y tế được chuẩn hóa
 - Lo ngại về bảo mật và quyền riêng tư dữ liệu sức khỏe
 - Khoảng cách kiến thức số giữa các thế hệ
 - Hành lang pháp lý chưa hoàn thiện
 
 **Cơ hội:**
+
 - Dân số trẻ, am hiểu công nghệ
 - Tỷ lệ sử dụng smartphone cao (>75% dân số)
 - Chính phủ đang tích cực thúc đẩy chuyển đổi số y tế
@@ -87,4 +89,4 @@ EFCARE cam kết trở thành người dẫn đường đáng tin cậy trong h�
 
 ---
 
-*Bài viết được thực hiện bởi đội ngũ biên tập EFCARE. Để biết thêm thông tin về giải pháp AI Healthcare của chúng tôi, hãy liên hệ qua hotline 0815 515 456 hoặc email hello@efcare.vn.*
+_Bài viết được thực hiện bởi đội ngũ biên tập EFCARE. Để biết thêm thông tin về giải pháp AI Healthcare của chúng tôi, hãy liên hệ qua hotline 0815 515 456 hoặc email hello@efcare.vn._

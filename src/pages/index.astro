@@ -14,13 +14,14 @@ import EfcareFooter from '~/components/efcare/EfcareFooter.astro';
 
 const metadata = {
   title: 'EFCARE — Quản lý sức khỏe gia đình từ nhà đến bệnh viện',
-  description: 'EFCARE là hệ sinh thái chăm sóc sức khỏe gia đình đa thế hệ, kết nối công nghệ, y tế và cộng đồng trong một nền tảng minh bạch, nhân văn và bền vững.',
+  description:
+    'EFCARE là hệ sinh thái chăm sóc sức khỏe gia đình đa thế hệ, kết nối công nghệ, y tế và cộng đồng trong một nền tảng minh bạch, nhân văn và bền vững.',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <Fragment slot="announcement" />
+  <Fragment slot="announcement"></Fragment>
 
   <Fragment slot="header">
     <EfcareHeader currentPath="/" />
@@ -42,8 +43,15 @@ const metadata = {
 
   <!-- Back to top button -->
   <button class="back-to-top" id="backToTop" aria-label="Lên đầu trang">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="18 15 12 9 6 15"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
 
@@ -52,92 +60,97 @@ const metadata = {
   </Fragment>
 </Layout>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "EFCARE",
-  "legalName": "EFCARE HEALTH SCIENCE GROUP JOINT STOCK COMPANY",
-  "alternateName": "Công ty Cổ phần Tập đoàn Khoa học Sức khỏe EFCARE",
-  "taxID": "0111331180",
-  "url": "https://efcare.vn",
-  "logo": "https://efcare.vn/favicon.svg",
-  "description": "EFCARE là hệ sinh thái chăm sóc sức khỏe gia đình đa thế hệ, kết nối công nghệ, y tế và cộng đồng.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Tầng 6, Số 10 Ngõ 45 Trần Thái Tông",
-    "addressLocality": "Cầu Giấy",
-    "addressRegion": "Hà Nội",
-    "addressCountry": "VN",
-    "postalCode": ""
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+84-815-515-456",
-    "contactType": "customer service",
-    "availableLanguage": "Vietnamese",
-    "hoursAvailable": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "08:00",
-      "closes": "20:00"
-    }
-  },
-  "email": "hello@efcare.vn",
-  "sameAs": [
-    "https://facebook.com/efcare.vn"
-  ]
-}
+<script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EFCARE",
+    "legalName": "EFCARE HEALTH SCIENCE GROUP JOINT STOCK COMPANY",
+    "alternateName": "Công ty Cổ phần Tập đoàn Khoa học Sức khỏe EFCARE",
+    "taxID": "0111331180",
+    "url": "https://efcare.vn",
+    "logo": "https://efcare.vn/favicon.svg",
+    "description": "EFCARE là hệ sinh thái chăm sóc sức khỏe gia đình đa thế hệ, kết nối công nghệ, y tế và cộng đồng.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tầng 6, Số 10 Ngõ 45 Trần Thái Tông",
+      "addressLocality": "Cầu Giấy",
+      "addressRegion": "Hà Nội",
+      "addressCountry": "VN",
+      "postalCode": ""
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+84-815-515-456",
+      "contactType": "customer service",
+      "availableLanguage": "Vietnamese",
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      }
+    },
+    "email": "hello@efcare.vn",
+    "sameAs": ["https://facebook.com/efcare.vn"]
+  }
 </script>
 
 <script>
   function initPage() {
-    var sections   = document.querySelectorAll('section');
-    var sideLinks  = document.querySelectorAll('.side-nav-item');
-    var revealEls  = document.querySelectorAll('.reveal, .section-reveal');
-    var staggerCards = document.querySelectorAll('.stagger-card, .stagger-cards');
-    var symbols    = document.querySelectorAll('.ngu-tam-bg');
+    const sections = document.querySelectorAll('section');
+    const sideLinks = document.querySelectorAll('.side-nav-item');
+    const revealEls = document.querySelectorAll('.reveal, .section-reveal');
+    const staggerCards = document.querySelectorAll('.stagger-card, .stagger-cards');
+    const symbols = document.querySelectorAll('.ngu-tam-bg');
 
     /* ===== SECTION REVEAL ===== */
 
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          entry.target.classList.add('in-view');
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    const revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
 
     revealEls.forEach(function (el) {
       revealObserver.observe(el);
     });
 
     staggerCards.forEach(function (el, index) {
-      el.style.transitionDelay = (index % 5) * 0.08 + 's';
+      (el as HTMLElement).style.transitionDelay = (index % 5) * 0.08 + 's';
       revealObserver.observe(el);
     });
 
     /* ===== ACTIVE SECTION → side nav highlight ===== */
 
-    var sectionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
+    const sectionObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
 
-          sideLinks.forEach(function (link) {
-            link.classList.remove('active');
-          });
+            sideLinks.forEach(function (link) {
+              link.classList.remove('active');
+            });
 
-          var id = entry.target.id;
-          var activeLink = document.querySelector('.side-nav-item[href="#' + id + '"], .side-nav-item[data-section="' + id + '"]');
-          if (activeLink) activeLink.classList.add('active');
-
-        } else {
-          entry.target.classList.remove('in-view');
-        }
-      });
-    }, { threshold: 0.45 });
+            const id = entry.target.id;
+            const activeLink = document.querySelector(
+              '.side-nav-item[href="#' + id + '"], .side-nav-item[data-section="' + id + '"]'
+            );
+            if (activeLink) activeLink.classList.add('active');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
 
     sections.forEach(function (section) {
       sectionObserver.observe(section);
@@ -145,16 +158,16 @@ const metadata = {
 
     /* ===== PARALLAX — ngũ tâm symbols ===== */
 
-    var ticking = false;
+    let ticking = false;
 
     function updateParallax() {
-      var scrolled = window.pageYOffset;
+      const scrolled = window.pageYOffset;
 
       symbols.forEach(function (symbol, index) {
-        var speed   = 0.025 + (index * 0.01);
-        var offsetY = scrolled * speed;
-        var sway    = Math.sin(scrolled * 0.0006 + index) * 12;
-        symbol.style.transform = 'translate3d(' + sway + 'px,' + (-offsetY) + 'px,0)';
+        const speed = 0.025 + index * 0.01;
+        const offsetY = scrolled * speed;
+        const sway = Math.sin(scrolled * 0.0006 + index) * 12;
+        (symbol as HTMLElement).style.transform = 'translate3d(' + sway + 'px,' + -offsetY + 'px,0)';
       });
 
       ticking = false;
@@ -162,31 +175,35 @@ const metadata = {
 
     /* ===== BACK TO TOP ===== */
 
-    var backToTop = document.getElementById('backToTop');
+    const backToTop = document.getElementById('backToTop');
 
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          if (backToTop) {
-            if (window.scrollY > 700) {
-              backToTop.classList.add('visible');
-            } else {
-              backToTop.classList.remove('visible');
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            if (backToTop) {
+              if (window.scrollY > 700) {
+                backToTop.classList.add('visible');
+              } else {
+                backToTop.classList.remove('visible');
+              }
             }
-          }
-          updateParallax();
-        });
-        ticking = true;
-      }
-    }, { passive: true });
+            updateParallax();
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
 
     /* ===== SMOOTH SCROLL anchors ===== */
 
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function (e) {
-        var href = anchor.getAttribute('href');
+        const href = anchor.getAttribute('href');
         if (!href || href === '#') return;
-        var target = document.querySelector(href);
+        const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });

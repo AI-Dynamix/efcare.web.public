@@ -17,7 +17,6 @@ const statColors = [
 
 <section id="about" class="ef-section about-section">
   <div class="max-container">
-
     <div class="section-header reveal">
       <span class="section-tag">{data.section.eyebrow}</span>
       <h2 class="section-title">{data.section.heading}</h2>
@@ -26,147 +25,149 @@ const statColors = [
 
     <!-- Mockup layout: 2-col — left content cards, right stat cards -->
     <div class="about-layout stagger-cards">
-
       <!-- LEFT: 2 main content cards stacked -->
       <div class="about-left">
-        {data.mainCards.map((card) => (
-          <div class="ef-card about-main-card">
-            <h3 class="about-main-title">{card.title}</h3>
-            <p class="about-main-body">{card.body}</p>
-          </div>
-        ))}
+        {
+          data.mainCards.map((card) => (
+            <div class="ef-card about-main-card">
+              <h3 class="about-main-title">{card.title}</h3>
+              <p class="about-main-body">{card.body}</p>
+            </div>
+          ))
+        }
       </div>
 
       <!-- RIGHT: 4 stat cards stacked -->
       <div class="about-right">
-        {data.statCards.map((card, i) => (
-          <div
-            class="ef-card about-stat-card"
-            style={`background: linear-gradient(145deg, ${statColors[i].bg}, ${statColors[i].bg2});`}
-          >
+        {
+          data.statCards.map((card, i) => (
             <div
-              class="about-stat-glow"
-              style={`background: radial-gradient(circle at top right, ${statColors[i].glow}, transparent 30%);`}
-            ></div>
-            <h4 class="about-stat-title">{card.title}</h4>
-            <p class="about-stat-body">{card.body}</p>
-          </div>
-        ))}
+              class="ef-card about-stat-card"
+              style={`background: linear-gradient(145deg, ${statColors[i].bg}, ${statColors[i].bg2});`}
+            >
+              <div
+                class="about-stat-glow"
+                style={`background: radial-gradient(circle at top right, ${statColors[i].glow}, transparent 30%);`}
+              />
+              <h4 class="about-stat-title">{card.title}</h4>
+              <p class="about-stat-body">{card.body}</p>
+            </div>
+          ))
+        }
       </div>
-
     </div>
   </div>
 </section>
 
 <style>
-.about-section {
-  background: linear-gradient(180deg, #ffffff 0%, #f6f8f6 100%);
-  border-top: 1px solid rgba(10,48,76,0.06);
-  border-bottom: 1px solid rgba(10,48,76,0.06);
-}
+  .about-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f6f8f6 100%);
+    border-top: 1px solid rgba(10, 48, 76, 0.06);
+    border-bottom: 1px solid rgba(10, 48, 76, 0.06);
+  }
 
-/* 2-column layout matching mockup: 1.05fr .95fr */
-.about-layout {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 40px;
-  align-items: stretch;
-  min-height: 540px;
-}
-
-/* LEFT: 2 content cards stacked, equal height */
-.about-left {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  height: 100%;
-}
-
-.about-main-card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 200px;
-}
-
-.about-main-title {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  font-weight: 700;
-  color: var(--ef-navy);
-  margin-bottom: 14px;
-  letter-spacing: -0.02em;
-}
-
-.about-main-body {
-  font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
-  color: var(--ef-text-muted);
-  line-height: 1.85;
-}
-
-/* RIGHT: 4 stat cards stacked, equal height */
-.about-right {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  align-content: stretch;
-  height: 100%;
-}
-
-.about-stat-card {
-  min-height: 112px;
-  padding: 22px 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-stat-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.about-stat-title {
-  font-size: clamp(1rem, 1.8vw, 1.375rem);
-  font-weight: 700;
-  color: var(--ef-navy);
-  margin-bottom: 6px;
-  letter-spacing: -0.02em;
-  position: relative;
-  z-index: 1;
-}
-
-.about-stat-body {
-  font-size: clamp(0.875rem, 1.4vw, 1rem);
-  color: var(--ef-text-muted);
-  line-height: 1.6;
-  font-weight: 500;
-  position: relative;
-  z-index: 1;
-}
-
-/* Tablet */
-@media (max-width: 900px) {
+  /* 2-column layout matching mockup: 1.05fr .95fr */
   .about-layout {
-    grid-template-columns: 1fr;
-    min-height: auto;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 40px;
+    align-items: stretch;
+    min-height: 540px;
   }
-  .about-right {
-    grid-template-columns: 1fr 1fr;
-  }
-}
 
-/* Mobile */
-@media (max-width: 600px) {
-  .about-right {
-    grid-template-columns: 1fr;
+  /* LEFT: 2 content cards stacked, equal height */
+  .about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
   }
+
   .about-main-card {
-    min-height: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
   }
-}
+
+  .about-main-title {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 700;
+    color: var(--ef-navy);
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+  }
+
+  .about-main-body {
+    font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
+    color: var(--ef-text-muted);
+    line-height: 1.85;
+  }
+
+  /* RIGHT: 4 stat cards stacked, equal height */
+  .about-right {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    align-content: stretch;
+    height: 100%;
+  }
+
+  .about-stat-card {
+    min-height: 112px;
+    padding: 22px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-stat-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .about-stat-title {
+    font-size: clamp(1rem, 1.8vw, 1.375rem);
+    font-weight: 700;
+    color: var(--ef-navy);
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-stat-body {
+    font-size: clamp(0.875rem, 1.4vw, 1rem);
+    color: var(--ef-text-muted);
+    line-height: 1.6;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Tablet */
+  @media (max-width: 900px) {
+    .about-layout {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .about-right {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .about-right {
+      grid-template-columns: 1fr;
+    }
+    .about-main-card {
+      min-height: auto;
+    }
+  }
 </style>

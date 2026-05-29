@@ -30,6 +30,7 @@ Người Nhật Bản có một khái niệm đặc biệt — **ikigai** — ý
 Thức ăn là thuốc — câu nói này chưa bao giờ đúng hơn trong bối cảnh khoa học dinh dưỡng hiện đại. Các nghiên cứu trên những cộng đồng sống thọ nhất thế giới (Blue Zones) cho thấy một số mẫu chung:
 
 **Nguyên tắc dinh dưỡng cho longevity:**
+
 - **Hạn chế calo 15-20%** so với nhu cầu tối đa (Caloric Restriction) — giảm căng thẳng oxy hóa, kích hoạt autophagy
 - **Ưu tiên thực vật**: 90-95% khẩu phần từ rau củ, ngũ cốc nguyên hạt, đậu, quả hạch
 - **Protein chất lượng cao**: Cá biển, đậu phụ, tempeh — hạn chế thịt đỏ
@@ -37,6 +38,7 @@ Thức ăn là thuốc — câu nói này chưa bao giờ đúng hơn trong bố
 - **Thời gian ăn uống**: Nhịn ăn gián đoạn 16:8 có thể cải thiện chuyển hóa và kéo dài tuổi thọ tế bào
 
 **Thực phẩm "siêu thọ" tại Việt Nam:**
+
 - Nghệ và tiêu đen (curcumin + piperine — chống viêm mạnh)
 - Rau muống, rau ngót (chứa nhiều quercetin)
 - Cá ngừ, cá thu (Omega-3 EPA/DHA)
@@ -50,16 +52,19 @@ Tập thể dục là "thuốc trường sinh" rẻ nhất và hiệu quả nh�
 **Chiến lược vận động theo lứa tuổi:**
 
 **Tuổi 20-40 (Xây dựng nền tảng):**
+
 - Sức mạnh cơ bắp: 3-4 buổi/tuần với trọng lượng
 - Cardio Zone 2: 150 phút/tuần tốc độ vừa phải
 - Yoga/pilates cho linh hoạt và kiểm soát stress
 
 **Tuổi 40-60 (Duy trì và bảo vệ):**
+
 - Ưu tiên duy trì khối lượng cơ (sarcopenia phòng ngừa)
 - Tập thăng bằng và điều phối giảm nguy cơ té ngã
 - Bơi lội, đạp xe — ít tác động lên khớp
 
 **Tuổi 60+ (Hoạt động nhẹ nhàng, đều đặn):**
+
 - Đi bộ 30 phút/ngày — đủ để giảm 35% nguy cơ tử vong tim mạch
 - Tập dưỡng sinh, Thái Cực Quyền
 - Kéo giãn và tập thở
@@ -81,14 +86,15 @@ Phần lớn các bệnh nghiêm trọng (ung thư, bệnh tim mạch, đái th�
 
 **Danh sách kiểm tra sức khỏe định kỳ theo tuổi:**
 
-| Tuổi | Kiểm tra bắt buộc |
-|------|-------------------|
-| 30-40 | Công thức máu, lipid, glucose, BMI, huyết áp |
-| 40-50 | + Thyroid, HbA1c, tầm soát ung thư đại tràng |
+| Tuổi  | Kiểm tra bắt buộc                                    |
+| ----- | ---------------------------------------------------- |
+| 30-40 | Công thức máu, lipid, glucose, BMI, huyết áp         |
+| 40-50 | + Thyroid, HbA1c, tầm soát ung thư đại tràng         |
 | 50-60 | + Tầm soát ung thư phổi (nếu hút thuốc), loãng xương |
-| 60+ | + Kiểm tra thị giác, thính giác, nhận thức |
+| 60+   | + Kiểm tra thị giác, thính giác, nhận thức           |
 
 **Công nghệ giám sát hiện đại:**
+
 - Smartwatch theo dõi nhịp tim, SpO2, nhịp thở khi ngủ
 - Xét nghiệm máu định kỳ (methylation clock — đo "tuổi sinh học")
 - Continuous Glucose Monitor (CGM) cho kiểm soát đường huyết
@@ -110,6 +116,7 @@ Stress mãn tính là "kẻ giết người thầm lặng" — nó đẩy nhanh 
 ### Bước 1: Đánh giá hiện trạng (Health Assessment)
 
 Trước tiên, cần biết điểm xuất phát. Một đánh giá sức khỏe toàn diện bao gồm:
+
 - Xét nghiệm máu toàn diện (30-50 chỉ số)
 - Đánh giá thành phần cơ thể (InBody)
 - Kiểm tra chức năng tim phổi
@@ -128,6 +135,7 @@ Sức khỏe không phải đích đến mà là hành trình. Kiểm tra địn
 Tại EFCARE, chúng tôi đã phát triển **EFCARE Longevity Program** — một chương trình chăm sóc sức khỏe toàn diện dựa trên khoa học longevity mới nhất, được cá nhân hóa cho người Việt Nam.
 
 Chương trình bao gồm:
+
 - Đánh giá sức khỏe toàn diện ban đầu với đội ngũ bác sĩ chuyên môn
 - Kế hoạch dinh dưỡng cá nhân hóa bởi chuyên gia dinh dưỡng
 - Hướng dẫn tập luyện phù hợp với thể trạng
@@ -145,4 +153,4 @@ EFCARE ở đây để đồng hành cùng bạn trên con đường đó.
 
 ---
 
-*BS. Nguyễn Minh Tuấn là chuyên gia y học lão khoa và cố vấn y tế tại EFCARE. Để đăng ký tư vấn Longevity Care, hãy liên hệ EFCARE qua hotline 0815 515 456.*
+_BS. Nguyễn Minh Tuấn là chuyên gia y học lão khoa và cố vấn y tế tại EFCARE. Để đăng ký tư vấn Longevity Care, hãy liên hệ EFCARE qua hotline 0815 515 456._

@@ -17,27 +17,20 @@ const { currentPath = Astro.url?.pathname ?? '/' } = Astro.props;
 
     <!-- Desktop nav -->
     <nav class="ef-nav-desktop" aria-label="Điều hướng chính">
-      {nav.links.map((link) => (
-        <a
-          href={link.href}
-          class={`ef-nav-link${currentPath === link.href ? ' ef-nav-active' : ''}`}
-        >
-          {link.text}
-        </a>
-      ))}
+      {
+        nav.links.map((link) => (
+          <a href={link.href} class={`ef-nav-link${currentPath === link.href ? ' ef-nav-active' : ''}`}>
+            {link.text}
+          </a>
+        ))
+      }
       <a href={nav.hotline.href} class="ef-nav-hotline">
         {nav.hotline.text}
       </a>
     </nav>
 
     <!-- Hamburger button (mobile) -->
-    <button
-      id="ef-burger"
-      class="ef-burger"
-      aria-label="Mở menu"
-      aria-expanded="false"
-      aria-controls="ef-mobile-menu"
-    >
+    <button id="ef-burger" class="ef-burger" aria-label="Mở menu" aria-expanded="false" aria-controls="ef-mobile-menu">
       <span></span>
       <span></span>
       <span></span>
@@ -46,14 +39,13 @@ const { currentPath = Astro.url?.pathname ?? '/' } = Astro.props;
 
   <!-- Mobile nav -->
   <nav id="ef-mobile-menu" class="ef-mobile-menu" aria-label="Điều hướng di động">
-    {nav.links.map((link) => (
-      <a
-        href={link.href}
-        class={`ef-mobile-link${currentPath === link.href ? ' ef-nav-active' : ''}`}
-      >
-        {link.text}
-      </a>
-    ))}
+    {
+      nav.links.map((link) => (
+        <a href={link.href} class={`ef-mobile-link${currentPath === link.href ? ' ef-nav-active' : ''}`}>
+          {link.text}
+        </a>
+      ))
+    }
     <a href={nav.hotline.href} class="ef-mobile-hotline">
       {nav.hotline.text}
     </a>

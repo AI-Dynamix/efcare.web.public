@@ -26,21 +26,21 @@ import os, sys
 def optimize(src, dest_name=None, max_width=1600, quality=85):
     src = os.path.abspath(src)
     img = Image.open(src).convert('RGB')
-    
+
     # Resize if wider than max_width
     if img.width > max_width:
         ratio = max_width / img.width
         img = img.resize((max_width, int(img.height * ratio)), Image.LANCZOS)
-    
+
     out_dir = r'D:\aidx\code\efcare\efcare.web.public\public\images'
     os.makedirs(out_dir, exist_ok=True)
-    
+
     if not dest_name:
         dest_name = os.path.splitext(os.path.basename(src))[0]
-    
+
     out_path = os.path.join(out_dir, dest_name + '.webp')
     img.save(out_path, 'WEBP', quality=quality, method=6)
-    
+
     src_size  = os.path.getsize(src) / 1024
     dest_size = os.path.getsize(out_path) / 1024
     print(f'Input:  {src_size:.0f} KB ({Image.open(src).size})')
@@ -56,7 +56,9 @@ if __name__ == '__main__':
 ## AstroWind usage
 
 After optimizing, reference in components:
+
 ```astro
 <img src="/images/hero.webp" alt="..." width="1200" height="800" loading="eager" />
 ```
+
 Or use Astro's Image component for further optimization.

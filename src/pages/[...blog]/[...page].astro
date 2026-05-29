@@ -28,7 +28,8 @@ const currentPage = page.currentPage ?? 1;
 
 const metadata = {
   title: `Bài viết EFCARE${currentPage > 1 ? ` — Trang ${currentPage}` : ''}`,
-  description: 'Tin tức, nghiên cứu và kiến thức y tế từ đội ngũ chuyên gia EFCARE — AI Healthcare, Silver Economy, Longevity Care và xu hướng sức khỏe mới nhất.',
+  description:
+    'Tin tức, nghiên cứu và kiến thức y tế từ đội ngũ chuyên gia EFCARE — AI Healthcare, Silver Economy, Longevity Care và xu hướng sức khỏe mới nhất.',
   robots: {
     index: blogListRobots?.index && currentPage === 1,
     follow: blogListRobots?.follow,
@@ -40,7 +41,7 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <Fragment slot="announcement" />
+  <Fragment slot="announcement"></Fragment>
 
   <Fragment slot="header">
     <EfcareHeader currentPath="/bai-viet" />
@@ -49,14 +50,14 @@ const metadata = {
   <section class="ef-blog-index">
     <AmbientRibbons />
     <div class="ef-blog-index-inner">
-    <Headline
-      subtitle="Tin tức, nghiên cứu và kiến thức y tế từ đội ngũ chuyên gia EFCARE — AI Healthcare, Silver Economy, Longevity Care và các xu hướng sức khỏe mới nhất."
-    >
-      Bài viết EFCARE
-    </Headline>
-    <BlogList posts={page.data} />
-    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-    <!--
+      <Headline
+        subtitle="Tin tức, nghiên cứu và kiến thức y tế từ đội ngũ chuyên gia EFCARE — AI Healthcare, Silver Economy, Longevity Care và các xu hướng sức khỏe mới nhất."
+      >
+        Bài viết EFCARE
+      </Headline>
+      <BlogList posts={page.data} />
+      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+      <!--
       <PostTags tags={allCategories} class="mb-2" title="Search by Categories:" isCategory />
       <PostTags tags={allTags}  title="Search by Tags:" />
     -->
@@ -69,16 +70,16 @@ const metadata = {
 </Layout>
 
 <style>
-.ef-blog-index {
-  position: relative;
-  overflow: hidden;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: clamp(96px, 12vw, 132px) 1rem clamp(3rem, 7vw, 5rem);
-}
+  .ef-blog-index {
+    position: relative;
+    overflow: hidden;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: clamp(96px, 12vw, 132px) 1rem clamp(3rem, 7vw, 5rem);
+  }
 
-.ef-blog-index-inner {
-  position: relative;
-  z-index: 1;
-}
+  .ef-blog-index-inner {
+    position: relative;
+    z-index: 1;
+  }
 </style>

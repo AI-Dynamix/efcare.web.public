@@ -13,115 +13,134 @@ const { variant = 'light' } = Astro.props;
 </div>
 
 <style>
-.ef-ambient-ribbons {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  opacity: .9;
-  contain: paint;
-}
-
-.ribbon {
-  position: absolute;
-  width: min(78vw, 980px);
-  height: 170px;
-  border-radius: 999px;
-  filter: blur(6px);
-  opacity: .72;
-  transform-origin: center;
-  will-change: transform;
-  mix-blend-mode: normal;
-}
-
-.ribbon::after {
-  content: '';
-  position: absolute;
-  inset: 36% 8%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.46), transparent);
-  opacity: .35;
-}
-
-.ribbon-1 {
-  top: 8%;
-  left: -24%;
-  background: linear-gradient(90deg, transparent, rgba(52,86,178,.50), rgba(72,108,200,.38), transparent);
-  transform: rotate(-13deg);
-  animation: ambientRibbonOne 5s ease-in-out infinite alternate;
-}
-
-.ribbon-2 {
-  right: -30%;
-  top: 39%;
-  height: 210px;
-  background: linear-gradient(90deg, transparent, rgba(42,74,168,.44), rgba(52,86,178,.36), rgba(80,112,210,.30), transparent);
-  transform: rotate(16deg);
-  animation: ambientRibbonTwo 6s ease-in-out infinite alternate;
-}
-
-.ribbon-3 {
-  left: 4%;
-  bottom: -4%;
-  width: min(74vw, 900px);
-  height: 150px;
-  background: linear-gradient(90deg, transparent, rgba(52,86,178,.32), rgba(72,108,200,.38), transparent);
-  transform: rotate(7deg);
-  animation: ambientRibbonThree 5.5s ease-in-out infinite alternate;
-}
-
-.ef-ambient-ribbons.deep {
-  opacity: .62;
-}
-
-.ef-ambient-ribbons.deep .ribbon {
-  mix-blend-mode: screen;
-  opacity: .24;
-}
-
-.ef-ambient-ribbons.deep .ribbon-1 {
-  background: linear-gradient(90deg, transparent, rgba(216,194,122,.26), rgba(255,255,255,.18), transparent);
-}
-
-.ef-ambient-ribbons.deep .ribbon-2 {
-  background: linear-gradient(90deg, transparent, rgba(8,79,138,.42), rgba(216,194,122,.22), transparent);
-}
-
-.ef-ambient-ribbons.deep .ribbon-3 {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), rgba(196,169,98,.24), transparent);
-}
-
-@keyframes ambientRibbonOne {
-  from { transform: translate3d(-5%, -12px, 0) rotate(-13deg) scale(1); }
-  to { transform: translate3d(20%, 36px, 0) rotate(-6deg) scale(1.08); }
-}
-
-@keyframes ambientRibbonTwo {
-  from { transform: translate3d(8%, -18px, 0) rotate(17deg) scale(.98); }
-  to { transform: translate3d(-22%, 28px, 0) rotate(9deg) scale(1.08); }
-}
-
-@keyframes ambientRibbonThree {
-  from { transform: translate3d(-10%, 8px, 0) rotate(7deg) scale(1); }
-  to { transform: translate3d(18%, -34px, 0) rotate(12deg) scale(1.06); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ribbon {
-    animation: none;
-  }
-}
-
-@media (max-width: 640px) {
   .ef-ambient-ribbons {
-    opacity: .7;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.9;
+    contain: paint;
   }
 
   .ribbon {
-    width: 120vw;
-    height: 110px;
-    filter: blur(22px);
+    position: absolute;
+    width: min(78vw, 980px);
+    height: 170px;
+    border-radius: 999px;
+    filter: blur(6px);
+    opacity: 0.72;
+    transform-origin: center;
+    will-change: transform;
+    mix-blend-mode: normal;
   }
-}
+
+  .ribbon::after {
+    content: '';
+    position: absolute;
+    inset: 36% 8%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.46), transparent);
+    opacity: 0.35;
+  }
+
+  .ribbon-1 {
+    top: 8%;
+    left: -24%;
+    background: linear-gradient(90deg, transparent, rgba(52, 86, 178, 0.5), rgba(72, 108, 200, 0.38), transparent);
+    transform: rotate(-13deg);
+    animation: ambientRibbonOne 5s ease-in-out infinite alternate;
+  }
+
+  .ribbon-2 {
+    right: -30%;
+    top: 39%;
+    height: 210px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(42, 74, 168, 0.44),
+      rgba(52, 86, 178, 0.36),
+      rgba(80, 112, 210, 0.3),
+      transparent
+    );
+    transform: rotate(16deg);
+    animation: ambientRibbonTwo 6s ease-in-out infinite alternate;
+  }
+
+  .ribbon-3 {
+    left: 4%;
+    bottom: -4%;
+    width: min(74vw, 900px);
+    height: 150px;
+    background: linear-gradient(90deg, transparent, rgba(52, 86, 178, 0.32), rgba(72, 108, 200, 0.38), transparent);
+    transform: rotate(7deg);
+    animation: ambientRibbonThree 5.5s ease-in-out infinite alternate;
+  }
+
+  .ef-ambient-ribbons.deep {
+    opacity: 0.62;
+  }
+
+  .ef-ambient-ribbons.deep .ribbon {
+    mix-blend-mode: screen;
+    opacity: 0.24;
+  }
+
+  .ef-ambient-ribbons.deep .ribbon-1 {
+    background: linear-gradient(90deg, transparent, rgba(216, 194, 122, 0.26), rgba(255, 255, 255, 0.18), transparent);
+  }
+
+  .ef-ambient-ribbons.deep .ribbon-2 {
+    background: linear-gradient(90deg, transparent, rgba(8, 79, 138, 0.42), rgba(216, 194, 122, 0.22), transparent);
+  }
+
+  .ef-ambient-ribbons.deep .ribbon-3 {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), rgba(196, 169, 98, 0.24), transparent);
+  }
+
+  @keyframes ambientRibbonOne {
+    from {
+      transform: translate3d(-5%, -12px, 0) rotate(-13deg) scale(1);
+    }
+    to {
+      transform: translate3d(20%, 36px, 0) rotate(-6deg) scale(1.08);
+    }
+  }
+
+  @keyframes ambientRibbonTwo {
+    from {
+      transform: translate3d(8%, -18px, 0) rotate(17deg) scale(0.98);
+    }
+    to {
+      transform: translate3d(-22%, 28px, 0) rotate(9deg) scale(1.08);
+    }
+  }
+
+  @keyframes ambientRibbonThree {
+    from {
+      transform: translate3d(-10%, 8px, 0) rotate(7deg) scale(1);
+    }
+    to {
+      transform: translate3d(18%, -34px, 0) rotate(12deg) scale(1.06);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ribbon {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ef-ambient-ribbons {
+      opacity: 0.7;
+    }
+
+    .ribbon {
+      width: 120vw;
+      height: 110px;
+      filter: blur(22px);
+    }
+  }
 </style>

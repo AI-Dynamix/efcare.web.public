@@ -28,15 +28,15 @@ const { post, url } = Astro.props;
           <Icon name="tabler:clock" class="ef-post-meta-icon" />
           <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
         </span>
-        {post.author && (
-          <span>
-            <Icon name="tabler:user" class="ef-post-meta-icon" />
-            {post.author}
-          </span>
-        )}
-        {post.category && (
-          <a href={getPermalink(post.category.slug, 'category')}>{post.category.title}</a>
-        )}
+        {
+          post.author && (
+            <span>
+              <Icon name="tabler:user" class="ef-post-meta-icon" />
+              {post.author}
+            </span>
+          )
+        }
+        {post.category && <a href={getPermalink(post.category.slug, 'category')}>{post.category.title}</a>}
         {post.readingTime && <span>{post.readingTime} phút đọc</span>}
       </div>
 
@@ -77,171 +77,171 @@ const { post, url } = Astro.props;
 </section>
 
 <style>
-.ef-post-page {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at top right, rgba(196,169,98,.13), transparent 32%),
-    radial-gradient(circle at 10% 24%, rgba(8,79,138,.06), transparent 30%),
-    linear-gradient(180deg, #fdfbf6 0%, #f7f8f3 46%, #ffffff 100%);
-  padding: clamp(96px, 12vw, 132px) 1rem 0;
-}
-
-.ef-post-shell {
-  position: relative;
-  z-index: 1;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.ef-post-hero {
-  text-align: center;
-}
-
-.ef-post-meta {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: .55rem .9rem;
-  margin-bottom: 1rem;
-  color: #667789;
-  font-size: .8rem;
-  font-weight: 800;
-}
-
-.ef-post-meta span,
-.ef-post-meta a {
-  display: inline-flex;
-  align-items: center;
-  gap: .28rem;
-  color: inherit;
-  text-decoration: none;
-}
-
-.ef-post-meta a {
-  color: #0a304c;
-}
-
-:global(.ef-post-meta-icon) {
-  width: .95rem;
-  height: .95rem;
-  color: #c4a962;
-}
-
-h1 {
-  max-width: 840px;
-  margin: 0 auto;
-  color: #0a304c;
-  font-size: clamp(1.55rem, 3.2vw, 2.6rem);
-  line-height: 1.14;
-  font-weight: 900;
-  letter-spacing: 0;
-}
-
-.ef-post-excerpt {
-  max-width: 760px;
-  margin: 1rem auto 0;
-  color: #425569;
-  font-size: clamp(.95rem, 1.45vw, 1.08rem);
-  line-height: 1.72;
-}
-
-.ef-post-image-wrap {
-  max-width: 900px;
-  margin: clamp(1.5rem, 4vw, 2.4rem) auto 0;
-  overflow: hidden;
-  border-radius: 18px;
-  background: rgba(255,255,255,.75);
-  box-shadow: 0 22px 56px rgba(10,48,76,.12);
-}
-
-:global(.ef-post-image) {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.ef-post-divider {
-  max-width: 720px;
-  height: 1px;
-  margin: 2rem auto 0;
-  background: linear-gradient(90deg, transparent, rgba(196,169,98,.4), transparent);
-}
-
-.ef-post-content {
-  max-width: 900px;
-  margin: clamp(2rem, 5vw, 3rem) auto 0;
-  padding: clamp(1.25rem, 4vw, 2.25rem);
-  border-radius: 18px;
-  background: rgba(255,255,255,.94);
-  border: 1px solid rgba(10,48,76,.08);
-  box-shadow: 0 18px 42px rgba(10,48,76,.07);
-  color: #1f2e3d;
-  font-size: clamp(.95rem, 1.3vw, 1.02rem);
-  line-height: 1.82;
-}
-
-.ef-post-content :global(h2),
-.ef-post-content :global(h3),
-.ef-post-content :global(h4) {
-  color: #0a304c;
-  margin: 1.6em 0 .65em;
-  line-height: 1.25;
-  font-weight: 900;
-  letter-spacing: 0;
-}
-
-.ef-post-content :global(h2) {
-  font-size: clamp(1.15rem, 2vw, 1.55rem);
-}
-
-.ef-post-content :global(h3) {
-  font-size: clamp(1.02rem, 1.6vw, 1.25rem);
-}
-
-.ef-post-content :global(p) {
-  margin: 0 0 1.05rem;
-}
-
-.ef-post-content :global(a) {
-  color: #0a4f8a;
-  font-weight: 800;
-  text-decoration-color: rgba(196,169,98,.55);
-  text-underline-offset: 3px;
-}
-
-.ef-post-content :global(blockquote) {
-  margin: 1.5rem 0;
-  padding: 1rem 1.1rem;
-  border-left: 4px solid #c4a962;
-  border-radius: 0 12px 12px 0;
-  background: rgba(196,169,98,.1);
-  color: #0a304c;
-  font-weight: 700;
-}
-
-.ef-post-content :global(img) {
-  border-radius: 14px;
-  box-shadow: 0 16px 34px rgba(10,48,76,.1);
-}
-
-.ef-post-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  max-width: 900px;
-  margin: 1.25rem auto 0;
-  padding: 0 0 1rem;
-}
-
-:global(.ef-post-share) {
-  color: #667789;
-}
-
-@media (max-width: 720px) {
-  .ef-post-footer {
-    flex-direction: column;
+  .ef-post-page {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top right, rgba(196, 169, 98, 0.13), transparent 32%),
+      radial-gradient(circle at 10% 24%, rgba(8, 79, 138, 0.06), transparent 30%),
+      linear-gradient(180deg, #fdfbf6 0%, #f7f8f3 46%, #ffffff 100%);
+    padding: clamp(96px, 12vw, 132px) 1rem 0;
   }
-}
+
+  .ef-post-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .ef-post-hero {
+    text-align: center;
+  }
+
+  .ef-post-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.55rem 0.9rem;
+    margin-bottom: 1rem;
+    color: #667789;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .ef-post-meta span,
+  .ef-post-meta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ef-post-meta a {
+    color: #0a304c;
+  }
+
+  :global(.ef-post-meta-icon) {
+    width: 0.95rem;
+    height: 0.95rem;
+    color: #c4a962;
+  }
+
+  h1 {
+    max-width: 840px;
+    margin: 0 auto;
+    color: #0a304c;
+    font-size: clamp(1.55rem, 3.2vw, 2.6rem);
+    line-height: 1.14;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .ef-post-excerpt {
+    max-width: 760px;
+    margin: 1rem auto 0;
+    color: #425569;
+    font-size: clamp(0.95rem, 1.45vw, 1.08rem);
+    line-height: 1.72;
+  }
+
+  .ef-post-image-wrap {
+    max-width: 900px;
+    margin: clamp(1.5rem, 4vw, 2.4rem) auto 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 22px 56px rgba(10, 48, 76, 0.12);
+  }
+
+  :global(.ef-post-image) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ef-post-divider {
+    max-width: 720px;
+    height: 1px;
+    margin: 2rem auto 0;
+    background: linear-gradient(90deg, transparent, rgba(196, 169, 98, 0.4), transparent);
+  }
+
+  .ef-post-content {
+    max-width: 900px;
+    margin: clamp(2rem, 5vw, 3rem) auto 0;
+    padding: clamp(1.25rem, 4vw, 2.25rem);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(10, 48, 76, 0.08);
+    box-shadow: 0 18px 42px rgba(10, 48, 76, 0.07);
+    color: #1f2e3d;
+    font-size: clamp(0.95rem, 1.3vw, 1.02rem);
+    line-height: 1.82;
+  }
+
+  .ef-post-content :global(h2),
+  .ef-post-content :global(h3),
+  .ef-post-content :global(h4) {
+    color: #0a304c;
+    margin: 1.6em 0 0.65em;
+    line-height: 1.25;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+  .ef-post-content :global(h2) {
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+  }
+
+  .ef-post-content :global(h3) {
+    font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+  }
+
+  .ef-post-content :global(p) {
+    margin: 0 0 1.05rem;
+  }
+
+  .ef-post-content :global(a) {
+    color: #0a4f8a;
+    font-weight: 800;
+    text-decoration-color: rgba(196, 169, 98, 0.55);
+    text-underline-offset: 3px;
+  }
+
+  .ef-post-content :global(blockquote) {
+    margin: 1.5rem 0;
+    padding: 1rem 1.1rem;
+    border-left: 4px solid #c4a962;
+    border-radius: 0 12px 12px 0;
+    background: rgba(196, 169, 98, 0.1);
+    color: #0a304c;
+    font-weight: 700;
+  }
+
+  .ef-post-content :global(img) {
+    border-radius: 14px;
+    box-shadow: 0 16px 34px rgba(10, 48, 76, 0.1);
+  }
+
+  .ef-post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 1.25rem auto 0;
+    padding: 0 0 1rem;
+  }
+
+  :global(.ef-post-share) {
+    color: #667789;
+  }
+
+  @media (max-width: 720px) {
+    .ef-post-footer {
+      flex-direction: column;
+    }
+  }
 </style>

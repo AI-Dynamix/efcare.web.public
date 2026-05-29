@@ -10,7 +10,8 @@ const { data = partnersData } = Astro.props;
 const svgPaths: Record<string, string> = {
   government: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
   hospital: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
-  building: '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+  building:
+    '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
   doctor: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
   partnership: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
 };
@@ -25,15 +26,27 @@ const svgPaths: Record<string, string> = {
     </div>
 
     <div class="partners-grid stagger-cards">
-      {data.cards.map((card) => (
-        <div class="glass-card" style="text-align:center;">
-          <div class="partner-icon-wrap">
-            <svg width="1.75rem" height="1.75rem" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={svgPaths[card.icon] ?? svgPaths.government} />
+      {
+        data.cards.map((card) => (
+          <div class="glass-card" style="text-align:center;">
+            <div class="partner-icon-wrap">
+              <svg
+                width="1.75rem"
+                height="1.75rem"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--gold)"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                set:html={svgPaths[card.icon] ?? svgPaths.government}
+              />
+            </div>
+            <h4 class="partner-card-title">{card.title}</h4>
+            <p class="partner-card-body">{card.body}</p>
           </div>
-          <h4 class="partner-card-title">{card.title}</h4>
-          <p class="partner-card-body">{card.body}</p>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <div class="reveal" style="text-align:center;margin-top:2.5rem;">

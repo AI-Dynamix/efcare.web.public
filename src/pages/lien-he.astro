@@ -19,11 +19,9 @@ const metadata = {
   <section class="page-hero-section">
     <span class="section-tag">Liên hệ</span>
     <h1 class="page-hero-h1">
-      Chúng tôi luôn<br/><span style="color:#C4A962;">sẵn sàng hỗ trợ</span>
+      Chúng tôi luôn<br /><span style="color:#C4A962;">sẵn sàng hỗ trợ</span>
     </h1>
-    <p class="page-hero-sub">
-      Đội ngũ tư vấn EFCARE phục vụ từ 8:00 đến 20:00 hàng ngày. Liên hệ ngay để được hỗ trợ.
-    </p>
+    <p class="page-hero-sub">Đội ngũ tư vấn EFCARE phục vụ từ 8:00 đến 20:00 hàng ngày. Liên hệ ngay để được hỗ trợ.</p>
   </section>
 
   <!-- Contact Content -->
@@ -33,33 +31,67 @@ const metadata = {
       <div class="contact-info-top stagger-cards">
         <div class="glass-card" style="text-align:center;">
           <div class="partner-icon-wrap">
-            <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="#C4A962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg
+              width="1.25rem"
+              height="1.25rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#C4A962"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"
+              ></circle></svg
+            >
           </div>
           <h4 class="contact-info-label">Văn phòng</h4>
           <p class="contact-info-text">
-            {site.address.street}<br/>
+            {site.address.street}<br />
             {site.address.ward}, {site.address.city}
           </p>
         </div>
 
         <div class="glass-card" style="text-align:center;">
           <div class="partner-icon-wrap">
-            <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="#C4A962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg
+              width="1.25rem"
+              height="1.25rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#C4A962"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path></svg
+            >
           </div>
           <h4 class="contact-info-label">Hotline</h4>
           <p class="contact-info-text">
-            <a href={site.hotlineTel} class="contact-link-gold" style="font-size:1.125rem;">{site.hotline}</a><br/>
+            <a href={site.hotlineTel} class="contact-link-gold" style="font-size:1.125rem;">{site.hotline}</a><br />
             <span class="contact-info-sub">{site.workingHours}</span>
           </p>
         </div>
 
         <div class="glass-card" style="text-align:center;">
           <div class="partner-icon-wrap">
-            <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="#C4A962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg
+              width="1.25rem"
+              height="1.25rem"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#C4A962"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline
+                points="22,6 12,13 2,6"></polyline></svg
+            >
           </div>
           <h4 class="contact-info-label">Email</h4>
           <p class="contact-info-text">
-            <a href={`mailto:${site.email}`} class="contact-link-gold">{site.email}</a><br/>
+            <a href={`mailto:${site.email}`} class="contact-link-gold">{site.email}</a><br />
             <a href={`mailto:${site.emailBusiness}`} class="contact-link-gold">{site.emailBusiness}</a>
           </p>
         </div>
@@ -90,10 +122,25 @@ const metadata = {
             </div>
             <div class="form-group">
               <label class="form-label" for="message">Nội dung *</label>
-              <textarea id="message" name="body" class="form-textarea" placeholder="Hãy cho chúng tôi biết chúng tôi có thể giúp gì cho bạn..." required></textarea>
+              <textarea
+                id="message"
+                name="body"
+                class="form-textarea"
+                placeholder="Hãy cho chúng tôi biết chúng tôi có thể giúp gì cho bạn..."
+                required></textarea>
             </div>
             <button type="submit" class="btn-primary-ef contact-submit-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg
+              >
               Gửi tin nhắn
             </button>
           </form>
@@ -111,7 +158,7 @@ const metadata = {
 
 <style>
   .page-hero-section {
-    background: linear-gradient(135deg, #0A304C 0%, #084F8A 100%);
+    background: linear-gradient(135deg, #0a304c 0%, #084f8a 100%);
     padding: clamp(5rem, 10vw, 8rem) clamp(1rem, 4vw, 2rem) clamp(3rem, 6vw, 5rem);
     text-align: center;
     position: relative;
@@ -128,7 +175,7 @@ const metadata = {
   }
 
   .page-hero-sub {
-    color: rgba(255,255,255,0.75);
+    color: rgba(255, 255, 255, 0.75);
     font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
     max-width: 500px;
     margin: 0 auto;

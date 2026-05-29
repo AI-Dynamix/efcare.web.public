@@ -4,7 +4,8 @@ export const about = {
   section: {
     eyebrow: 'About EFCARE',
     heading: 'Chúng tôi là ai?',
-    intro: 'EFCARE xây dựng một hệ sinh thái chăm sóc sức khỏe lấy con người làm trung tâm, kết nối công nghệ, bác sĩ và cộng đồng.',
+    intro:
+      'EFCARE xây dựng một hệ sinh thái chăm sóc sức khỏe lấy con người làm trung tâm, kết nối công nghệ, bác sĩ và cộng đồng.',
   },
   mainCards: [
     {
