@@ -38,14 +38,18 @@ const { data = heroData } = Astro.props;
 
     <!-- Right: Image -->
     <div class="hero-image-wrapper reveal" style="transition-delay:0.2s">
-      <img
-        src={data.image.src}
-        alt={data.image.alt}
-        class="hero-img"
-        loading="eager"
-        width="800"
-        height="500"
-      />
+      <picture>
+        <source srcset="/images/hero.webp" type="image/webp" />
+        <img
+          src="/images/hero.webp"
+          alt={data.image.alt}
+          class="hero-img"
+          loading="eager"
+          decoding="async"
+          width="1402"
+          height="1122"
+        />
+      </picture>
       <div class="floating-card">
         <div class="floating-card-label">{data.floatingCard.label}</div>
         <div class="floating-card-tagline">{data.floatingCard.text}</div>
