@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import EfcareHeader from '~/components/efcare/EfcareHeader.astro';
-import KiteBackground from '~/components/efcare/KiteBackground.astro';
+import VantaBackground from '~/components/efcare/VantaBackground.astro';
 import FloatingSideNav from '~/components/efcare/FloatingSideNav.astro';
 import Hero from '~/components/efcare/Hero.astro';
 import About from '~/components/efcare/About.astro';
@@ -21,12 +21,14 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="announcement" />
+
   <Fragment slot="header">
     <EfcareHeader currentPath="/" />
   </Fragment>
 
-  <!-- Kite parallax background -->
-  <KiteBackground />
+  <!-- Vanta network background -->
+  <VantaBackground />
 
   <!-- Floating side navigation -->
   <FloatingSideNav />
@@ -93,13 +95,11 @@ const metadata = {
 </script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-
+  function initPage() {
     var sections   = document.querySelectorAll('section');
     var sideLinks  = document.querySelectorAll('.side-nav-item');
     var revealEls  = document.querySelectorAll('.reveal, .section-reveal');
-    var staggerCards = document.querySelectorAll('.stagger-card, .stagger-cards > *');
-    var kites      = document.querySelectorAll('.kite-css');
+    var staggerCards = document.querySelectorAll('.stagger-card, .stagger-cards');
     var symbols    = document.querySelectorAll('.ngu-tam-bg');
 
     /* ===== SECTION REVEAL ===== */
@@ -117,9 +117,9 @@ const metadata = {
       revealObserver.observe(el);
     });
 
-    staggerCards.forEach(function (card, index) {
-      card.style.transitionDelay = (index % 5) * 0.08 + 's';
-      revealObserver.observe(card);
+    staggerCards.forEach(function (el, index) {
+      el.style.transitionDelay = (index % 5) * 0.08 + 's';
+      revealObserver.observe(el);
     });
 
     /* ===== ACTIVE SECTION → side nav highlight ===== */
@@ -147,23 +147,12 @@ const metadata = {
       sectionObserver.observe(section);
     });
 
-    /* ===== PARALLAX — kites + ngũ tâm symbols ===== */
+    /* ===== PARALLAX — ngũ tâm symbols ===== */
 
     var ticking = false;
 
     function updateParallax() {
       var scrolled = window.pageYOffset;
-
-      kites.forEach(function (kite, index) {
-        var speed   = 0.12 + (index * 0.03);
-        var offsetY = scrolled * speed;
-        var swayX   = Math.sin(scrolled * 0.001 + index) * 28;
-        var rotate  = Math.sin(scrolled * 0.0007 + index) * 10;
-        var floatY  = Math.cos(scrolled * 0.0009 + index) * 18;
-        kite.style.transform =
-          'translate3d(' + swayX + 'px,' + (-offsetY + floatY) + 'px,0)' +
-          ' rotate(' + rotate + 'deg)';
-      });
 
       symbols.forEach(function (symbol, index) {
         var speed   = 0.025 + (index * 0.01);
@@ -216,6 +205,7 @@ const metadata = {
     }
 
     updateParallax();
+  }
 
-  });
+  document.addEventListener('astro:page-load', initPage);
 </script>

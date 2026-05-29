@@ -1,10 +1,7 @@
 ---
 import Layout from '~/layouts/Layout.astro';
-import Header from '~/components/widgets/Header.astro';
-import Footer from '~/components/widgets/Footer.astro';
-import Announcement from '~/components/widgets/Announcement.astro';
-
-import { headerData, footerData } from '~/navigation';
+import EfcareHeader from '~/components/efcare/EfcareHeader.astro';
+import EfcareFooter from '~/components/efcare/EfcareFooter.astro';
 
 import type { MetaData } from '~/types';
 
@@ -13,19 +10,18 @@ export interface Props {
 }
 
 const { metadata } = Astro.props;
+const currentPath = Astro.url?.pathname ?? '/';
 ---
 
 <Layout metadata={metadata}>
-  <slot name="announcement">
-    <Announcement />
-  </slot>
+  <slot name="announcement" />
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <EfcareHeader currentPath={currentPath} />
   </slot>
   <main>
     <slot />
   </main>
   <slot name="footer">
-    <Footer {...footerData} />
+    <EfcareFooter />
   </slot>
 </Layout>
