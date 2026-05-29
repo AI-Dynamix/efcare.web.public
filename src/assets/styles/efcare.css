@@ -1412,6 +1412,11 @@ img {
   padding: 4rem 0 2rem;
   position: relative;
   z-index: 1;
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .footer-grid {
