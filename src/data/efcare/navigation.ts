@@ -4,6 +4,7 @@ export const nav = {
   links: [
     { text: 'Trang chủ', href: '/' },
     { text: 'Công nghệ', href: '/cong-nghe' },
+    { text: 'Bài viết', href: '/bai-viet' },
     { text: 'Liên hệ', href: '/lien-he' },
   ],
   hotline: { text: 'Hotline 0815 515 456', href: 'tel:0815515456' },
