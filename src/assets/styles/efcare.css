@@ -118,6 +118,18 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
 }
 
+.ef-logo {
+  gap: 10px;
+}
+
+.ef-logo-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(1.1);
+}
+
 .ef-logo span {
   font-family: 'DIN Pro', sans-serif;
   font-size: 1.5rem;
