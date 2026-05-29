@@ -130,14 +130,23 @@ img { max-width: 100%; height: auto; display: block; }
   height: 36px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.35)) drop-shadow(0 0 28px rgba(255,255,255,0.18));
+  animation: logoGlow 3.5s ease-in-out infinite;
 }
 
 .ef-logo-text {
   width: 112px;
   height: auto;
   display: block;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.30)) drop-shadow(0 0 24px rgba(255,255,255,0.15));
+  animation: logoGlow 3.5s ease-in-out infinite 0.4s;
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.12)) drop-shadow(0 0 10px rgba(255,255,255,0.06));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.50)) drop-shadow(0 0 28px rgba(255,255,255,0.22));
+  }
 }
 
 /* Desktop nav */
