@@ -7,6 +7,14 @@ interface Props {
 
 const { data = partnersData } = Astro.props;
 
+const cardColors = [
+  'linear-gradient(145deg, #1e3560 0%, #2a4a80 100%)',
+  'linear-gradient(145deg, #1e5ca0 0%, #2468b8 100%)',
+  'linear-gradient(145deg, #1a7060 0%, #1e8070 100%)',
+  'linear-gradient(145deg, #784a00 0%, #9a5e00 100%)',
+  'linear-gradient(145deg, #5a2890 0%, #6e35b0 100%)',
+];
+
 const svgPaths: Record<string, string> = {
   government: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
   hospital: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
@@ -26,7 +34,7 @@ const svgPaths: Record<string, string> = {
     <div class="ptn-grid stagger-cards">
       {
         data.cards.map((card, i) => (
-          <div class="ptn-card">
+          <div class="ptn-card" style={`background:${cardColors[i % cardColors.length]};border-color:rgba(255,255,255,0.12);`}>
             <div class="ptn-icon-hex">
               <svg
                 viewBox="0 0 24 24"
