@@ -21,37 +21,42 @@
 @font-face { font-family: 'DIN Pro'; src: url('/fonts/GMV_DIN_Pro-Black_Italic.ttf') format('truetype'); font-weight: 900; font-style: italic; font-display: swap; }
 
 :root {
-  --ef-navy: #084F8A;
-  --ef-navy-deep: #053d6e;
-  --ef-navy-accent: #0a63a8;
+  --ef-navy: #0A3C4C;
+  --ef-navy-deep: #0B3A5E;
+  --ef-navy-accent: #084F8A;
   --ef-gold: #C4A962;
   --ef-gold-soft: #D8C27A;
+  --ef-silver: #B0BEC8;
+  --ef-silver-soft: #C8D4DC;
   --ef-ivory: #F8F6F0;
   --ef-white: #FFFFFF;
   --ef-text: #1F2E3D;
   --ef-text-muted: #5C6670;
   --ef-border: rgba(196,169,98,0.15);
-  --ef-shadow: 0 14px 34px rgba(10,48,76,0.07);
-  --ef-shadow-hover: 0 22px 46px rgba(10,48,76,0.12);
+  --ef-shadow: 0 14px 34px rgba(10,60,76,0.07);
+  --ef-shadow-hover: 0 22px 46px rgba(10,60,76,0.12);
   --ef-radius-xl: 18px;
   --ef-radius-lg: 16px;
   --ef-radius-md: 12px;
   --ef-transition: all 0.35s ease;
 
   /* Legacy aliases (keep for backward compatibility) */
-  --navy: #084F8A;
-  --navy-dark: #053d6e;
-  --navy-accent: #0a63a8;
+  --navy: #0A3C4C;
+  --navy-dark: #051e2e;
+  --navy-accent: #084F8A;
   --gold: #C4A962;
   --gold-soft: #D8C27A;
   --gold-light: #e8d89a;
+  --silver: #B0BEC8;
+  --silver-soft: #C8D4DC;
   --ivory: #F8F6F0;
   --ivory-dark: #eeeae0;
   --white: #ffffff;
   --text-light: rgba(255,255,255,0.85);
   --text-muted-light: rgba(255,255,255,0.6);
   --shadow-gold: 0 4px 20px rgba(196,169,98,0.25);
-  --shadow-navy: 0 4px 20px rgba(10,48,76,0.3);
+  --shadow-silver: 0 4px 20px rgba(176,190,200,0.25);
+  --shadow-navy: 0 4px 20px rgba(10,60,76,0.3);
   --glass-bg: rgba(255,255,255,0.08);
   --glass-border: rgba(196,169,98,0.3);
   --radius-card: 1rem;
@@ -99,9 +104,9 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 900;
   background: radial-gradient(
     ellipse 55% 100% at 7% 50%,
-    #1470b8 0%,
-    #084F8A 45%,
-    #032e54 100%
+    #084F8A 0%,
+    #0B3A5E 45%,
+    #051e2e 100%
   );
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(196,169,98,0.15);
@@ -1239,9 +1244,9 @@ img { max-width: 100%; height: auto; display: block; }
 .ef-footer {
   background: radial-gradient(
     ellipse 55% 100% at 7% 50%,
-    #084F8A 0%,
-    #053d6e 45%,
-    #021e3a 100%
+    #0B3A5E 0%,
+    #0A3C4C 45%,
+    #03111a 100%
   );
   color: var(--text-light);
   padding: 4rem 0 2rem;
