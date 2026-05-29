@@ -130,14 +130,14 @@ img { max-width: 100%; height: auto; display: block; }
   height: 36px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: none;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.7)) drop-shadow(0 0 14px rgba(255,255,255,0.4));
 }
 
 .ef-logo-text {
   width: 112px;
   height: auto;
   display: block;
-  filter: none;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.6)) drop-shadow(0 0 12px rgba(255,255,255,0.3));
 }
 
 /* Desktop nav */
