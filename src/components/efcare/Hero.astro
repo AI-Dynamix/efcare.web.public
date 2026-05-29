@@ -1,59 +1,244 @@
 ---
-import { hero as heroData } from '~/data/efcare/hero';
-
-interface Props {
-  data?: typeof heroData;
-}
-
-const { data = heroData } = Astro.props;
+import { heroSlides } from '~/data/efcare/hero';
 ---
 
 <section id="hero" class="ef-hero">
-  <div class="hero-grid">
-    <!-- Left: Content -->
-    <div class="hero-content reveal">
-      <div class="hero-eyebrow">{data.eyebrow}</div>
-      <h1 class="hero-h1">
-        {data.heading}<br />
-        <span class="accent">{data.headingAccent}</span>
-      </h1>
-      <p class="hero-p">{data.description}</p>
+  <div class="hero-slider" id="heroSlider">
 
-      <div class="feature-row">
-        {data.features.map((f) => (
-          <span class="feature-tag">{f}</span>
-        ))}
-      </div>
+    {heroSlides.map((slide, i) => (
+      <div class={`hero-slide${i === 0 ? ' active' : ''}`} data-index={i}>
+        <div class="hero-grid">
 
-      <div class="btn-group">
-        <a href={data.ctaPrimary.href} class="btn-primary-ef">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          {data.ctaPrimary.text}
-        </a>
-        <a href={data.ctaSecondary.href} class="btn-outline-ef">
-          {data.ctaSecondary.text}
-        </a>
+          <!-- Left: Content -->
+          <div class="hero-content reveal">
+            <div class="hero-eyebrow">{slide.eyebrow}</div>
+            <h1 class="hero-h1">
+              {slide.heading}<br />
+              <span class="accent">{slide.headingAccent}</span>
+            </h1>
+            <p class="hero-p">{slide.description}</p>
+
+            <div class="feature-row">
+              {slide.features.map((f) => (
+                <span class="feature-tag">{f}</span>
+              ))}
+            </div>
+
+            <div class="btn-group">
+              <a href={slide.ctaPrimary.href} class="btn-primary-ef">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                {slide.ctaPrimary.text}
+              </a>
+              <a href={slide.ctaSecondary.href} class="btn-outline-ef">
+                {slide.ctaSecondary.text}
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Image -->
+          <div class="hero-image-wrapper">
+            <picture>
+              <source srcset={slide.image.src} type="image/webp" />
+              <img
+                src={slide.image.src}
+                alt={slide.image.alt}
+                class="hero-img"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                width={slide.image.width}
+                height={slide.image.height}
+              />
+            </picture>
+          </div>
+
+        </div>
       </div>
+    ))}
+
+    <!-- Dot indicators -->
+    <div class="hero-dots">
+      {heroSlides.map((_, i) => (
+        <button class={`hero-dot${i === 0 ? ' active' : ''}`} data-dot={i} aria-label={`Slide ${i + 1}`}></button>
+      ))}
     </div>
 
-    <!-- Right: Image -->
-    <div class="hero-image-wrapper reveal" style="transition-delay:0.2s">
-      <picture>
-        <source srcset="/images/hero.webp" type="image/webp" />
-        <img
-          src="/images/hero.webp"
-          alt={data.image.alt}
-          class="hero-img"
-          loading="eager"
-          decoding="async"
-          width="1402"
-          height="1122"
-        />
-      </picture>
-      <div class="floating-card">
-        <div class="floating-card-label">{data.floatingCard.label}</div>
-        <div class="floating-card-tagline">{data.floatingCard.text}</div>
-      </div>
-    </div>
+    <!-- Prev / Next arrows -->
+    <button class="hero-arrow hero-prev" id="heroPrev" aria-label="Slide trước">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="hero-arrow hero-next" id="heroNext" aria-label="Slide tiếp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
   </div>
 </section>
+
+<style>
+.ef-hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at top right, rgba(196,169,98,.18), transparent 30%),
+              radial-gradient(circle at bottom left, rgba(196,169,98,.08), transparent 26%),
+              linear-gradient(to bottom, #fdfbf6, #f4ebdb);
+  border-bottom: 1px solid rgba(196,169,98,0.14);
+}
+
+.hero-slider {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Each slide stacked, only .active visible */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  align-items: center;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+/* Reuse existing hero-grid layout from CSS */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+  width: min(1280px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: clamp(100px, 12vw, 140px) clamp(1rem, 4vw, 2rem);
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+  box-shadow: 0 40px 80px rgba(10,48,76,.18);
+  animation: heroFloat 8s ease-in-out infinite;
+  display: block;
+}
+
+/* Dots */
+.hero-dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(196,169,98,0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.hero-dot.active {
+  background: var(--gold, #C4A962);
+  border-color: var(--gold, #C4A962);
+  width: 28px;
+  border-radius: 5px;
+}
+
+/* Arrows */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(196,169,98,0.3);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(10,48,76,0.12);
+}
+
+.hero-arrow svg { width: 20px; height: 20px; stroke: var(--navy, #0A304C); }
+.hero-prev { left: 1.5rem; }
+.hero-next { right: 1.5rem; }
+
+.hero-arrow:hover {
+  background: var(--navy, #0A304C);
+  border-color: var(--gold, #C4A962);
+}
+.hero-arrow:hover svg { stroke: var(--gold, #C4A962); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero-arrow { display: none; }
+  .hero-dots { bottom: 1rem; }
+}
+</style>
+
+<script>
+  (function () {
+    var slider   = document.getElementById('heroSlider');
+    if (!slider) return;
+
+    var slides   = slider.querySelectorAll('.hero-slide');
+    var dots     = slider.querySelectorAll('.hero-dot');
+    var prevBtn  = document.getElementById('heroPrev');
+    var nextBtn  = document.getElementById('heroNext');
+    var total    = slides.length;
+    var current  = 0;
+    var timer;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + total) % total;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(next, 5500);
+    }
+
+    nextBtn && nextBtn.addEventListener('click', function () { next(); startAuto(); });
+    prevBtn && prevBtn.addEventListener('click', function () { prev(); startAuto(); });
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { goTo(i); startAuto(); });
+    });
+
+    // Touch swipe
+    var startX = 0;
+    slider.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    slider.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); startAuto(); }
+    }, { passive: true });
+
+    startAuto();
+  })();
+</script>
