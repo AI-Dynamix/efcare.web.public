@@ -1,5 +1,6 @@
 ---
 import { services as servicesData } from '~/data/efcare/services';
+import AmbientRibbons from '~/components/efcare/AmbientRibbons.astro';
 
 interface Props {
   data?: typeof servicesData;
@@ -16,6 +17,7 @@ const icons: Record<string, string> = {
 ---
 
 <section id="services" class="ef-section svc-section">
+  <AmbientRibbons variant="deep" />
   <div class="max-container">
     <div class="section-header reveal svc-header">
       <h2 class="section-title" style="color:#0A3C4C;">{data.section.heading}</h2>

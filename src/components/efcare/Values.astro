@@ -1,5 +1,6 @@
 ---
 import { values as valuesData } from '~/data/efcare/values';
+import AmbientRibbons from '~/components/efcare/AmbientRibbons.astro';
 
 interface Props {
   data?: typeof valuesData;
@@ -9,6 +10,7 @@ const { data = valuesData } = Astro.props;
 ---
 
 <section id="values" class="ef-section ef-section-values">
+  <AmbientRibbons variant="deep" />
   <div class="max-container">
     <div class="section-header reveal">
       <span class="section-tag">{data.section.eyebrow}</span>

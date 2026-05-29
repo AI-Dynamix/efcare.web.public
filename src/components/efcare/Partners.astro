@@ -1,5 +1,6 @@
 ---
 import { partners as partnersData } from '~/data/efcare/partners';
+import AmbientRibbons from '~/components/efcare/AmbientRibbons.astro';
 
 interface Props {
   data?: typeof partnersData;
@@ -25,6 +26,7 @@ const svgPaths: Record<string, string> = {
 ---
 
 <section id="partners" class="ef-section ptn-section">
+  <AmbientRibbons variant="deep" />
   <div class="max-container">
     <div class="section-header reveal ptn-header">
       <h2 class="section-title" style="color:#fff;">{data.section.heading}</h2>

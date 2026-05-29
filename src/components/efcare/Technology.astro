@@ -1,5 +1,6 @@
 ---
 import { technology as techData } from '~/data/efcare/technology';
+import AmbientRibbons from '~/components/efcare/AmbientRibbons.astro';
 
 interface Props {
   data?: typeof techData;
@@ -16,6 +17,7 @@ const icons: Record<string, string> = {
 ---
 
 <section id="technology" class="ef-section tech-section">
+  <AmbientRibbons variant="deep" />
   <div class="max-container">
     <div class="section-header reveal tech-header">
       <h2 class="section-title" style="color:#fff;">{data.section.heading}</h2>
