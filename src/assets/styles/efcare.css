@@ -305,12 +305,13 @@ img {
 .ef-nav-hotline {
   background: linear-gradient(135deg, var(--ef-gold) 0%, var(--ef-gold-soft) 100%);
   color: var(--ef-navy);
-  font-weight: 400;
+  font-weight: 900;
   font-family: 'DIN Pro', sans-serif;
   padding: 0.475rem 1.19rem;
   border-radius: 50px;
   text-decoration: none;
   font-size: 0.875rem;
+  color: #000000;
   min-height: 42px;
   display: inline-flex;
   align-items: center;
