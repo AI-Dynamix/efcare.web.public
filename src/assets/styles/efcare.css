@@ -130,14 +130,14 @@ img { max-width: 100%; height: auto; display: block; }
   height: 36px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.7)) drop-shadow(0 0 14px rgba(255,255,255,0.4));
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.35)) drop-shadow(0 0 28px rgba(255,255,255,0.18));
 }
 
 .ef-logo-text {
   width: 112px;
   height: auto;
   display: block;
-  filter: drop-shadow(0 0 5px rgba(255,255,255,0.6)) drop-shadow(0 0 12px rgba(255,255,255,0.3));
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.30)) drop-shadow(0 0 24px rgba(255,255,255,0.15));
 }
 
 /* Desktop nav */
