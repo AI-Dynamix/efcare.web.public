@@ -61,6 +61,10 @@
     >
     <span class="tooltip">App EFCARE</span>
   </a>
+  <a href="#services" class="side-nav-item" data-section="services" aria-label="Dịch vụ">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    <span class="tooltip">Dịch vụ</span>
+  </a>
   <a href="#values" class="side-nav-item" data-section="values" aria-label="Triết lý">
     <svg
       viewBox="0 0 24 24"
@@ -121,11 +125,11 @@
 <script>
   // Highlight active section in floating side nav
   (function () {
-    const sections = ['hero', 'about', 'technology', 'app', 'values', 'partners'];
+    const sections = ['hero', 'about', 'technology', 'app', 'services', 'values', 'partners', 'contact'];
     const navItems = document.querySelectorAll<HTMLElement>('.side-nav-item[data-section]');
 
     function getActiveSection() {
-      const scrollPos = window.scrollY + window.innerHeight / 3;
+      const scrollPos = window.scrollY + window.innerHeight / 2;
       let active = 'hero';
       for (const id of sections) {
         const el = document.getElementById(id);
