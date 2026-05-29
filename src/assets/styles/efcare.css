@@ -208,7 +208,7 @@ img {
   left: 0;
   right: 0;
   z-index: 900;
-  background: radial-gradient(ellipse 55% 100% at 7% 50%, #084f8a 0%, #0b3a5e 45%, #051e2e 100%);
+  background: radial-gradient(ellipse 55% 100% at 7% 50%, #109eff 0%, #0b3a5e 45%, #051e2e 100%);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(196, 169, 98, 0.15);
 }
