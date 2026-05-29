@@ -124,6 +124,17 @@ const metadata = {
 
     revealEls.forEach((el) => revealObs.observe(el));
     staggerEls.forEach((el) => staggerObs.observe(el));
+
+    // Section scale effect (mockup: section:not(.in-view) scale(.985))
+    const sectionObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('in-view', entry.isIntersecting);
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll<HTMLElement>('.ef-section').forEach((s) => sectionObs.observe(s));
   })();
 
   // Back to top button
