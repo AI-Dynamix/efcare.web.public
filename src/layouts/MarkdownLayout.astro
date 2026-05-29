@@ -1,5 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import EfcareHeader from '~/components/efcare/EfcareHeader.astro';
+import EfcareFooter from '~/components/efcare/EfcareFooter.astro';
 
 import type { MetaData } from '~/types';
 
@@ -14,9 +16,15 @@ const { frontmatter } = Astro.props;
 const metadata: MetaData = {
   title: frontmatter?.title,
 };
+
+const currentPath = Astro.url?.pathname ?? '/';
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="header">
+    <EfcareHeader currentPath={currentPath} />
+  </Fragment>
+
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
     <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">{frontmatter.title}</h1>
     <div
@@ -25,4 +33,10 @@ const metadata: MetaData = {
       <slot />
     </div>
   </section>
+
+  <EfcareFooter />
+
+  <Fragment slot="footer">
+    <!-- Handled by EfcareFooter -->
+  </Fragment>
 </Layout>
