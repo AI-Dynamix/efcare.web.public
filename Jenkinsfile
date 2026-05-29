@@ -38,7 +38,7 @@ pipeline {
         // ── Portainer ────────────────────────────────────────────────────
         PORTAINER_URL         = 'https://portainer-dev.aidx.vn'
         PORTAINER_ENV_ID      = "${env.PORTAINER_EFCARE_ENV_ID ?: env.PORTAINER_WMS_ENV_ID ?: '4'}"
-        PORTAINER_STACK_NAME  = 'efcare-dev'
+        PORTAINER_STACK_NAME  = 'efcare-public'
         PORTAINER_CREDENTIALS_ID = 'portainer-mqtt-credentials'
 
         // ── Telegram ─────────────────────────────────────────────────────
