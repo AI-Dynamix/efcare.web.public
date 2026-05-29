@@ -15,12 +15,12 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section id="services" class="ef-section ef-section-dark">
+<section id="services" class="ef-section ef-section-services">
   <div class="max-container">
     <div class="section-header reveal">
       <span class="section-tag">{data.section.eyebrow}</span>
-      <h2 class="section-title dark">{data.section.heading}</h2>
-      <p class="section-subtitle" style="color:rgba(255,255,255,0.7);">{data.section.intro}</p>
+      <h2 class="section-title">{data.section.heading}</h2>
+      <p class="section-subtitle">{data.section.intro}</p>
     </div>
 
     <div class="services-grid stagger-cards">
@@ -33,7 +33,7 @@ const icons: Record<string, string> = {
           <p class="service-card-body">{card.body}</p>
           <ul class="card-list">
             {card.list.map((item) => (
-              <li style="color:rgba(255,255,255,0.7);">{item}</li>
+              <li>{item}</li>
             ))}
           </ul>
           <a href={card.cta.href} class="card-link">{card.cta.text}</a>
