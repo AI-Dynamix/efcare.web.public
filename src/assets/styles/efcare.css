@@ -137,15 +137,21 @@ img { max-width: 100%; height: auto; display: block; }
   width: 112px;
   height: auto;
   display: block;
-  animation: logoGlow 3.5s ease-in-out infinite 0.4s;
+  animation: logoGlow 3.5s ease-in-out infinite;
 }
 
 @keyframes logoGlow {
   0%, 100% {
-    filter: drop-shadow(0 0 4px rgba(255,255,255,0.12)) drop-shadow(0 0 10px rgba(255,255,255,0.06));
+    filter:
+      drop-shadow(0 0 4px rgba(255,255,255,0.10))
+      drop-shadow(0 0 12px rgba(255,255,255,0.06))
+      drop-shadow(0 0 22px rgba(255,255,255,0.03));
   }
   50% {
-    filter: drop-shadow(0 0 12px rgba(255,255,255,0.50)) drop-shadow(0 0 28px rgba(255,255,255,0.22));
+    filter:
+      drop-shadow(0 0 6px rgba(255,255,255,0.55))
+      drop-shadow(0 0 16px rgba(255,255,255,0.28))
+      drop-shadow(0 0 32px rgba(255,255,255,0.12));
   }
 }
 
