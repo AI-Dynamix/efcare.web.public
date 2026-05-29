@@ -64,11 +64,17 @@ const statColors = [
     background: linear-gradient(180deg, #ffffff 0%, #f6f8f6 100%);
     border-top: 1px solid rgba(10, 48, 76, 0.06);
     border-bottom: 1px solid rgba(10, 48, 76, 0.06);
-    padding: clamp(44px, 5vh, 60px) 0;
+    padding: clamp(56px, 7vh, 80px) 0 clamp(44px, 5vh, 60px);
   }
 
   .about-section .section-header {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-section .section-title {
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
   }
 
   /* 2-column layout */
