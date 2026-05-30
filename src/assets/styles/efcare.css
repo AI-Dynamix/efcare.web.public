@@ -172,6 +172,7 @@ body {
   font-size: clamp(0.875rem, 1.2vw, 0.98rem);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1,
@@ -1594,47 +1595,6 @@ img {
   height: 1rem;
 }
 
-/* ===================================================
-   BACK TO TOP BUTTON
-   =================================================== */
-
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  background: var(--gold);
-  color: var(--navy);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1100;
-  opacity: 0;
-  transform: translateY(1rem);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-  box-shadow: 0 4px 15px rgba(196, 169, 98, 0.4);
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.back-to-top:hover {
-  background: var(--gold-soft);
-  transform: translateY(-2px);
-}
-
-.back-to-top svg {
-  width: 1.25rem;
-  height: 1.25rem;
-}
 
 /* ===================================================
    SECTION REVEAL ANIMATIONS
@@ -2067,6 +2027,16 @@ img {
    =================================================== */
 
 @media (max-width: 768px) {
+  /* Disable scroll snap on mobile */
+  html.snap-page {
+    scroll-snap-type: none;
+  }
+  .ef-section,
+  .ef-hero,
+  .ef-footer {
+    scroll-snap-align: none;
+  }
+
   /* Header */
   .ef-header-inner {
     height: 56px;
@@ -2099,6 +2069,7 @@ img {
   .floating-card {
     bottom: -1rem;
     left: 0.5rem;
+    max-width: calc(100% - 1rem);
   }
 
   /* About */
@@ -2107,9 +2078,13 @@ img {
     grid-template-columns: 1fr;
   }
 
-  /* Values */
+  /* Values — reduce min-height on mobile */
   .values-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .value-card {
+    min-height: 220px;
+    padding: 1.75rem 1.25rem;
   }
 
   /* Partners */
@@ -2135,6 +2110,15 @@ img {
   /* Section padding */
   .ef-section {
     padding: 60px 0;
+    min-height: auto;
+  }
+
+  /* Cards fit screen */
+  .glass-card,
+  .ivory-card,
+  .ef-card {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -2165,6 +2149,10 @@ img {
   .values-grid {
     grid-template-columns: 1fr;
   }
+  .value-card {
+    min-height: 180px;
+    padding: 1.5rem 1rem;
+  }
 
   .partners-grid {
     grid-template-columns: 1fr;
@@ -2187,6 +2175,26 @@ img {
 
   .floating-card {
     display: none;
+  }
+
+  /* Ensure all grids collapse to 1 col */
+  .services-grid,
+  .services-grid-4,
+  .about-grid,
+  .about-stats-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Prevent any card from overflowing viewport */
+  .glass-card,
+  .ivory-card,
+  .ef-card,
+  .tech-card,
+  .value-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 

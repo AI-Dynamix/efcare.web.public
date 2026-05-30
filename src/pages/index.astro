@@ -41,20 +41,6 @@ const metadata = {
   <Contact />
   <EfcareFooter />
 
-  <!-- Back to top button -->
-  <button class="back-to-top" id="backToTop" aria-label="Lên đầu trang">
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
   <Fragment slot="footer">
     <!-- Footer handled by EfcareFooter component above -->
   </Fragment>
@@ -173,22 +159,11 @@ const metadata = {
       ticking = false;
     }
 
-    /* ===== BACK TO TOP ===== */
-
-    const backToTop = document.getElementById('backToTop');
-
     window.addEventListener(
       'scroll',
       function () {
         if (!ticking) {
           window.requestAnimationFrame(function () {
-            if (backToTop) {
-              if (window.scrollY > 700) {
-                backToTop.classList.add('visible');
-              } else {
-                backToTop.classList.remove('visible');
-              }
-            }
             updateParallax();
           });
           ticking = true;
@@ -210,12 +185,6 @@ const metadata = {
         }
       });
     });
-
-    if (backToTop) {
-      backToTop.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
 
     updateParallax();
   }
