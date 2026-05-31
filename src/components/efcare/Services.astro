@@ -73,9 +73,15 @@ const icons: Record<string, string> = {
   }
 
   .svc-header .section-subtitle {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  @media (max-width: 768px) {
+    .svc-header .section-subtitle {
+      overflow: visible;
+      text-overflow: initial;
+    }
   }
 
   .svc-grid {
@@ -212,7 +218,12 @@ const icons: Record<string, string> = {
     gap: 0.6rem;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .svc-grid { grid-template-columns: 1fr; }
+    .svc-list { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .svc-list { grid-template-columns: 1fr; }
   }
 </style>
