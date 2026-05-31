@@ -1,7 +1,7 @@
 /* ===================================================
    EFCARE Design System — Full Responsive
    Colors: Navy #0A304C, Gold #C4A962, Ivory #F8F6F0
-   Fonts: Barlow (Google Fonts, full Vietnamese support)
+   Fonts: Jost (Google Fonts, DIN Pro clone, Vietnamese support)
    =================================================== */
 
 :root {
@@ -67,7 +67,7 @@ html.snap-page {
 }
 
 body {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   background-color: #f7f7f3;
   color: var(--ef-navy);
   font-size: clamp(0.875rem, 1.2vw, 0.98rem);
@@ -82,7 +82,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -211,7 +211,7 @@ img {
   background: linear-gradient(135deg, var(--ef-gold) 0%, var(--ef-gold-soft) 100%);
   color: var(--ef-navy);
   font-weight: 900;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   padding: 0.475rem 1.19rem;
   border-radius: 50px;
   text-decoration: none;
@@ -321,7 +321,7 @@ img {
   background: linear-gradient(135deg, var(--ef-gold) 0%, var(--ef-gold-soft) 100%);
   color: var(--ef-navy);
   font-weight: 700;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
   text-decoration: none;
@@ -467,7 +467,7 @@ img {
   background: var(--navy);
   color: var(--gold);
   font-size: 0.75rem;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 600;
   padding: 0.25rem 0.625rem;
   border-radius: 0.375rem;
@@ -777,7 +777,7 @@ img {
   color: var(--gold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   margin-bottom: 1rem;
 }
 
@@ -816,7 +816,7 @@ img {
   border-radius: var(--radius-pill);
   font-size: 0.8125rem;
   font-weight: 600;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
 }
 
 .btn-group {
@@ -836,7 +836,7 @@ img {
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
   color: var(--navy);
   font-weight: 700;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-pill);
   text-decoration: none;
@@ -861,7 +861,7 @@ img {
   background: transparent;
   color: var(--white);
   font-weight: 600;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-pill);
   border: 2px solid rgba(255, 255, 255, 0.4);
@@ -909,7 +909,7 @@ img {
 .floating-card-label {
   font-size: 0.75rem;
   font-weight: 600;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   color: rgba(196, 169, 98, 0.7);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -919,7 +919,7 @@ img {
 .floating-card-tagline {
   font-size: 0.875rem;
   font-weight: 700;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   color: var(--gold);
 }
 
@@ -944,7 +944,7 @@ img {
 }
 
 .about-card-title {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 700;
   color: var(--navy);
@@ -962,7 +962,7 @@ img {
 }
 
 .about-stat-title {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 0.5rem;
@@ -996,7 +996,7 @@ img {
 
 .service-card-title,
 .tech-card-title {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 700;
   color: var(--navy);
   font-size: clamp(1rem, 2vw, 1.125rem);
@@ -1018,7 +1018,7 @@ img {
   color: var(--gold);
   font-size: 0.875rem;
   font-weight: 600;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   text-decoration: none;
   margin-top: 1rem;
   transition: gap 0.2s ease;
@@ -1085,7 +1085,7 @@ img {
   right: -0.75rem;
   font-size: 7.5rem;
   opacity: 0.08;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 900;
   line-height: 1;
   pointer-events: none;
@@ -1095,7 +1095,7 @@ img {
 .value-card-number {
   font-size: 0.8rem;
   font-weight: 600;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   letter-spacing: 0.1em;
   color: var(--navy-accent);
   opacity: 0.74;
@@ -1105,7 +1105,7 @@ img {
 .value-card-title {
   font-size: 1.45rem;
   font-weight: 700;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   margin-bottom: 1rem;
   color: var(--navy);
 }
@@ -1141,7 +1141,7 @@ img {
 }
 
 .partner-card-title {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 700;
   color: var(--navy);
   font-size: 0.9375rem;
@@ -1177,7 +1177,7 @@ img {
 }
 
 .contact-info-label {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 700;
   color: var(--navy);
   font-size: 0.9375rem;
@@ -1214,7 +1214,7 @@ img {
 }
 
 .contact-form-title {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-weight: 700;
   color: var(--navy);
   font-size: clamp(1rem, 2vw, 1.125rem);
@@ -1237,7 +1237,7 @@ img {
   font-weight: 600;
   color: var(--gold-soft);
   margin-bottom: 0.5rem;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
 }
 
 .form-input,
@@ -1249,7 +1249,7 @@ img {
   padding: 0.75rem 1rem;
   color: var(--navy);
   font-size: 0.9375rem;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   transition: border-color 0.2s ease;
   outline: none;
   min-height: 44px;
@@ -1286,7 +1286,7 @@ img {
   border-radius: var(--radius-pill);
   font-size: 0.8125rem;
   font-weight: 600;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   margin: 0.25rem;
 }
 
@@ -1372,7 +1372,7 @@ img {
   color: var(--gold-soft);
   font-size: 0.875rem;
   font-weight: 600;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   margin-bottom: 0.5rem;
 }
 
@@ -1392,7 +1392,7 @@ img {
 .footer-col h4 {
   font-size: 0.875rem;
   font-weight: 700;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Jost', sans-serif;
   color: var(--gold);
   text-transform: none;
   letter-spacing: 0.02em;
