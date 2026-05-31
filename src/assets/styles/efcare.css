@@ -2099,8 +2099,35 @@ img {
   }
 
   /* Footer */
+  .ef-footer {
+    padding: 2.5rem 0 1.5rem;
+  }
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-col,
+  .footer-brand {
+    min-width: 0;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .footer-copy {
+    font-size: 0.75rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+  }
+  .footer-bottom-links {
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
   }
 
   /* Side nav — hide on mobile */
@@ -2161,17 +2188,11 @@ img {
 
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .footer-bottom-links {
-    flex-wrap: wrap;
-    gap: 1rem;
+  .footer-brand {
+    grid-column: 1;
   }
 
   .floating-card {
