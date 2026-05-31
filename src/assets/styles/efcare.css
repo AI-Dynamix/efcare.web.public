@@ -1494,8 +1494,8 @@ img {
   font-weight: 700;
   font-family: 'DIN Pro', sans-serif;
   color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  text-transform: none;
+  letter-spacing: 0.02em;
   margin-bottom: 1rem;
 }
 
@@ -2109,6 +2109,9 @@ img {
   }
   .footer-brand {
     grid-column: 1 / -1;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(196, 169, 98, 0.15);
+    margin-bottom: 0.25rem;
   }
   .footer-col,
   .footer-brand {
