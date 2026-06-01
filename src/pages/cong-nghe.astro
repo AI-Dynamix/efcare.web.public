@@ -2,12 +2,66 @@
 import Layout from '~/layouts/PageLayout.astro';
 import EfcareHeader from '~/components/efcare/EfcareHeader.astro';
 import EfcareFooter from '~/components/efcare/EfcareFooter.astro';
+import AmbientRibbons from '~/components/efcare/AmbientRibbons.astro';
 
 const metadata = {
   title: 'Công nghệ EFCARE — Hạ tầng y tế số tiên tiến',
   description:
     'Khám phá hạ tầng công nghệ EFCARE: Healthcare AI Cloud, Medical Data Platform, IoT Healthcare và Telemedicine API — nền tảng y tế số cho Việt Nam.',
 };
+
+const pillars = [
+  {
+    icon: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+    title: 'Healthcare AI Cloud',
+    body: 'Hạ tầng điện toán đám mây chuyên biệt cho y tế, tích hợp trí tuệ nhân tạo để phân tích dữ liệu sức khỏe theo thời gian thực. Tuân thủ tiêu chuẩn HIPAA và ISO 27001.',
+    features: [
+      'Lưu trữ phân tán, bảo mật cao',
+      'AI phân tích hình ảnh y tế (X-quang, MRI, CT)',
+      'NLP cho hồ sơ bệnh án',
+      'Predictive analytics dự báo nguy cơ bệnh',
+      'API tích hợp với HIS/EMR bệnh viện',
+    ],
+  },
+  {
+    icon: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>',
+    title: 'Medical Data Platform',
+    body: 'Nền tảng quản lý dữ liệu y tế thống nhất, cho phép chia sẻ thông tin an toàn giữa bệnh nhân, bác sĩ và cơ sở y tế. Hỗ trợ chuẩn HL7 FHIR quốc tế.',
+    features: [
+      'Hồ sơ bệnh án điện tử toàn diện',
+      'Chuẩn HL7 FHIR R4 quốc tế',
+      'Chia sẻ dữ liệu có kiểm soát',
+      'Phân tích dữ liệu dân số y tế',
+      'Tuân thủ Nghị định 13/2023/NĐ-CP',
+    ],
+  },
+  {
+    icon: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',
+    title: 'IoT Healthcare',
+    body: 'Hệ thống kết nối thiết bị y tế thông minh — từ đồng hồ đo nhịp tim, máy đo huyết áp đến thiết bị theo dõi đường huyết — gửi dữ liệu tức thì về nền tảng.',
+    features: [
+      'Kết nối 500+ loại thiết bị y tế',
+      'Truyền dữ liệu real-time qua Bluetooth/WiFi',
+      'Cảnh báo bất thường tức thì',
+      'Tích hợp wearable devices',
+      'Giao thức bảo mật MQTT/TLS',
+    ],
+  },
+  {
+    icon: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>',
+    title: 'Telemedicine API',
+    body: 'Bộ API telemedicine cho phép bệnh viện, phòng khám và ứng dụng y tế tích hợp khả năng tư vấn trực tuyến, video call và kê đơn điện tử vào hệ thống hiện có.',
+    features: [
+      'Video consultation API HD',
+      'E-prescription chuẩn Bộ Y tế',
+      'Đặt lịch & quản lý hàng đợi',
+      'Thanh toán tích hợp VNPay/MoMo',
+      'SDK cho iOS, Android, Web',
+    ],
+  },
+];
+
+const credentials = ['ISO 27001', 'HIPAA Compliant', 'HL7 FHIR R4', 'MQTT/TLS', 'Nghị định 13/2023'];
 ---
 
 <Layout metadata={metadata}>
@@ -15,244 +69,375 @@ const metadata = {
     <EfcareHeader currentPath="/cong-nghe" />
   </Fragment>
 
-  <!-- Page Hero -->
-  <section class="page-hero-section">
-    <span class="section-tag">Công nghệ</span>
-    <h1 class="page-hero-h1">
-      Hạ tầng công nghệ<br /><span style="color:#C4A962;">chăm sóc sức khỏe</span>
-    </h1>
-    <p class="page-hero-sub">
-      EFCARE xây dựng nền tảng công nghệ y tế tiên tiến nhất Việt Nam, kết hợp AI, IoT và Cloud để mang lại dịch vụ chăm
-      sóc sức khỏe toàn diện.
-    </p>
-  </section>
-
-  <!-- Tech Cards Section -->
-  <section class="ef-section cong-nghe-dark-section">
-    <div class="max-container">
-      <div class="section-header reveal">
-        <span class="section-tag">Hệ thống</span>
-        <h2 class="section-title">Bốn trụ cột công nghệ</h2>
-        <p class="section-subtitle">Mỗi trụ cột đóng vai trò quan trọng trong hệ sinh thái y tế số của EFCARE.</p>
+  <!-- Hero -->
+  <section class="cn-hero">
+    <AmbientRibbons variant="deep" />
+    <div class="cn-hero-inner max-container">
+      <div class="hero-eyebrow">EFCARE Technology</div>
+      <h1 class="cn-hero-h1">
+        Hạ tầng công nghệ<br /><span class="cn-hero-accent">chăm sóc sức khỏe</span>
+      </h1>
+      <p class="cn-hero-sub">
+        EFCARE xây dựng nền tảng công nghệ y tế tiên tiến nhất Việt Nam, kết hợp AI, IoT và Cloud để mang lại dịch vụ
+        chăm sóc sức khỏe toàn diện.
+      </p>
+      <div class="cn-credentials">
+        {credentials.map((c) => <span class="cn-cred-chip">{c}</span>)}
       </div>
-
-      <div class="services-grid stagger-cards" style="gap:2rem;">
-        <!-- Healthcare AI Cloud -->
-        <div class="ivory-card">
-          <div class="tech-card-header" style="background:linear-gradient(135deg,#0A304C,#084F8A);">
-            <div class="card-icon" style="margin-bottom:0.75rem;">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg
-              >
-            </div>
-            <h3 class="tech-page-card-title">Healthcare AI Cloud</h3>
-          </div>
-          <p class="tech-page-card-body">
-            Hạ tầng điện toán đám mây chuyên biệt cho y tế, tích hợp trí tuệ nhân tạo để phân tích dữ liệu sức khỏe theo
-            thời gian thực. Tuân thủ tiêu chuẩn HIPAA và ISO 27001.
-          </p>
-          <ul class="card-list">
-            <li style="color:#4a5568;">Lưu trữ phân tán, bảo mật cao</li>
-            <li style="color:#4a5568;">AI phân tích hình ảnh y tế (X-quang, MRI, CT)</li>
-            <li style="color:#4a5568;">Natural Language Processing cho hồ sơ bệnh án</li>
-            <li style="color:#4a5568;">Predictive analytics dự báo nguy cơ bệnh</li>
-            <li style="color:#4a5568;">API tích hợp với HIS/EMR bệnh viện</li>
-          </ul>
-        </div>
-
-        <!-- Medical Data Platform -->
-        <div class="ivory-card">
-          <div class="tech-card-header" style="background:linear-gradient(135deg,#1a6b4a,#228a5e);">
-            <div class="card-icon" style="margin-bottom:0.75rem;">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"
-                ></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg
-              >
-            </div>
-            <h3 class="tech-page-card-title">Medical Data Platform</h3>
-          </div>
-          <p class="tech-page-card-body">
-            Nền tảng quản lý dữ liệu y tế thống nhất, cho phép chia sẻ thông tin an toàn giữa bệnh nhân, bác sĩ và cơ sở
-            y tế. Hỗ trợ chuẩn HL7 FHIR quốc tế.
-          </p>
-          <ul class="card-list">
-            <li style="color:#4a5568;">Hồ sơ bệnh án điện tử toàn diện</li>
-            <li style="color:#4a5568;">Chuẩn HL7 FHIR R4 quốc tế</li>
-            <li style="color:#4a5568;">Chia sẻ dữ liệu có kiểm soát</li>
-            <li style="color:#4a5568;">Phân tích dữ liệu dân số y tế</li>
-            <li style="color:#4a5568;">Tuân thủ Nghị định 13/2023/NĐ-CP</li>
-          </ul>
-        </div>
-
-        <!-- IoT Healthcare -->
-        <div class="ivory-card">
-          <div class="tech-card-header" style="background:linear-gradient(135deg,#7b3f00,#a35200);">
-            <div class="card-icon" style="margin-bottom:0.75rem;">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg
-              >
-            </div>
-            <h3 class="tech-page-card-title">IoT Healthcare</h3>
-          </div>
-          <p class="tech-page-card-body">
-            Hệ thống kết nối thiết bị y tế thông minh — từ đồng hồ đo nhịp tim, máy đo huyết áp đến thiết bị theo dõi
-            đường huyết — gửi dữ liệu tức thì về nền tảng.
-          </p>
-          <ul class="card-list">
-            <li style="color:#4a5568;">Kết nối 500+ loại thiết bị y tế</li>
-            <li style="color:#4a5568;">Truyền dữ liệu real-time qua Bluetooth/WiFi</li>
-            <li style="color:#4a5568;">Cảnh báo bất thường tức thì</li>
-            <li style="color:#4a5568;">Tích hợp wearable devices</li>
-            <li style="color:#4a5568;">Giao thức bảo mật MQTT/TLS</li>
-          </ul>
-        </div>
-
-        <!-- Telemedicine API -->
-        <div class="ivory-card">
-          <div class="tech-card-header" style="background:linear-gradient(135deg,#5b2d8e,#7b3db5);">
-            <div class="card-icon" style="margin-bottom:0.75rem;">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
-                ></path></svg
-              >
-            </div>
-            <h3 class="tech-page-card-title">Telemedicine API</h3>
-          </div>
-          <p class="tech-page-card-body">
-            Bộ API telemedicine cho phép bệnh viện, phòng khám và ứng dụng y tế tích hợp khả năng tư vấn trực tuyến,
-            video call và kê đơn điện tử vào hệ thống hiện có.
-          </p>
-          <ul class="card-list">
-            <li style="color:#4a5568;">Video consultation API HD</li>
-            <li style="color:#4a5568;">E-prescription chuẩn Bộ Y tế</li>
-            <li style="color:#4a5568;">Đặt lịch & quản lý hàng đợi</li>
-            <li style="color:#4a5568;">Thanh toán tích hợp VNPay/MoMo</li>
-            <li style="color:#4a5568;">SDK cho iOS, Android, Web</li>
-          </ul>
-        </div>
+      <div class="btn-group" style="justify-content:center;">
+        <a href="#pillars" class="btn-primary-ef">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+          >
+          Khám phá công nghệ
+        </a>
+        <a href="/lien-he" class="btn-outline-ef">Liên hệ tư vấn</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="ef-section ef-section-dark">
-    <div class="max-container reveal" style="text-align:center;">
-      <span class="section-tag">Hợp tác</span>
-      <h2
-        style="font-family:'Montserrat',sans-serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:#ffffff;margin:1rem 0;"
-      >
-        Sẵn sàng tích hợp công nghệ EFCARE?
-      </h2>
-      <p style="color:rgba(255,255,255,0.7);font-size:1.0625rem;max-width:500px;margin:0 auto 2rem;line-height:1.7;">
+  <!-- 4 Technology Pillars -->
+  <section id="pillars" class="ef-section cn-pillars-section">
+    <AmbientRibbons variant="deep" />
+    <div class="max-container">
+      <div class="section-header reveal cn-section-header">
+        <h2 class="section-title">Bốn trụ cột công nghệ</h2>
+        <p class="section-subtitle">
+          Mỗi trụ cột đóng vai trò quan trọng trong hệ sinh thái y tế số của EFCARE.
+        </p>
+      </div>
+      <div class="cn-pillars-grid stagger-cards">
+        {
+          pillars.map((p) => (
+            <div class="cn-pillar-card">
+              <div class="cn-card-top">
+                <div class="cn-icon-hex">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    set:html={p.icon}
+                  />
+                </div>
+                <h3 class="cn-card-title">{p.title}</h3>
+              </div>
+              <div class="cn-card-content">
+                <p class="cn-card-body">{p.body}</p>
+                <ul class="cn-feature-list">
+                  {p.features.map((f) => (
+                    <li>{f}</li>
+                  ))}
+                </ul>
+              </div>
+              <a href="/lien-he" class="cn-card-link">
+                Tìm hiểu thêm
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cn-cta">
+    <AmbientRibbons variant="deep" />
+    <div class="max-container cn-cta-inner reveal">
+      <h2 class="cn-cta-h2">Sẵn sàng tích hợp công nghệ EFCARE?</h2>
+      <p class="cn-cta-p">
         Liên hệ đội ngũ kỹ thuật của chúng tôi để được tư vấn giải pháp tích hợp phù hợp.
       </p>
-      <a href="/lien-he" class="btn-primary-ef" style="display:inline-flex;"> Liên hệ tư vấn kỹ thuật </a>
+      <a href="/lien-he" class="btn-primary-ef" style="display:inline-flex;">Liên hệ tư vấn kỹ thuật</a>
     </div>
   </section>
 
   <EfcareFooter />
 
-  <Fragment slot="footer">
-    <!-- Handled by EfcareFooter -->
-  </Fragment>
+  <Fragment slot="footer"></Fragment>
 </Layout>
 
 <style>
-  .page-hero-section {
-    background: radial-gradient(ellipse 70% 90% at 50% 0%, #084F8A 0%, #0A3C4C 50%, #071828 100%);
-    padding: clamp(5rem, 10vw, 8rem) clamp(1rem, 4vw, 2rem) clamp(3rem, 6vw, 5rem);
+  /* ── Hero ── */
+  .cn-hero {
+    position: relative;
+    background: radial-gradient(ellipse 70% 90% at 50% 0%, #084f8a 0%, #0a3c4c 50%, #071828 100%);
+    padding: clamp(5.5rem, 11vw, 9rem) clamp(1rem, 4vw, 2rem) clamp(3rem, 6vw, 5rem);
     text-align: center;
+    overflow: hidden;
+  }
+
+  .cn-hero-inner {
     position: relative;
     z-index: 1;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    scroll-snap-align: start;
   }
 
-  .page-hero-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.75rem, 5vw, 3rem);
+  .cn-hero .hero-eyebrow {
+    color: #c4a962;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .cn-hero-h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 900;
     color: #ffffff;
-    margin: 1rem 0;
-    line-height: 1.2;
+    line-height: 1.18;
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
   }
 
-  .page-hero-sub {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
-    max-width: 600px;
+  .cn-hero-accent {
+    color: #c4a962;
+  }
+
+  .cn-hero-sub {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+    max-width: 580px;
+    margin: 0 0 1.75rem;
+    line-height: 1.7;
+  }
+
+  .cn-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .cn-cred-chip {
+    background: rgba(196, 169, 98, 0.12);
+    border: 1px solid rgba(196, 169, 98, 0.38);
+    color: #c4a962;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Pillars section ── */
+  .cn-pillars-section {
+    background: radial-gradient(ellipse 70% 90% at 50% 0%, #084f8a 0%, #0a3c4c 50%, #071828 100%);
+  }
+
+  .cn-section-header .section-title {
+    color: #ffffff;
+  }
+
+  .cn-section-header .section-subtitle {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .cn-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* ── Card ── */
+  .cn-pillar-card {
+    background:
+      radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255, 240, 160, 0.12) 0%, transparent 70%),
+      linear-gradient(160deg, rgba(10, 38, 72, 0.92) 0%, rgba(5, 18, 38, 0.97) 100%);
+    border: 1.5px solid rgba(255, 220, 80, 0.22);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .cn-pillar-card:hover {
+    background:
+      radial-gradient(ellipse 80% 55% at 50% 0%, rgba(8, 130, 230, 0.25) 0%, transparent 70%),
+      linear-gradient(160deg, rgba(8, 50, 110, 0.92) 0%, rgba(8, 28, 56, 0.98) 100%);
+    border-color: rgba(228, 196, 100, 0.5);
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 36px rgba(0, 0, 0, 0.45),
+      0 0 20px rgba(196, 169, 98, 0.1);
+  }
+
+  .cn-card-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cn-icon-hex {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c4a962;
+    border-radius: 12px;
+    box-shadow:
+      0 4px 16px rgba(196, 150, 42, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .cn-icon-hex svg {
+    width: 26px;
+    height: 26px;
+    stroke: #0a3c4c;
+    stroke-width: 2;
+  }
+
+  .cn-card-title {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .cn-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cn-card-body {
+    font-size: clamp(0.82rem, 1.05vw, 0.9rem);
+    color: rgba(255, 255, 255, 0.62);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cn-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem 0.75rem;
+  }
+
+  .cn-feature-list li {
+    font-size: clamp(0.78rem, 0.95vw, 0.84rem);
+    color: rgba(255, 255, 255, 0.55);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .cn-feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #c4a962;
+    opacity: 0.7;
+  }
+
+  .cn-card-link {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #c4a962;
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      gap 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .cn-card-link:hover {
+    color: #e8d89a;
+    gap: 0.65rem;
+  }
+
+  /* ── CTA ── */
+  .cn-cta {
+    position: relative;
+    background: linear-gradient(135deg, #0d3856 0%, #071f33 100%);
+    padding: clamp(3rem, 7vw, 5.5rem) clamp(1rem, 4vw, 2rem);
+    overflow: hidden;
+  }
+
+  .cn-cta-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .cn-cta-h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .cn-cta-p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.0625rem;
+    max-width: 480px;
     margin: 0 auto 2rem;
     line-height: 1.7;
   }
 
-  .tech-card-header {
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .cn-pillars-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cn-feature-list {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
-  .tech-page-card-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: #c4a962;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-  }
-
-  .tech-page-card-body {
-    color: rgba(255,255,255,0.65);
-    line-height: 1.7;
-    margin-bottom: 1rem;
-  }
-
-  .cong-nghe-dark-section {
-    background: radial-gradient(ellipse 70% 90% at 50% 0%, #084F8A 0%, #0A3C4C 50%, #071828 100%);
-  }
-
-  .cong-nghe-dark-section .section-title {
-    color: #ffffff;
-  }
-
-  .cong-nghe-dark-section .section-subtitle {
-    color: rgba(255,255,255,0.68);
-  }
-
-  .cong-nghe-dark-section .ivory-card {
-    background: linear-gradient(160deg, rgba(8,30,58,0.85) 0%, rgba(5,18,38,0.92) 100%);
-    border: 1.5px solid rgba(196,169,98,0.18);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
-  }
-
-  .cong-nghe-dark-section .card-list li {
-    color: rgba(255,255,255,0.62) !important;
+  @media (max-width: 480px) {
+    .cn-feature-list {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 
@@ -285,5 +470,33 @@ const metadata = {
       { threshold: 0.05 }
     );
     obs.observe(el);
+  });
+
+  document.querySelectorAll('.ef-section').forEach((el) => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    obs.observe(el);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const href = (anchor as HTMLAnchorElement).getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 </script>
